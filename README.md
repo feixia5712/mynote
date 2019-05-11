@@ -1,1 +1,1 @@
-博客地址[MyNote](https://github.com/feixia5712/mynote/ "title")
+博客地址[MyNote](https://feixia5712.github.io/mynote/ "mynote")

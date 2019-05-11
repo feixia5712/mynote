@@ -145,3 +145,15 @@ nav:
       - 8. mkdocs.yml范例: appendix/yml.md
     - 五. 使用建议: recommend.md
     - 六. 联系方式: contact.md
+  - Python之窗:
+    - python基础:
+      - 1. python基础: python/python1.md 
+      - 2. python基础之核心风格: python/python2.md
+      - 3. python基础之数据类型与变量: python/python3.md
+  - Linux世界:
+    - linux基础:
+      - 1. xx
+    - 常见服务搭建:
+      - 1. shadowsock搭建: linux/fuwu/ss.md
+    - shell脚本:
+      - 1. xx
