@@ -1,7 +1,30 @@
-site_name: My Docs
-theme:
-  name: readthedocs
+site_name: MYNOTE
+site_description: 个人知识的海洋
+site_author: 张殿可
+site_url: 'https://feixia5712.github.io/mynote/'
 dev_addr: '192.168.94.130:8000'
+repo_name: 'feixia5712/mynote'
+repo_url: 'https://github.com/feixia5712/mynote/tree/gh-pages'
+
+theme:
+  name: material
+  palette:
+    primary: 'Blue Grey'
+    accent: 'Pink'
+  feature:
+    tabs: false
+  #font:
+    #text: 'Ubuntu'
+    #code: 'Ubuntu Mono'
+  language: 'zh'
+
+extra:
+  social:
+    - type: github
+      link: https://github.com/cyent
+  search:
+    language: 'jp'
+
 markdown_extensions:
   - admonition
   - codehilite:
@@ -20,6 +43,11 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_png
+      #emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      #emoji_generator: !!python/name:pymdownx.emoji.to_png_sprite
+      #emoji_generator: !!python/name:pymdownx.emoji.to_svg_sprite
+      #emoji_generator: !!python/name:pymdownx.emoji.to_awesome
+      #emoji_generator: !!python/name:pymdownx.emoji.to_alt
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
@@ -28,3 +56,92 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
 
+extra_javascript:
+  - 'js/extra.js'
+  - 'js/baidu-tongji.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+nav:
+  - 一. 介绍: index.md
+  - 二. 安装:
+      - 1. 本地环境搭建: install/local.md
+      - 2. 发布至GitHub Pages: install/github-pages.md
+      - 3. 发布至自己的HTTP Server: install/http-server.md
+  - 三. 语法:
+      - 1. 语法总览: syntax/main.md
+      - 2. 标题: syntax/headline.md
+      - 3. 段落: syntax/paragraph.md
+      - 4. 引用: syntax/quote.md
+      - 5. 表格: syntax/table.md
+      - 6. 代码:
+          - 6.1. 行内: syntax/code_inline.md
+          - 6.2. 区块: syntax/code_block.md
+          - 6.3. 高亮: syntax/code_highlight.md
+      - 7. 字体样式:
+          - 7.1. 斜体,粗体,粗斜体: syntax/font_stress.md
+          - 7.2. 上标,下标: syntax/font_updown.md
+          - 7.3. 下划线: syntax/font_underline.md
+          - 7.4. 横线: syntax/font_line.md
+          - 7.5. 下划线+横线: syntax/font_underline_line.md
+      - 8. 列表:
+          - 8.1. 无序列表: syntax/list_noseq.md
+          - 8.2. 有序列表: syntax/list_seq.md
+          - 8.3. 任务列表: syntax/list_task.md
+      - 9. 分割线: syntax/cutline.md
+      - 10. 链接:
+          - 10.1. 普通链接: syntax/link_normal.md
+          - 10.2. 自动链接: syntax/link_auto.md
+          - 10.3. 锚点提示: syntax/link_anchor.md
+      - 11. 图片:
+          - 11.1. 行内式: syntax/image_inline.md
+          - 11.2. 参考式: syntax/image_index.md
+      - 12. 转义: syntax/escape.md
+      - 13. 高亮:
+          - 13.1. 代码高亮: syntax/highlight_code.md
+          - 13.2. 背景高亮: syntax/highlight_background.md
+      - 14. 注解:
+          - 14.1. 介绍: syntax/note_main.md
+          - 14.2. 完整格式: syntax/note_full.md
+          - 14.3. 空标题: syntax/note_empty-title.md
+          - 14.4. 无标题: syntax/note_none-title.md
+          - 14.5. 无类型: syntax/note_none-type.md
+          - 14.6. 折叠: syntax/note_details.md
+          - 14.7. 11种颜色样式: syntax/note_style.md
+          - 14.8. 嵌套: syntax/note_nest.md
+      - 15. 脚注: syntax/footnote.md
+      - 16. 元信息: syntax/meta.md
+      - 17. 数学公式:
+          - 17.1. 介绍: syntax/math_main.md
+          - 17.2. 导入js: syntax/math_js.md
+          - 17.3. 用法: syntax/math_usage.md
+      - 18. emoji:
+          - 18.1. 介绍: syntax/emoji_main.md
+          - 18.2. 工作原理: syntax/emoji_principle.md
+          - 18.3. 最佳实践: syntax/emoji_usage.md
+      - 19. 特殊符号: syntax/symbol.md
+      - 20. 嵌套:
+          - 20.1. 介绍: syntax/nest_main.md
+          - 20.2. 注解-注解: syntax/nest_note_note.md
+          - 20.3. 列表-列表: syntax/nest_list_list.md
+          - 20.4. 引用-引用: syntax/nest_quote_quote.md
+          - 20.5. 注解-代码块: syntax/nest_note_code.md
+          - 20.6. 列表-代码块: syntax/nest_list_code.md
+          - 20.7. 引用-代码块: syntax/nest_quote_code.md
+          - 20.8. 黄色区块-代码: syntax/nest_yellow_code.md
+          - 20.9. 绿色区块-代码: syntax/nest_green_code.md
+          - 20.10. 红色区块-代码: syntax/nest_red_code.md
+          - 20.11. 绿接红区块-代码: syntax/nest_greenred_code.md
+          - 20.12. 注解-列表-引用: syntax/nest_note_list_quote.md
+          - 20.13. 列表-列表-引用: syntax/nest_list_list_quote.md
+          - 20.14. 引用-引用-代码: syntax/nest_quote_quote_code.md
+  - 四. 附录:
+      - 1. 支持代码高亮的语言: appendix/pygments.md
+      - 2. emojione全名短名映射表: appendix/emoji_shortname.md
+      - 3. 添加百度统计: appendix/baidu_tongji.md
+      - 4. 配色: appendix/color.md
+      - 5. 模块介绍: appendix/module.md
+      - 6. mkdocs层级关系: appendix/level.md
+      - 7. 支持中文搜索: appendix/search.md
+      - 8. mkdocs.yml范例: appendix/yml.md
+  - 五. 使用建议: recommend.md
+  - 六. 联系方式: contact.md
