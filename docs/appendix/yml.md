@@ -1,11 +1,11 @@
 ```yaml
-site_name: markdown语法详解(基于mkdocs-material) - cyent笔记
+site_name: markdown语法详解(基于mkdocs-material) - 张殿可笔记
 site_description: 关于mkdocs-material支持的markdown语法，包括传统语法和扩展语法
-site_author: cyent
-site_url: https://cyent.github.io/markdown-with-mkdocs-material/
+site_author: zdk
+site_url: https://feixia5712.github.io/mynote/
 
-repo_name: 'cyent/markdown-with-mkdocs-material'
-repo_url: 'https://github.com/cyent/markdown-with-mkdocs-material'
+repo_name: 'feixia5712/mynote'
+repo_url: 'https://github.com/feixia5712/mynote'
 
 theme:
   name: material
@@ -22,7 +22,7 @@ theme:
 extra:
   social:
     - type: github
-      link: https://github.com/cyent
+      link: https://github.com/feixia5712
   search:
     language: 'jp'
 

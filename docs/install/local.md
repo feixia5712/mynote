@@ -2,7 +2,7 @@
 
 ---
 
-- python: 2.7.13
+- python: 2.7.13或者3.5以上
 
 - 依赖的python包:
 
@@ -43,6 +43,12 @@ mkdocs.yml里添加:
 ```text
 theme:
   name: material
+```
+
+### **指定ip:port**
+
+```text
+dev_addr: '192.168.94.130:8000'
 ```
 
 ### **添加扩展**
@@ -92,4 +98,4 @@ markdown_extensions:
 mkdocs serve
 ```
 
-通过浏览器打开 http://127.0.0.1:8000/ 查看效果
+通过浏览器打开 http://192.168.94.130:8000/ 查看效果
