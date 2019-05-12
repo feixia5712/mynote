@@ -380,4 +380,14 @@
      
      <changefreq>daily</changefreq>
     </url>
+    <url>
+     <loc>https://feixia5712.github.io/mynote/kubernetes/kubernetes_mynote1/</loc>
+     <lastmod>2019-05-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://feixia5712.github.io/mynote/kubernetes/kubernetes_mynote2/</loc>
+     <lastmod>2019-05-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
 </urlset>
