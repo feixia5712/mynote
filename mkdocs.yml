@@ -157,3 +157,6 @@ nav:
       - 1. shadowsock搭建: linux/fuwu/ss.md
     - shell脚本:
       - 1. xx
+  - 深入剖析Kubernetes:
+    - 1. 打通“容器技术”的任督二脉: kubernetes/kubernetes_mynote1.md
+    - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md 
