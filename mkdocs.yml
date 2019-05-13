@@ -155,11 +155,14 @@ nav:
       - 6. python之迭代器与生成器: python/python6.md
   - Linux世界:
     - linux基础:
-      - 1. xx
+      - 1. linux发展史: linux/base/linux1.md
+      - 2. centos7的安装: linux/base/linux2.md
     - 常见服务搭建:
       - 1. shadowsock搭建: linux/fuwu/ss.md
     - shell脚本:
       - 1. xx
   - 深入剖析Kubernetes:
     - 1. 打通“容器技术”的任督二脉: kubernetes/kubernetes_mynote1.md
-    - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md 
+    - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md
+    - 3. 小鲸鱼大事记（二）：崭露头角: kubernetes/kubernetes_mynote3.md
+    - 4. 小鲸鱼大事记（三）：群雄并起: kubernetes/kubernetes_mynote4.md 
