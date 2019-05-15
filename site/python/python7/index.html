@@ -1,0 +1,3261 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="个人知识的海洋">
+      
+      
+        <link rel="canonical" href="https://feixia5712.github.io/mynote/python/python7/">
+      
+      
+        <meta name="author" content="张殿可">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>7. python之内置模块 - MYNOTE</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#python" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://feixia5712.github.io/mynote/" title="MYNOTE" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              MYNOTE
+            </span>
+            <span class="md-header-nav__topic">
+              7. python之内置模块
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/feixia5712/mynote/tree/gh-pages/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    feixia5712/mynote
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://feixia5712.github.io/mynote/" title="MYNOTE" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    MYNOTE
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/feixia5712/mynote/tree/gh-pages/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    feixia5712/mynote
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      mkdocs安装
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        mkdocs安装
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="一. 介绍" class="md-nav__link">
+      一. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+    
+    <label class="md-nav__link" for="nav-1-2">
+      二. 安装
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-2">
+        二. 安装
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/local/" title="1. 本地环境搭建" class="md-nav__link">
+      1. 本地环境搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/github-pages/" title="2. 发布至GitHub Pages" class="md-nav__link">
+      2. 发布至GitHub Pages
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/http-server/" title="3. 发布至自己的HTTP Server" class="md-nav__link">
+      3. 发布至自己的HTTP Server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
+    
+    <label class="md-nav__link" for="nav-1-3">
+      三. 语法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-3">
+        三. 语法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/main/" title="1. 语法总览" class="md-nav__link">
+      1. 语法总览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/headline/" title="2. 标题" class="md-nav__link">
+      2. 标题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/paragraph/" title="3. 段落" class="md-nav__link">
+      3. 段落
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/quote/" title="4. 引用" class="md-nav__link">
+      4. 引用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/table/" title="5. 表格" class="md-nav__link">
+      5. 表格
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-6" type="checkbox" id="nav-1-3-6">
+    
+    <label class="md-nav__link" for="nav-1-3-6">
+      6. 代码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-6">
+        6. 代码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/code_inline/" title="6.1. 行内" class="md-nav__link">
+      6.1. 行内
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/code_block/" title="6.2. 区块" class="md-nav__link">
+      6.2. 区块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/code_highlight/" title="6.3. 高亮" class="md-nav__link">
+      6.3. 高亮
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-7" type="checkbox" id="nav-1-3-7">
+    
+    <label class="md-nav__link" for="nav-1-3-7">
+      7. 字体样式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-7">
+        7. 字体样式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/font_stress/" title="7.1. 斜体,粗体,粗斜体" class="md-nav__link">
+      7.1. 斜体,粗体,粗斜体
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/font_updown/" title="7.2. 上标,下标" class="md-nav__link">
+      7.2. 上标,下标
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/font_underline/" title="7.3. 下划线" class="md-nav__link">
+      7.3. 下划线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/font_line/" title="7.4. 横线" class="md-nav__link">
+      7.4. 横线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/font_underline_line/" title="7.5. 下划线+横线" class="md-nav__link">
+      7.5. 下划线+横线
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-8" type="checkbox" id="nav-1-3-8">
+    
+    <label class="md-nav__link" for="nav-1-3-8">
+      8. 列表
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-8">
+        8. 列表
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/list_noseq/" title="8.1. 无序列表" class="md-nav__link">
+      8.1. 无序列表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/list_seq/" title="8.2. 有序列表" class="md-nav__link">
+      8.2. 有序列表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/list_task/" title="8.3. 任务列表" class="md-nav__link">
+      8.3. 任务列表
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/cutline/" title="9. 分割线" class="md-nav__link">
+      9. 分割线
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-10" type="checkbox" id="nav-1-3-10">
+    
+    <label class="md-nav__link" for="nav-1-3-10">
+      10. 链接
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-10">
+        10. 链接
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/link_normal/" title="10.1. 普通链接" class="md-nav__link">
+      10.1. 普通链接
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/link_auto/" title="10.2. 自动链接" class="md-nav__link">
+      10.2. 自动链接
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/link_anchor/" title="10.3. 锚点提示" class="md-nav__link">
+      10.3. 锚点提示
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-11" type="checkbox" id="nav-1-3-11">
+    
+    <label class="md-nav__link" for="nav-1-3-11">
+      11. 图片
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-11">
+        11. 图片
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/image_inline/" title="11.1. 行内式" class="md-nav__link">
+      11.1. 行内式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/image_index/" title="11.2. 参考式" class="md-nav__link">
+      11.2. 参考式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/escape/" title="12. 转义" class="md-nav__link">
+      12. 转义
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-13" type="checkbox" id="nav-1-3-13">
+    
+    <label class="md-nav__link" for="nav-1-3-13">
+      13. 高亮
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-13">
+        13. 高亮
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/highlight_code/" title="13.1. 代码高亮" class="md-nav__link">
+      13.1. 代码高亮
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/highlight_background/" title="13.2. 背景高亮" class="md-nav__link">
+      13.2. 背景高亮
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-14" type="checkbox" id="nav-1-3-14">
+    
+    <label class="md-nav__link" for="nav-1-3-14">
+      14. 注解
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-14">
+        14. 注解
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_main/" title="14.1. 介绍" class="md-nav__link">
+      14.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_full/" title="14.2. 完整格式" class="md-nav__link">
+      14.2. 完整格式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_empty-title/" title="14.3. 空标题" class="md-nav__link">
+      14.3. 空标题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_none-title/" title="14.4. 无标题" class="md-nav__link">
+      14.4. 无标题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_none-type/" title="14.5. 无类型" class="md-nav__link">
+      14.5. 无类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_details/" title="14.6. 折叠" class="md-nav__link">
+      14.6. 折叠
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_style/" title="14.7. 11种颜色样式" class="md-nav__link">
+      14.7. 11种颜色样式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/note_nest/" title="14.8. 嵌套" class="md-nav__link">
+      14.8. 嵌套
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/footnote/" title="15. 脚注" class="md-nav__link">
+      15. 脚注
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/meta/" title="16. 元信息" class="md-nav__link">
+      16. 元信息
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-17" type="checkbox" id="nav-1-3-17">
+    
+    <label class="md-nav__link" for="nav-1-3-17">
+      17. 数学公式
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-17">
+        17. 数学公式
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/math_main/" title="17.1. 介绍" class="md-nav__link">
+      17.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/math_js/" title="17.2. 导入js" class="md-nav__link">
+      17.2. 导入js
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/math_usage/" title="17.3. 用法" class="md-nav__link">
+      17.3. 用法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-18" type="checkbox" id="nav-1-3-18">
+    
+    <label class="md-nav__link" for="nav-1-3-18">
+      18. emoji
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-18">
+        18. emoji
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/emoji_main/" title="18.1. 介绍" class="md-nav__link">
+      18.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/emoji_principle/" title="18.2. 工作原理" class="md-nav__link">
+      18.2. 工作原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/emoji_usage/" title="18.3. 最佳实践" class="md-nav__link">
+      18.3. 最佳实践
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/symbol/" title="19. 特殊符号" class="md-nav__link">
+      19. 特殊符号
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-20" type="checkbox" id="nav-1-3-20">
+    
+    <label class="md-nav__link" for="nav-1-3-20">
+      20. 嵌套
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-1-3-20">
+        20. 嵌套
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_main/" title="20.1. 介绍" class="md-nav__link">
+      20.1. 介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_note_note/" title="20.2. 注解-注解" class="md-nav__link">
+      20.2. 注解-注解
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_list_list/" title="20.3. 列表-列表" class="md-nav__link">
+      20.3. 列表-列表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_quote_quote/" title="20.4. 引用-引用" class="md-nav__link">
+      20.4. 引用-引用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_note_code/" title="20.5. 注解-代码块" class="md-nav__link">
+      20.5. 注解-代码块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_list_code/" title="20.6. 列表-代码块" class="md-nav__link">
+      20.6. 列表-代码块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_quote_code/" title="20.7. 引用-代码块" class="md-nav__link">
+      20.7. 引用-代码块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_yellow_code/" title="20.8. 黄色区块-代码" class="md-nav__link">
+      20.8. 黄色区块-代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_green_code/" title="20.9. 绿色区块-代码" class="md-nav__link">
+      20.9. 绿色区块-代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_red_code/" title="20.10. 红色区块-代码" class="md-nav__link">
+      20.10. 红色区块-代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_greenred_code/" title="20.11. 绿接红区块-代码" class="md-nav__link">
+      20.11. 绿接红区块-代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_note_list_quote/" title="20.12. 注解-列表-引用" class="md-nav__link">
+      20.12. 注解-列表-引用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_list_list_quote/" title="20.13. 列表-列表-引用" class="md-nav__link">
+      20.13. 列表-列表-引用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_quote_quote_code/" title="20.14. 引用-引用-代码" class="md-nav__link">
+      20.14. 引用-引用-代码
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-4" type="checkbox" id="nav-1-4">
+    
+    <label class="md-nav__link" for="nav-1-4">
+      四. 附录
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-1-4">
+        四. 附录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/pygments/" title="1. 支持代码高亮的语言" class="md-nav__link">
+      1. 支持代码高亮的语言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/emoji_shortname/" title="2. emojione全名短名映射表" class="md-nav__link">
+      2. emojione全名短名映射表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/baidu_tongji/" title="3. 添加百度统计" class="md-nav__link">
+      3. 添加百度统计
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/color/" title="4. 配色" class="md-nav__link">
+      4. 配色
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/module/" title="5. 模块介绍" class="md-nav__link">
+      5. 模块介绍
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/level/" title="6. mkdocs层级关系" class="md-nav__link">
+      6. mkdocs层级关系
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/search/" title="7. 支持中文搜索" class="md-nav__link">
+      7. 支持中文搜索
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../appendix/yml/" title="8. mkdocs.yml范例" class="md-nav__link">
+      8. mkdocs.yml范例
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../recommend/" title="五. 使用建议" class="md-nav__link">
+      五. 使用建议
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../contact/" title="六. 联系方式" class="md-nav__link">
+      六. 联系方式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Python之窗
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Python之窗
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      python基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        python基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python1/" title="1. python基础" class="md-nav__link">
+      1. python基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python2/" title="2. python基础之核心风格" class="md-nav__link">
+      2. python基础之核心风格
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python3/" title="3. python基础之数据类型与变量" class="md-nav__link">
+      3. python基础之数据类型与变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python4/" title="4. python之文件处理" class="md-nav__link">
+      4. python之文件处理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python5/" title="5. python之函数" class="md-nav__link">
+      5. python之函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python6/" title="6. python之迭代器与生成器" class="md-nav__link">
+      6. python之迭代器与生成器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        7. python之内置模块
+      </label>
+    
+    <a href="./" title="7. python之内置模块" class="md-nav__link md-nav__link--active">
+      7. python之内置模块
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python" title="python常用内置模块" class="md-nav__link">
+    python常用内置模块
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="模块的概念:" class="md-nav__link">
+    模块的概念:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" title="import运行本质" class="md-nav__link">
+    import运行本质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="包" class="md-nav__link">
+    包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="两个实例需要注意" class="md-nav__link">
+    两个实例需要注意
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re" title="内置模块re" class="md-nav__link">
+    内置模块re
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re_1" title="re模块常用的函数" class="md-nav__link">
+    re模块常用的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-os" title="内置模块2-----&gt;  os" class="md-nav__link">
+    内置模块2-----&gt;  os
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-datetime" title="常用内置模块之----&gt;datetime" class="md-nav__link">
+    常用内置模块之----&gt;datetime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-time" title="模块之----&gt;time" class="md-nav__link">
+    模块之----&gt;time
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format" title="常见format格式" class="md-nav__link">
+    常见format格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-configparser" title="文件处理模块--&gt;configparser模块" class="md-nav__link">
+    文件处理模块--&gt;configparser模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-logging" title="日志模块之-------logging" class="md-nav__link">
+    日志模块之-------logging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" title="- 二  灵活配置日志级别，日志格式，输出位置" class="md-nav__link">
+    - 二  灵活配置日志级别，日志格式，输出位置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logger" title="三  logger对象" class="md-nav__link">
+    三  logger对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocess" title="subprocess模块" class="md-nav__link">
+    subprocess模块
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocesspipe" title="subprocess.PIPE" class="md-nav__link">
+    subprocess.PIPE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocess_1" title="subprocess模块的工具函数" class="md-nav__link">
+    subprocess模块的工具函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hashlib" title="加密模块之--hashlib模块" class="md-nav__link">
+    加密模块之--hashlib模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" title="常用模块之json" class="md-nav__link">
+    常用模块之json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pickle" title="pickle模块" class="md-nav__link">
+    pickle模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sys" title="sys模块" class="md-nav__link">
+    sys模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Linux世界
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Linux世界
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      linux基础
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        linux基础
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/base/linux1/" title="1. linux发展史" class="md-nav__link">
+      1. linux发展史
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/base/linux2/" title="2. centos7的安装" class="md-nav__link">
+      2. centos7的安装
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      常见服务搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        常见服务搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/fuwu/ss/" title="1. shadowsock搭建" class="md-nav__link">
+      1. shadowsock搭建
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      shell脚本
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        shell脚本
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1. xx" title="None" class="md-nav__link">
+      None
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      深入剖析Kubernetes
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        深入剖析Kubernetes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes_mynote1/" title="1. 打通“容器技术”的任督二脉" class="md-nav__link">
+      1. 打通“容器技术”的任督二脉
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes_mynote2/" title="2. 小鲸鱼大事记（一）：初出茅庐" class="md-nav__link">
+      2. 小鲸鱼大事记（一）：初出茅庐
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes_mynote3/" title="3. 小鲸鱼大事记（二）：崭露头角" class="md-nav__link">
+      3. 小鲸鱼大事记（二）：崭露头角
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kubernetes/kubernetes_mynote4/" title="4. 小鲸鱼大事记（三）：群雄并起" class="md-nav__link">
+      4. 小鲸鱼大事记（三）：群雄并起
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python" title="python常用内置模块" class="md-nav__link">
+    python常用内置模块
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="模块的概念:" class="md-nav__link">
+    模块的概念:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" title="import运行本质" class="md-nav__link">
+    import运行本质
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="包" class="md-nav__link">
+    包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="两个实例需要注意" class="md-nav__link">
+    两个实例需要注意
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re" title="内置模块re" class="md-nav__link">
+    内置模块re
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re_1" title="re模块常用的函数" class="md-nav__link">
+    re模块常用的函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-os" title="内置模块2-----&gt;  os" class="md-nav__link">
+    内置模块2-----&gt;  os
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-datetime" title="常用内置模块之----&gt;datetime" class="md-nav__link">
+    常用内置模块之----&gt;datetime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-time" title="模块之----&gt;time" class="md-nav__link">
+    模块之----&gt;time
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#format" title="常见format格式" class="md-nav__link">
+    常见format格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-configparser" title="文件处理模块--&gt;configparser模块" class="md-nav__link">
+    文件处理模块--&gt;configparser模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-logging" title="日志模块之-------logging" class="md-nav__link">
+    日志模块之-------logging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" title="- 二  灵活配置日志级别，日志格式，输出位置" class="md-nav__link">
+    - 二  灵活配置日志级别，日志格式，输出位置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logger" title="三  logger对象" class="md-nav__link">
+    三  logger对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocess" title="subprocess模块" class="md-nav__link">
+    subprocess模块
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocesspipe" title="subprocess.PIPE" class="md-nav__link">
+    subprocess.PIPE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subprocess_1" title="subprocess模块的工具函数" class="md-nav__link">
+    subprocess模块的工具函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hashlib" title="加密模块之--hashlib模块" class="md-nav__link">
+    加密模块之--hashlib模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" title="常用模块之json" class="md-nav__link">
+    常用模块之json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pickle" title="pickle模块" class="md-nav__link">
+    pickle模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sys" title="sys模块" class="md-nav__link">
+    sys模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/python/python7.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>7. python之内置模块</h1>
+                
+                <h3 id="python">python常用内置模块<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<h4 id="_1">模块的概念:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>在Python中，一个.py文件就称之为一个模块（Module）。</p>
+<p>模块分3种</p>
+<p>1 python标准库</p>
+<p>2 第三方模块</p>
+<p>3 自定义模块</p>
+<ul>
+<li>模块的导入</li>
+</ul>
+<p>import 语句</p>
+<p><div class="codehilite"><pre><span></span>import module1,module2
+</pre></div>
+<mark>当我们使用import语句的时候，Python解释器是怎样找到对应的文件的呢？答案就是解释器有自己的搜索路径，存在sys.path里。</mark></p>
+<div class="codehilite"><pre><span></span>[ &#39;G:\\py3\\py3\\py3\\venv\\Scripts\\python36.zip&#39;, &#39;C:\\Python36\\DLLs&#39;, &#39;C:\\Python36\\lib&#39;, &#39;C:\\Python36&#39;, &#39;G:\\py3\\py3\\py3\\venv&#39;, &#39;G:\\py3\\py3\\py3\\venv\\lib\\site-packages&#39;, &#39;G:\\py3\\py3\\py3\\venv\\lib\\site-packages\\setuptools-39.1.0-py3.6.egg&#39;, &#39;G:\\py3\\py3\\py3\\venv\\lib\\site-packages\\pip-10.0.1-py3.6.egg&#39;, &#39;C:\\Program Files\\JetBrains\\PyCharm 2018.2.3\\helpers\\pycharm_matplotlib_backend&#39;]
+</pre></div>
+
+<p>from .... import 语句</p>
+<div class="codehilite"><pre><span></span>from module import  name1,name2
+</pre></div>
+
+<p>这个声明不会把整个modulename模块导入到当前的命名空间中，只会将它里面的name1或name2单个引入到执行这个声明的模块的全局符号表。</p>
+<p>from ... import *</p>
+<h4 id="import">import运行本质<a class="headerlink" href="#import" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>import test
+from test import add
+</pre></div>
+
+<p><mark>无论1还是2，首先通过sys.path找到test.py,然后执行test脚本（全部执行），区别是1会将test这个变量名加载到名字空间，而2只会将add这个变量名加载进来。</mark>　　</p>
+<h4 id="_2">包<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>如果不同的人编写的模块名相同怎么办？为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。
+请注意，<mark>每一个包目录下面都会有一个__init__.py的文件</mark>，这个文件是必须存在的，否则，Python就把这个目录当成普通目录(文件夹)，而不是一个包。<strong>init</strong>.py可以是空文件，也可以有Python代码，因为__init__.py本身就是一个模块，而它的模块名就是对应包的名字。</p>
+<p><mark>调用包就是执行包下的__init__.py文件</mark></p>
+<h4 id="_3">两个实例需要注意<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><img alt="image" src="../../pictures/linux/tutorial/python/python1.png" /></p>
+<div class="codehilite"><pre><span></span>##-------------cal.py
+def add(x,y):
+
+    return x+y
+##-------------main.py
+import cal      #from module import cal
+
+def main():
+
+    cal.add(1,2)
+
+##--------------bin.py
+from module import main
+
+main.main()
+</pre></div>
+
+<div class="codehilite"><pre><span></span>当执行bin.py的时候,系统会将bin.py脚本路径(文件夹)加入到环境变量
+# from module import cal 改成 from . import cal同样可以，这是因为bin.py是我们的执行脚本，
+# sys.path里有bin.py的当前环境。即/Users/yuanhao/Desktop/whaterver/project/web这层路径，
+# 无论import what ,  解释器都会按这个路径找。所以当执行到main.py时，import cal会找不到，因为
+# sys.path里没有/Users/yuanhao/Desktop/whaterver/project/web/module这个路径，而
+#  from  module/.  import cal 时，解释器就可以找到了。
+</pre></div>
+
+<h4 id="re">内置模块re<a class="headerlink" href="#re" title="Permanent link">&para;</a></h4>
+<ul>
+<li>简介</li>
+</ul>
+<p>正则表达式本身是一种小型的、高度专业化的编程语言，而在python中，通过内嵌集成re模块，程序媛们可以直接调用来实现正则匹配。正则表达式模式被编译成一系列的字节码，然后由用C编写的匹配引擎执行。</p>
+<p>常用的一些正则</p>
+<p><div class="codehilite"><pre><span></span>.   匹配任意除换行符&quot;\n&quot;外的字符(在DOTALL模式中也能匹配换行符
+\   转义字符，使后一个字符改变原来的意思
+*   匹配前一个字符0或多次
++   匹配前一个字符1次或无限次
+?   匹配一个字符0次或1次
+^   匹配字符串开头。在多行模式中匹配每一行的开头
+$   匹配字符串末尾，在多行模式中匹配每一行的末尾
+|   或。匹配|左右表达式任意一个，从左到右匹配，如果|没有包括在()中，则它的范围是整个正则表达式
+{}  {m}匹配前一个字符m次，{m,n}匹配前一个字符m至n次，若省略n，则匹配m至无限次
+[]  字符集。对应的位置可以是字符集中任意字符。字符集中的字符可以逐个列出，也可以给出范围，如[abc]或[a-c]。[^abc]表示取反，即非abc。
+所有特殊字符在字符集中都失去其原有的特殊含义。用\反斜杠转义恢复特殊字符的特殊含义。
+()  被括起来的表达式将作为分组，从表达式左边开始没遇到一个分组的左括号“（”，编号+1.
+分组表达式作为一个整体，可以后接数量词。表达式中的|仅在该组中有效。
+</pre></div>
+3 点</p>
+<ul>
+<li>反斜杠后边跟元字符去除特殊功能；（即将特殊字符转义成普通字符）</li>
+<li>反斜杠后边跟普通字符实现特殊功能；（即预定义字符）</li>
+<li>引用序号对应的字组所匹配的字符串。</li>
+<li><div class="codehilite"><pre><span></span>a=re.search(r&#39;(tina)(fei)haha\2&#39;,&#39;tinafeihahafei tinafeihahatina&#39;).group()
+print(a)
+结果：
+tinafeihahafei
+
+\2代表第二个分组(fei)
+</pre></div>
+常用一些匹配</li>
+</ul>
+<p><div class="codehilite"><pre><span></span>\d  数字:[0-9]
+\D  非数字:[^\d]
+\s  匹配任何空白字符
+\S  非空白字符:[^\s]
+\w  匹配包括下划线在内的任何字字符:[A-Za-z0-9_]
+\W  匹配非字母字符，即匹配特殊字符
+\A  仅匹配字符串开头,同^
+\Z  仅匹配字符串结尾，同$
+\b  匹配\w和\W之间，即匹配单词边界匹配一个单词边界，也就是指单词和空格间的位置。例如， &#39;er\b&#39; 可以匹配&quot;never&quot; 中的 &#39;er&#39;，但不能匹配 &quot;verb&quot; 中的 &#39;er&#39;。(注意识别什么情况下是一个单词)
+\B  [^\b]
+</pre></div>
+对于\b的理解</p>
+<p><div class="codehilite"><pre><span></span>这里需要强调一下\b的单词边界的理解：
+w = re.findall(&#39;\btina&#39;,&#39;tian tinaaaa&#39;)
+print(w)
+s = re.findall(r&#39;\btina&#39;,&#39;tian tinaaaa&#39;)
+print(s)
+v = re.findall(r&#39;\btina&#39;,&#39;tian#tinaaaa&#39;)
+print(v)
+a = re.findall(r&#39;\btina\b&#39;,&#39;tian#tina@aaa&#39;)
+print(a)
+k = re.findall(r&#39;\btina&#39;,&#39;tiankktinaaaa&#39;)
+print(k)
+执行结果如下：
+[]
+[&#39;tina&#39;]
+[&#39;tina&#39;]
+[&#39;tina&#39;]
+[]
+
+一个单词的界限就是单词前后(紧邻单词)不在有字母
+</pre></div>
+- 特殊分组</p>
+<p>分组就是用一对圆括号“()”括起来的正则表达式，匹配出的内容就表示一个分组。从正则表达式的左边开始看，看到的第一个左括号“(”表示第一个分组，第二个表示第二个分组，依次类推，需要注意的是，有一个隐含的全局分组（就是0），就是整个正则表达式。 
+分完组以后，要想获得某个分组的内容，直接使用group(num)和groups()函数去直接提取就行。</p>
+<p>三种分组</p>
+<div class="codehilite"><pre><span></span>(?P&lt;name&gt;正则表达式)#name是一个合法的标识符
+&gt;&gt;&gt; s = &quot;ip=&#39;230.192.168.78&#39;,version=&#39;1.0.0&#39;&quot;
+&gt;&gt;&gt; re.search(r&quot;ip=&#39;(?P&lt;ip&gt;\d+\.\d+\.\d+\.\d+).*&quot;, s)
+&gt;&gt;&gt; res.group(&#39;ip&#39;)#通过命名分组引用分组
+&#39;230.192.168.78&#39;
+当用”()”定义了一个正则表达式组后,正则引擎则会把被匹配的组按照顺序编号,存入缓存。这样我们想在后面对已经匹配过的内容进行引用时，就可以用”\数字”的方式或者是通过命名分组进行”(?P=name)“进行引用。\1表示引用第一个分组,\2引用第二个分组,以此类推,\n引用第n个组。而\0则引用整个被匹配的正则表达式本身。这些引用都必须是在正则表达式中才有效，用于匹配一些重复的字符串。
+
+#通过命名分组进行后向引用
+&gt;&gt;&gt; re.search(r&#39;(?P&lt;name&gt;go)\s+(?P=name)\s+(?P=name)&#39;, &#39;go go go&#39;).group(&#39;name&#39;)
+&#39;go&#39;
+#通过默认分组编号进行后向引用
+&gt;&gt;&gt; re.search(r&#39;(go)\s+\1\s+\1&#39;, &#39;go go go&#39;).group()
+&#39;go go go&#39;
+</pre></div>
+
+<h4 id="re_1">re模块常用的函数<a class="headerlink" href="#re_1" title="Permanent link">&para;</a></h4>
+<p>compile()</p>
+<p>编译正则表达式模式，返回一个对象的模式。（可以把那些常用的正则表达式编译成正则表达式对象，这样可以提高一点效率。）</p>
+<p>格式：</p>
+<p>re.compile(pattern,flags=0)</p>
+<p>pattern: 编译时用的表达式字符串。</p>
+<p>flags 编译标志位，用于修改正则表达式的匹配方式，如：是否区分大小写，多行匹配等。常用的flags有：</p>
+<p><div class="codehilite"><pre><span></span>标志含义
+re.S(DOTALL)
+使.匹配包括换行在内的所有字符
+re.I（IGNORECASE）
+使匹配对大小写不敏感
+re.L（LOCALE）
+做本地化识别（locale-aware)匹配，法语等
+re.M(MULTILINE)
+多行匹配，影响^和$
+re.X(VERBOSE)
+该标志通过给予更灵活的格式以便将正则表达式写得更易于理解
+re.U
+根据Unicode字符集解析字符，这个标志影响\w,\W,\b,\B
+</pre></div>
+使用</p>
+<p><div class="codehilite"><pre><span></span>import re
+tt = &quot;Tina is a good girl, she is cool, clever, and so on...&quot;
+rr = re.compile(r&#39;\w*oo\w*&#39;)
+print(rr.findall(tt))   #查找所有包含&#39;oo&#39;的单词
+执行结果如下：
+[&#39;good&#39;, &#39;cool&#39;]
+</pre></div>
+match</p>
+<div class="codehilite"><pre><span></span>print(re.match(&#39;com&#39;,&#39;comwww.runcomoob&#39;).group())
+print(re.match(&#39;com&#39;,&#39;Comwww.runcomoob&#39;,re.I).group())
+执行结果如下：
+com
+com
+</pre></div>
+
+<p>search</p>
+<p>re.search(pattern, string, flags=0)</p>
+<p>re.search函数会在字符串内查找模式匹配,只要找到第一个匹配然后返回，如果字符串没有匹配，则返回None。</p>
+<p><div class="codehilite"><pre><span></span>print(re.search(&#39;\dcom&#39;,&#39;www.4comrunoob.5com&#39;).group())
+执行结果如下：
+4com
+print(re.search(&#39;\dcom&#39;,&#39;www.deeeeeeee&#39;)
+执行结果如下：
+None
+</pre></div>
+*注：match和search一旦匹配成功，就是一个match object对象，而match object对象有以下方法：</p>
+<p>group() 返回被 RE 匹配的字符串</p>
+<p>start() 返回匹配开始的位置
+end() 返回匹配结束的位置</p>
+<p>span() 返回一个元组包含匹配 (开始,结束) 的位置</p>
+<p>group() 返回re整体匹配的字符串，可以一次输入多个组号，对应组号匹配的字符串。</p>
+<p>a. group（）返回re整体匹配的字符串，</p>
+<p>b. group (n,m) 返回组号为n，m所匹配的字符串，如果组号不存在，则返回indexError异常</p>
+<p>c.groups（）</p>
+<p>groups() 方法返回一个包含正则表达式中所有小组字符串的元组，从 1 到所含的小组号，通常groups()不需要参数，返回一个元组，元组中的元就是正则表达式中定义的组。 </p>
+<p><div class="codehilite"><pre><span></span>import re
+a = &quot;123abc456&quot;
+ print(re.search(&quot;([0-9]*)([a-z]*)([0-9]*)&quot;,a).group(0))   #123abc456,返回整体
+ print(re.search(&quot;([0-9]*)([a-z]*)([0-9]*)&quot;,a).group(1))   #123
+ print(re.search(&quot;([0-9]*)([a-z]*)([0-9]*)&quot;,a).group(2))   #abc
+ print(re.search(&quot;([0-9]*)([a-z]*)([0-9]*)&quot;,a).group(3))   #456
+ print (re.search(&quot;([0-9]*)([a-z]*)([0-9]*)&quot;,a).groups()) #返回匹配的元祖(&#39;123&#39;,&#39;abc&#39;,&#39;456&#39;)
+###group(1) 列出第一个括号匹配部分，group(2) 列出第二个括号匹配部分，group(3) 列出第三个括号匹配部分。###
+</pre></div>
+4、findall()</p>
+<p>re.findall遍历匹配，可以获取字符串中所有匹配的字符串，返回一个列表。</p>
+<p>格式：</p>
+<p>re.findall(pattern, string, flags=0)</p>
+<p><div class="codehilite"><pre><span></span>p = re.compile(r&#39;\d+&#39;)
+print(p.findall(&#39;o1n2m3k4&#39;))
+执行结果如下：
+[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;]
+</pre></div>
+5、finditer()</p>
+<p>搜索string，返回一个顺序访问每一个匹配结果（Match对象）的迭代器。找到 RE 匹配的所有子串，并把它们作为一个迭代器返回。</p>
+<p>格式：</p>
+<p>re.finditer(pattern, string, flags=0)</p>
+<p><div class="codehilite"><pre><span></span>iter = re.finditer(r&#39;\d+&#39;,&#39;12 drumm44ers drumming, 11 ... 10 ...&#39;)
+for i in iter:
+    print(i)
+    print(i.group())
+    print(i.span())
+执行结果如下：
+&lt;_sre.SRE_Match object; span=(0, 2), match=&#39;12&#39;&gt;
+12
+(0, 2)
+&lt;_sre.SRE_Match object; span=(8, 10), match=&#39;44&#39;&gt;
+44
+(8, 10)
+&lt;_sre.SRE_Match object; span=(24, 26), match=&#39;11&#39;&gt;
+11
+(24, 26)
+&lt;_sre.SRE_Match object; span=(31, 33), match=&#39;10&#39;&gt;
+10
+(31, 33)
+</pre></div>
+6、split()</p>
+<p>按照能够匹配的子串将string分割后返回列表。</p>
+<p>可以使用re.split来分割字符串，如：re.split(r'\s+', text)；将字符串按空格分割成一个单词列表。</p>
+<p>格式：</p>
+<p>re.split(pattern, string[, maxsplit])</p>
+<p><div class="codehilite"><pre><span></span>print(re.split(&#39;\d+&#39;,&#39;one1two2three3four4five5&#39;))
+执行结果如下：
+[&#39;one&#39;, &#39;two&#39;, &#39;three&#39;, &#39;four&#39;, &#39;five&#39;, &#39;&#39;]
+</pre></div>
+7、sub()</p>
+<p>使用re替换string中每一个匹配的子串后返回替换后的字符串。</p>
+<p>格式：</p>
+<p>re.sub(pattern, repl, string, count)</p>
+<p><div class="codehilite"><pre><span></span>text = &quot;JGood is a handsome boy, he is cool, clever, and so on...&quot;
+print(re.sub(r&#39;\s+&#39;, &#39;-&#39;, text))
+执行结果如下：
+JGood-is-a-handsome-boy,-he-is-cool,-clever,-and-so-on...
+其中第二个函数是替换后的字符串；本例中为&#39;-&#39;
+
+第四个参数指替换个数。默认为0，表示每个匹配项都替换。
+</pre></div>
+参考：<a href="https://www.cnblogs.com/tina-python/p/5508402.html">https://www.cnblogs.com/tina-python/p/5508402.html</a></p>
+<h4 id="2-os">内置模块2-----&gt;  os<a class="headerlink" href="#2-os" title="Permanent link">&para;</a></h4>
+<p>os.getcwd()：查看当前所在路径。</p>
+<p>os.listdir(path):列举目录下的所有文件。返回的是列表类型。
+<div class="codehilite"><pre><span></span>os.listdir(&#39;G:\py3\py3&#39;))
+</pre></div></p>
+<p>os.path.abspath(path):返回path的绝对路径。
+<div class="codehilite"><pre><span></span>(os.path.abspath(&#39;.&#39;))
+</pre></div>
+查看路径的文件夹部分和文件名部分</p>
+<p>os.path.split(path):将路径分解为(文件夹,文件名)，返回的是元组类型
+os.path.split(path):将路径分解为(文件夹,文件名)，返回的是元组类型。可以看出，若路径字符串最后一个字符是\,则只有文件夹部分有值；若路径字符串中均无\,则只有文件名部分有值。若路径字符串有\，且不在最后，则文件夹和文件名均有值。且返回的文件夹的结果不包含.</p>
+<div class="codehilite"><pre><span></span>os.path.split(&#39;G:\py3\py3\py3\复习\test1.py&#39;)
+</pre></div>
+
+<p>os.path.join(path1,path2,...):将path进行组合，若其中有绝对路径，则之前的path将被删除。</p>
+<p><div class="codehilite"><pre><span></span>print (os.path.join(&#39;G:\py3\py3\py3&#39;,&#39;test1.py&#39;))
+=====&gt;:G:\py3\py3\py3\test1.py
+</pre></div>
+os.path.dirname(path):返回path中的文件夹部分，结果不包含'\'
+<div class="codehilite"><pre><span></span>os.path.dirname(&#39;G:\py3\py3\py3&#39;)
+print (os.path.dirname(&#39;/opt/unilog/gggg/&#39;)) #注意有/结尾的情况
+print (os.path.dirname(&#39;/opt/unilog/gggg/1.txt&#39;))
+
+输出===》G:\py3\py3
+        /opt/unilog
+        /opt/unilog/gggg
+</pre></div>
+ os.path.basename(path):返回path中的文件名。</p>
+<p><div class="codehilite"><pre><span></span>print (os.path.basename(&#39;/opt/unilog/gggg/1.txt&#39;))
+====&gt;  1.txt
+</pre></div>
+查看文件大小</p>
+<p>os.path.getsize(path):文件或文件夹的大小，若是文件夹返回0。
+<div class="codehilite"><pre><span></span>print (os.path.getsize(os.path.join(os.getcwd(),&#39;test1.py&#39;)))
+</pre></div>
+查看文件是否存在
+os.path.exists(path):文件或文件夹是否存在，返回True 或 False。</p>
+<p>os.chdir()改变当前工作目录
+<div class="codehilite"><pre><span></span>os.chdir(&#39;/home/sy&#39;)
+result = os.getcwd()
+print(result)
+</pre></div>
+os.mkdir()  创建文件夹
+<div class="codehilite"><pre><span></span>os.mkdir(&#39;girls&#39;)
+</pre></div>
+os.rmdir() 删除空目录</p>
+<p><div class="codehilite"><pre><span></span>#os.rmdir(&#39;girls&#39;)
+</pre></div>
+os.rename() 文件或文件夹重命名</p>
+<p><div class="codehilite"><pre><span></span>os.rename(&#39;/home/sy/a&#39;,&#39;/home/sy/alibaba&#39;)
+os.rename(&#39;02.txt&#39;,&#39;002.txt&#39;)
+</pre></div>
+os.stat() 获取文件或者文件夹的信息
+<div class="codehilite"><pre><span></span>result = os.stat(&#39;/home/sy/PycharmProject/Python3/10.27/01.py)
+print(result)
+</pre></div>
+os.system() 执行系统命令(危险函数)
+<div class="codehilite"><pre><span></span>result = os.system(&#39;ls -al&#39;)  #获取隐藏文件
+print(result)
+</pre></div>
+os.getenv() 获取系统的环境变量
+<div class="codehilite"><pre><span></span>result = os.getenv(&#39;PATH&#39;)
+</pre></div>
+os.putenv() 将一个目录添加到环境变量中(临时增加仅对当前脚本有效)
+<div class="codehilite"><pre><span></span>os.putenv(&#39;PATH&#39;,&#39;/home/sy/下载&#39;)
+</pre></div>
+os.name 获取代表操作系统的名称字符串
+<div class="codehilite"><pre><span></span>print(os.name) #posix -&gt; linux或者unix系统  nt -&gt; window系统
+</pre></div>
+os.walk()</p>
+<p><div class="codehilite"><pre><span></span>os.walk(top，topdown = True，onerror = None，followlinks = False )
+通过从上到下或从下到上遍历树来生成目录树中的文件名。对于以目录顶部（包括顶部本身）为根的树中的每个目录 ，它产生一个3元组。
+(dirpath, dirnames, filenames)——&gt;dirpath是一个字符串，即目录的路径。 dirnames中是子目录的名称列表中的dirpath（不包括&#39;.&#39;和&#39;..&#39;）。 filenames是dirpath中非目录文件的名称列表。请注意，列表中的名称不包含路径组件。要获取完整路径（以top开头）到dirpath中的文件或目录。
+</pre></div>
+<div class="codehilite"><pre><span></span>for dirName,subDir,files in os.walk(&#39;G:\py3\py3\py3\day33&#39;):
+    print (dirName)
+    print (subDir)
+    print (files)
+</pre></div></p>
+<h4 id="-datetime">常用内置模块之----&gt;datetime<a class="headerlink" href="#-datetime" title="Permanent link">&para;</a></h4>
+<p>获取现在时间
+<div class="codehilite"><pre><span></span>from datetime import datetime
+print (datetime.now())
+--&gt;:2019-04-14 21:18:28.604079
+</pre></div>
+获取指定日期和时间
+<div class="codehilite"><pre><span></span>dt = datetime(2019,4,8,23,10)
+print (dt)
+----&gt;:2019-04-08 23:10:00
+</pre></div>
+datetime转时间戳
+<div class="codehilite"><pre><span></span>dt = datetime(2019,4,8,23,10)
+print (dt.timestamp())
+---&gt;:1554736200.0
+</pre></div>
+时间戳转换为datetime
+<div class="codehilite"><pre><span></span>ct=1527800000
+print (datetime.fromtimestamp(ct))
+---&gt;:2018-06-01 04:53:20
+</pre></div></p>
+<h4 id="-time">模块之----&gt;time<a class="headerlink" href="#-time" title="Permanent link">&para;</a></h4>
+<p>1 返回当前时间戳
+<div class="codehilite"><pre><span></span>time.time()
+</pre></div>
+2 localtime([secs])
+ 将一个时间戳转换为当前时区的struct_time。secs参数未提供，则以当前时间为准。
+ <div class="codehilite"><pre><span></span>time.localtime(time.time())
+---&gt;:time.struct_time(tm_year=2019, tm_mon=4, tm_mday=16, tm_hour=21, tm_min=35, tm_sec=43, tm_wday=1, tm_yday=106, tm_isdst=0)
+</pre></div>
+3 gmtime([secs]) 和localtime()方法类似，gmtime()方法是将一个时间戳转换为UTC时区（0时区）的struct_time。
+ <div class="codehilite"><pre><span></span>time.gmtime(time.time())
+</pre></div>
+4 mktime(t) : 将一个struct_time转化为时间戳。
+<div class="codehilite"><pre><span></span>time.mktime(time.localtime())
+</pre></div>
+5 asctime([t]) : 把一个表示时间的元组或者struct_time表示为这种形式：'Sun Jun 20 23:21:05 1993'。
+如果没有参数，将会将time.localtime()作为参数传入。
+<div class="codehilite"><pre><span></span>time.asctime()
+--&gt;:Tue Apr 16 21:45:10 2019
+</pre></div>
+6 ctime([secs]) : 把一个时间戳（按秒计算的浮点数）转化为time.asctime()的形式。如果参数未给或者为
+None的时候，将会默认time.time()为参数。它的作用相当于time.asctime(time.localtime(secs))。
+<div class="codehilite"><pre><span></span>time.ctime()
+--&gt;:Tue Apr 16 21:45:10 2019
+</pre></div>
+ 7 strftime(format[, t]) : 把一个代表时间的元组或者struct_time（如由time.localtime()和
+time.gmtime()返回）转化为格式化的时间字符串。如果t未指定，将传入time.localtime()。如果元组中任何一个元素越界，ValueError的错误将会被抛出。</p>
+<p><div class="codehilite"><pre><span></span>time.strftime(&quot;%Y-%m-%d %X&quot;, time.localtime())
+--&gt;:2019-04-16 21:56:53
+传入时间元祖
+print (time.strftime(&quot;%Y-%m-%d %X&quot;,(2009, 2, 17, 10, 48, 39,23,1,2,)))
+--&gt;:2009-02-17 10:48:39
+</pre></div>
+8 time.strptime(string[, format])
+把一个格式化时间字符串转化为struct_time。实际上它和strftime()是逆操作。
+<div class="codehilite"><pre><span></span>print(time.strptime(&#39;2011-05-05 16:37:06&#39;, &#39;%Y-%m-%d %X&#39;))
+---&gt;:time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=16, tm_min=37, tm_sec=6, tm_wday=3, tm_yday=125, tm_isdst=-1)
+</pre></div></p>
+<h6 id="format">常见format格式<a class="headerlink" href="#format" title="Permanent link">&para;</a></h6>
+<div class="codehilite"><pre><span></span>格式  含义
+%a  本地（locale）简化星期名称
+%A  本地完整星期名称
+%b  本地简化月份名称
+%B  本地完整月份名称
+%c  本地相应的日期和时间表示
+%d  一个月中的第几天（01 - 31）
+%H  一天中的第几个小时（24小时制，00 - 23）
+%I  第几个小时（12小时制，01 - 12）
+%j  一年中的第几天（001 - 366）
+%m  月份（01 - 12）
+%M  分钟数（00 - 59）
+%p  本地am或者pm的相应符
+%S  秒（01 - 61）
+%U  一年中的星期数。（00 - 53星期天是一个星期的开始。）第一个星期天之前的所有天数都放在第0周。
+%w  一个星期中的第几天（0 - 6，0是星期天）
+%W  和%U基本相同，不同的是%W以星期一为一个星期的开始。
+%x  本地相应日期
+%X  本地相应时间
+%y  去掉世纪的年份（00 - 99）
+%Y  完整的年份
+%Z  时区的名字（如果不存在为空字符）
+%%  ‘%’字符
+</pre></div>
+
+<p>常用的转化
+<img alt="image" src="../../pictures/linux/tutorial/python/python4.png" /></p>
+<h4 id="-configparser">文件处理模块&rarr;configparser模块<a class="headerlink" href="#-configparser" title="Permanent link">&para;</a></h4>
+<p>生成某种格式的文档</p>
+<p><div class="codehilite"><pre><span></span>import configparser
+
+config = configparser.ConfigParser()
+config[&quot;DEFAULT&quot;] = {&#39;ServerAliveInterval&#39;: &#39;45&#39;,
+                      &#39;Compression&#39;: &#39;yes&#39;,
+                     &#39;CompressionLevel&#39;: &#39;9&#39;}
+
+config[&#39;bitbucket.org&#39;] = {}
+config[&#39;bitbucket.org&#39;][&#39;User&#39;] = &#39;hg&#39;
+config[&#39;topsecret.server.com&#39;] = {}
+topsecret = config[&#39;topsecret.server.com&#39;]
+topsecret[&#39;Host Port&#39;] = &#39;50022&#39;     # mutates the parser
+topsecret[&#39;ForwardX11&#39;] = &#39;no&#39;  # same here
+config[&#39;DEFAULT&#39;][&#39;ForwardX11&#39;] = &#39;yes&#39;&lt;br&gt;
+with open(&#39;example.ini&#39;, &#39;w&#39;) as configfile:
+   config.write(configfile)
+</pre></div>
+生成的文档如下</p>
+<div class="codehilite"><pre><span></span>[DEFAULT]
+ServerAliveInterval = 45
+Compression = yes
+CompressionLevel = 9
+ForwardX11 = yes
+
+[bitbucket.org]
+User = hg
+
+[topsecret.server.com]
+Port = 50022
+ForwardX11 = no
+</pre></div>
+
+<p>对文档的一些操作</p>
+<div class="codehilite"><pre><span></span>import configparser
+
+config = configparser.ConfigParser()
+
+#---------------------------------------------查
+print(config.sections())   #[]
+
+config.read(&#39;example.ini&#39;)
+
+print(config.sections())   #[&#39;bitbucket.org&#39;, &#39;topsecret.server.com&#39;]
+#拿到[]里面的值,但是第一个DEFAULT是拿不到的,换成其他的可以拿到
+
+print(&#39;bytebong.com&#39; in config)# False
+
+print(config[&#39;bitbucket.org&#39;][&#39;User&#39;]) # hg
+
+print(config[&#39;DEFAULT&#39;][&#39;Compression&#39;]) #yes
+
+print(config[&#39;topsecret.server.com&#39;][&#39;ForwardX11&#39;])  #no
+
+
+for key in config[&#39;bitbucket.org&#39;]:
+    print(key)
+
+
+# user
+# serveraliveinterval
+# compression
+# compressionlevel
+# forwardx11
+
+
+print(config.options(&#39;bitbucket.org&#39;))#[&#39;user&#39;, &#39;serveraliveinterval&#39;, &#39;compression&#39;, &#39;compressionlevel&#39;, &#39;forwardx11&#39;]
+print(config.items(&#39;bitbucket.org&#39;))  #[(&#39;serveraliveinterval&#39;, &#39;45&#39;), (&#39;compression&#39;, &#39;yes&#39;), (&#39;compressionlevel&#39;, &#39;9&#39;), (&#39;forwardx11&#39;, &#39;yes&#39;), (&#39;user&#39;, &#39;hg&#39;)]
+
+print(config.get(&#39;bitbucket.org&#39;,&#39;compression&#39;))#yes
+
+
+#--------------删,改,增(config.write(open(&#39;i.cfg&#39;, &quot;w&quot;)))
+
+
+config.add_section(&#39;yuan&#39;)#增加sections
+
+config.remove_section(&#39;topsecret.server.com&#39;)
+config.remove_option(&#39;bitbucket.org&#39;,&#39;user&#39;)
+
+config.set(&#39;bitbucket.org&#39;,&#39;k1&#39;,&#39;11111&#39;)
+
+config.write(open(&#39;i.cfg&#39;, &quot;w&quot;))
+</pre></div>
+
+<h4 id="-logging">日志模块之-------logging<a class="headerlink" href="#-logging" title="Permanent link">&para;</a></h4>
+<ul>
+<li>简单应用</li>
+</ul>
+<p><div class="codehilite"><pre><span></span>import logging  
+logging.debug(&#39;debug message&#39;)  
+logging.info(&#39;info message&#39;)  
+logging.warning(&#39;warning message&#39;)  
+logging.error(&#39;error message&#39;)  
+logging.critical(&#39;critical message&#39;)  
+</pre></div>
+输出
+<div class="codehilite"><pre><span></span>WARNING:root:warning message
+ERROR:root:error message
+CRITICAL:root:critical message
+</pre></div>
+可见，默认情况下Python的logging模块将日志打印到了标准输出中，且只显示了大于等于WARNING级别的日志，这说明默认的日志级别设置为WARNING（日志级别等级CRITICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG &gt; NOTSET），默认的日志格式为日志级别：Logger名称：用户输出消息。</p>
+<h2 id="-">- 二  灵活配置日志级别，日志格式，输出位置<a class="headerlink" href="#-" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>import logging  
+logging.basicConfig(level=logging.DEBUG,  
+                    format=&#39;%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s&#39;,  
+                    datefmt=&#39;%a, %d %b %Y %H:%M:%S&#39;,  
+                    filename=&#39;/tmp/test.log&#39;,  
+                    filemode=&#39;w&#39;)  
+
+logging.debug(&#39;debug message&#39;)  
+logging.info(&#39;info message&#39;)  
+logging.warning(&#39;warning message&#39;)  
+logging.error(&#39;error message&#39;)  
+logging.critical(&#39;critical message&#39;)
+</pre></div>
+
+<p>查看输出：
+<div class="codehilite"><pre><span></span>cat /tmp/test.log 
+Mon, 05 May 2014 16:29:53 test_logging.py[line:9] DEBUG debug message
+Mon, 05 May 2014 16:29:53 test_logging.py[line:10] INFO info message
+Mon, 05 May 2014 16:29:53 test_logging.py[line:11] WARNING warning message
+Mon, 05 May 2014 16:29:53 test_logging.py[line:12] ERROR error message
+Mon, 05 May 2014 16:29:53 test_logging.py[line:13] CRITICAL critical message
+</pre></div></p>
+<p>可见在logging.basicConfig()函数中可通过具体参数来更改logging模块默认行为，可用参数有</p>
+<p>filename：用指定的文件名创建FiledHandler（后边会具体讲解handler的概念），这样日志会被存储在指定的文件中。</p>
+<p>filemode：文件打开方式，在指定了filename时使用这个参数，默认值为“a”还可指定为“w”。</p>
+<p>format：指定handler使用的日志显示格式。 </p>
+<p>datefmt：指定日期时间格式。 </p>
+<p>level：设置rootlogger（后边会讲解具体概念）的日志级别 </p>
+<p>stream：用指定的stream创建StreamHandler。可以指定输出到sys.stderr,sys.stdout或者文件(f=open('test.log','w'))，默认为sys.stderr。若同时列出了filename和stream两个参数，则stream参数会被忽略。</p>
+<p>format参数中可能用到的格式化串：
+<div class="codehilite"><pre><span></span>%(name)s Logger的名字
+%(levelno)s 数字形式的日志级别
+%(levelname)s 文本形式的日志级别
+%(pathname)s 调用日志输出函数的模块的完整路径名，可能没有
+%(filename)s 调用日志输出函数的模块的文件名
+%(module)s 调用日志输出函数的模块名
+%(funcName)s 调用日志输出函数的函数名
+%(lineno)d 调用日志输出函数的语句所在的代码行
+%(created)f 当前时间，用UNIX标准的表示时间的浮 点数表示
+%(relativeCreated)d 输出日志信息时的，自Logger创建以 来的毫秒数
+%(asctime)s 字符串形式的当前时间。默认格式是 “2003-07-08 16:49:45,896”。逗号后面的是毫秒
+%(thread)d 线程ID。可能没有
+%(threadName)s 线程名。可能没有
+%(process)d 进程ID。可能没有
+%(message)s用户输出的消息
+</pre></div></p>
+<h6 id="logger">三  logger对象<a class="headerlink" href="#logger" title="Permanent link">&para;</a></h6>
+<div class="codehilite"><pre><span></span>上述几个例子中我们了解到了logging.debug()、logging.info()、logging.warning()、logging.error()、logging.critical()（分别用以记录不同级别的日志信息），logging.basicConfig()（用默认日志格式（Formatter）为日志系统建立一个默认的流处理器（StreamHandler），设置基础配置（如日志级别等）并加到root logger（根Logger）中）这几个logging模块级别的函数，另外还有一个模块级别的函数是logging.getLogger([name])（返回一个logger对象，如果没有指定名字将返回root logger）
+</pre></div>
+
+
+<p>先看一个最简单的过程：
+<div class="codehilite"><pre><span></span>import logging
+
+logger = logging.getLogger()
+# 创建一个handler，用于写入日志文件
+fh = logging.FileHandler(&#39;test.log&#39;)
+
+# 再创建一个handler，用于输出到控制台
+ch = logging.StreamHandler()
+
+formatter = logging.Formatter(&#39;%(asctime)s - %(name)s - %(levelname)s - %(message)s&#39;)
+
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+
+logger.addHandler(fh) #logger对象可以添加多个fh和ch对象
+logger.addHandler(ch)
+
+logger.debug(&#39;logger debug message&#39;)
+logger.info(&#39;logger info message&#39;)
+logger.warning(&#39;logger warning message&#39;)
+logger.error(&#39;logger error message&#39;)
+logger.critical(&#39;logger critical message&#39;)
+</pre></div>
+  先简单介绍一下，logging库提供了多个组件：Logger、Handler、Filter、Formatter。Logger对象提供应用程序可直接使用的接口，Handler发送日志到适当的目的地，Filter提供了过滤日志信息的方法，Formatter指定日志显示格式。</p>
+<div class="codehilite"><pre><span></span> (1)
+
+  Logger是一个树形层级结构，输出信息之前都要获得一个Logger（如果没有显示的获取则自动创建并使用root Logger，如第一个例子所示）。
+  logger = logging.getLogger()返回一个默认的Logger也即root Logger，并应用默认的日志级别、Handler和Formatter设置。
+</pre></div>
+
+
+<p>当然也可以通过Logger.setLevel(lel)指定最低的日志级别，可用的日志级别有logging.DEBUG、logging.INFO、logging.WARNING、logging.ERROR、logging.CRITICAL。</p>
+<p>Logger.debug()、Logger.info()、Logger.warning()、Logger.error()、Logger.critical()输出不同级别的日志，只有日志等级大于或等于设置的日志级别的日志才会被输出。 
+<div class="codehilite"><pre><span></span>logger.debug(&#39;logger debug message&#39;)  
+logger.info(&#39;logger info message&#39;)  
+logger.warning(&#39;logger warning message&#39;)  
+logger.error(&#39;logger error message&#39;)  
+logger.critical(&#39;logger critical message&#39;) 
+</pre></div>
+只输出了
+2014-05-06 12:54:43,222 - root - WARNING - logger warning message
+2014-05-06 12:54:43,223 - root - ERROR - logger error message
+2014-05-06 12:54:43,224 - root - CRITICAL - logger critical message
+从这个输出可以看出logger=logging.getLogger()返回的Logger名为root。这里没有用logger.setLevel(logging.Debug)显示的为logger设置日志级别，所以使用默认的日志级别WARNIING，故结果只输出了大于等于WARNIING级别的信息。</p>
+<p>(2) 如果我们再创建两个logger对象： 
+<div class="codehilite"><pre><span></span>##################################################
+logger1 = logging.getLogger(&#39;mylogger&#39;)
+logger1.setLevel(logging.DEBUG)
+
+logger2 = logging.getLogger(&#39;mylogger&#39;)
+logger2.setLevel(logging.INFO)
+
+logger1.addHandler(fh)
+logger1.addHandler(ch)
+
+logger2.addHandler(fh)
+logger2.addHandler(ch)
+
+logger1.debug(&#39;logger1 debug message&#39;)
+logger1.info(&#39;logger1 info message&#39;)
+logger1.warning(&#39;logger1 warning message&#39;)
+logger1.error(&#39;logger1 error message&#39;)
+logger1.critical(&#39;logger1 critical message&#39;)
+
+logger2.debug(&#39;logger2 debug message&#39;)
+logger2.info(&#39;logger2 info message&#39;)
+logger2.warning(&#39;logger2 warning message&#39;)
+logger2.error(&#39;logger2 error message&#39;)
+logger2.critical(&#39;logger2 critical message&#39;)
+</pre></div>
+结果如下
+<img alt="image" src="../../pictures/linux/tutorial/python/python3.png" />
+这里有两个个问题：</p>
+<p>&lt;1&gt;我们明明通过logger1.setLevel(logging.DEBUG)将logger1的日志级别设置为了DEBUG，为何显示的时候没有显示出DEBUG级别的日志信息，而是从INFO级别的日志开始显示呢？</p>
+<p>原来logger1和logger2对应的是同一个Logger实例，只要logging.getLogger（name）中名称参数name相同则返回的Logger实例就是同一个，且仅有一个，也即name与Logger实例一一对应。在logger2实例中通过logger2.setLevel(logging.INFO)设置mylogger的日志级别为logging.INFO，所以最后logger1的输出遵从了后来设置的日志级别。</p>
+<p>&lt;2&gt;为什么logger1、logger2对应的每个输出分别显示两次?</p>
+<p>这是因为我们通过logger = logging.getLogger()显示的创建了root Logger，而logger1 = logging.getLogger('mylogger')创建了root Logger的孩子(root.)mylogger,logger2同样。而孩子,孙子，重孙……既会将消息分发给他的handler进行处理也会传递给所有的祖先Logger处理。</p>
+<p>ok,那么现在我们把
+<div class="codehilite"><pre><span></span># logger.addHandler(fh)
+
+# logger.addHandler(ch)  注释掉，我们再来看效果：
+</pre></div>
+<img alt="image" src="https://images2015.cnblogs.com/blog/877318/201608/877318-20160803131623028-674109084.png" /></p>
+<p>因为我们注释了logger对象显示的位置，所以才用了默认方式，即标准输出方式。因为它的父级没有设置文件显示方式，所以在这里只打印了一次。</p>
+<p>孩子,孙子，重孙……可逐层继承来自祖先的日志级别、Handler、Filter设置，也可以通过Logger.setLevel(lel)、Logger.addHandler(hdlr)、Logger.removeHandler(hdlr)、Logger.addFilter(filt)、Logger.removeFilter(filt)。设置自己特别的日志级别、Handler、Filter。若不设置则使用继承来的值。</p>
+<h4 id="subprocess">subprocess模块<a class="headerlink" href="#subprocess" title="Permanent link">&para;</a></h4>
+<h5 id="_4">简介<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>当我们需要调用系统的命令的时候，最先考虑的os模块。用os.system()和os.popen()来进行操作。但是这两个命令过于简单，不能完成一些复杂的操作，如给运行的命令提供输入或者读取命令的输出，判断该命令的运行状态，管理多个命令的并行等等。这时subprocess中的Popen命令就能有效的完成我们需要的操作。
+subprocess模块允许一个进程创建一个新的子进程，通过管道连接到子进程的stdin/stdout/stderr，获取子进程的返回值等操作。 </p>
+<p>参数如下
+<div class="codehilite"><pre><span></span>subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None,stderr=None, preexec_fn=None, close_fds=False, shell=False,&lt;br&gt;                 cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
+</pre></div></p>
+<p>参数说明：</p>
+<p><div class="codehilite"><pre><span></span># 参数args可以是字符串或者序列类型（如：list，元组），用于指定进程的可执行文件及其参数。
+# 如果是序列类型，第一个元素通常是可执行文件的路径。我们也可以显式的使用executeable参
+# 数来指定可执行文件的路径。在windows操作系统上，Popen通过调用CreateProcess()来创
+# 建子进程,CreateProcess接收一个字符串参数，如果args是序列类型，系统将会通过
+# list2cmdline()函数将序列类型转换为字符串。
+# 
+# 
+# 参数bufsize：指定缓冲。我到现在还不清楚这个参数的具体含义，望各个大牛指点。
+# 
+# 参数executable用于指定可执行程序。一般情况下我们通过args参数来设置所要运行的程序。如
+# 果将参数shell设为True，executable将指定程序使用的shell。在windows平台下，默认的
+# shell由COMSPEC环境变量来指定。
+# 
+# 参数stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，
+# 文件描述符或文件对象，也可以设置为None，表示从父进程继承。
+# 
+# 参数preexec_fn只在Unix平台下有效，用于指定一个可执行对象（callable object），它将
+# 在子进程运行之前被调用。
+# 
+# 参数Close_sfs：在windows平台下，如果close_fds被设置为True，则新创建的子进程将不会
+# 继承父进程的输入、输出、错误管道。我们不能将close_fds设置为True同时重定向子进程的标准
+# 输入、输出与错误(stdin, stdout, stderr)。
+# 
+# 如果参数shell设为true，程序将通过shell来执行。
+# 
+# 参数cwd用于设置子进程的当前目录。
+# 
+# 参数env是字典类型，用于指定子进程的环境变量。如果env = None，子进程的环境变量将从父
+# 进程中继承。
+# 
+# 参数Universal_newlines:不同操作系统下，文本的换行符是不一样的。如：windows下
+# 用’/r/n’表示换，而Linux下用’/n’。如果将此参数设置为True，Python统一把这些换行符当
+# 作’/n’来处理。
+# 
+# 参数startupinfo与createionflags只在windows下用效，它们将被传递给底层的
+# CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。
+</pre></div>
+一些简单命令</p>
+<div class="codehilite"><pre><span></span>import subprocess
+
+a=subprocess.Popen(&#39;ls&#39;)#  创建一个新的进程,与主进程不同步
+
+print(&#39;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&#39;,a)#a是Popen的一个实例对象
+
+&#39;&#39;&#39;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; &lt;subprocess.Popen object at 0x10185f860&gt;
+__init__.py
+__pycache__
+log.py
+main.py
+
+&#39;&#39;&#39;
+
+# subprocess.Popen(&#39;ls -l&#39;,shell=True)
+
+# subprocess.Popen([&#39;ls&#39;,&#39;-l&#39;])
+</pre></div>
+
+<h5 id="subprocesspipe">subprocess.PIPE<a class="headerlink" href="#subprocesspipe" title="Permanent link">&para;</a></h5>
+<p>在创建Popen对象时，subprocess.PIPE可以初始化stdin, stdout或stderr参数。表示与子进程通信的标准流。</p>
+<p><div class="codehilite"><pre><span></span>import subprocess
+# subprocess.Popen(&#39;ls&#39;)
+p=subprocess.Popen(&#39;ls&#39;,stdout=subprocess.PIPE)#结果跑哪去啦?
+print(p.stdout.read())#这这呢:b&#39;__pycache__\nhello.py\nok.py\nweb\n&#39;
+</pre></div>
+subprocess.STDOUT</p>
+<p>创建Popen对象时，用于初始化stderr参数，表示将错误通过标准输出流输出。</p>
+<p>一般常见写法</p>
+<div class="codehilite"><pre><span></span>p=subprocess.Popen(&#39;ls&#39;,stdout=subprocess.PIPE,stderr=subprocess.PIPE,stdin=subprocess.PIPE,shell=True)
+
+取出结果
+p.stdout.read()
+p.stderr.read()
+</pre></div>
+
+<p>其他的一些用法</p>
+<div class="codehilite"><pre><span></span>Popen.poll() 
+用于检查子进程是否已经结束。设置并返回returncode属性。
+
+Popen.wait() 
+等待子进程结束。设置并返回returncode属性。
+
+Popen.communicate(input=None)
+与子进程进行交互。向stdin发送数据，或从stdout和stderr中读取数据。可选参数input指定发送到子进程的参数。 Communicate()返回一个元组：(stdoutdata, stderrdata)。注意：如果希望通过进程的stdin向其发送数据，在创建Popen对象的时候，参数stdin必须被设置为PIPE。同样，如 果希望从stdout和stderr获取数据，必须将stdout和stderr设置为PIPE。
+
+Popen.send_signal(signal) 
+向子进程发送信号。
+
+Popen.terminate()
+停止(stop)子进程。在windows平台下，该方法将调用Windows API TerminateProcess（）来结束子进程。
+
+Popen.kill()
+杀死子进程。
+
+Popen.stdin 
+如果在创建Popen对象是，参数stdin被设置为PIPE，Popen.stdin将返回一个文件对象用于策子进程发送指令。否则返回None。
+
+Popen.stdout 
+如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回 None。
+
+Popen.stderr 
+如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回 None。
+
+Popen.pid 
+获取子进程的进程ID。
+
+Popen.returncode 
+获取进程的返回值。如果进程还没有结束，返回None。
+</pre></div>
+
+<h4 id="subprocess_1">subprocess模块的工具函数<a class="headerlink" href="#subprocess_1" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>subprocess模块提供了一些函数，方便我们用于创建进程来实现一些简单的功能。
+
+subprocess.call(*popenargs, **kwargs)
+运行命令。该函数将一直等待到子进程运行结束，并返回进程的returncode。如果子进程不需要进行交 互,就可以使用该函数来创建。
+
+subprocess.check_call(*popenargs, **kwargs)
+与subprocess.call(*popenargs, **kwargs)功能一样，只是如果子进程返回的returncode不为0的话，将触发CalledProcessError异常。在异常对象中，包 括进程的returncode信息。
+
+check_output(*popenargs, **kwargs)
+与call()方法类似，以byte string的方式返回子进程的输出，如果子进程的返回值不是0，它抛出CalledProcessError异常，这个异常中的returncode包含返回码，output属性包含已有的输出。
+
+getstatusoutput(cmd)/getoutput(cmd)
+这两个函数仅仅在Unix下可用，它们在shell中执行指定的命令cmd，前者返回(status, output)，后者返回output。其中，这里的output包括子进程的stdout和stderr。
+</pre></div>
+
+<p>实例如下</p>
+<div class="codehilite"><pre><span></span>import subprocess
+
+#1
+# subprocess.call(&#39;ls&#39;,shell=True)
+&#39;&#39;&#39;
+hello.py
+ok.py
+web
+&#39;&#39;&#39;
+# data=subprocess.call(&#39;ls&#39;,shell=True)
+# print(data)
+&#39;&#39;&#39;
+hello.py
+ok.py
+web
+&#39;&#39;&#39;
+
+#2
+# subprocess.check_call(&#39;ls&#39;,shell=True)
+
+&#39;&#39;&#39;
+hello.py
+ok.py
+web
+&#39;&#39;&#39;
+# data=subprocess.check_call(&#39;ls&#39;,shell=True)
+# print(data)
+&#39;&#39;&#39;
+hello.py
+ok.py
+web
+&#39;&#39;&#39;
+# 两个函数区别:只是如果子进程返回的returncode不为0的话，将触发CalledProcessError异常
+#3
+# subprocess.check_output(&#39;ls&#39;)#无结果
+# data=subprocess.check_output(&#39;ls&#39;)
+# print(data)  #b&#39;hello.py\nok.py\nweb\n&#39;
+演示
+</pre></div>
+
+<h4 id="-hashlib">加密模块之--hashlib模块<a class="headerlink" href="#-hashlib" title="Permanent link">&para;</a></h4>
+<p>用于加密相关的操作，3.x里代替了md5模块和sha模块，主要提供 SHA1, SHA224, SHA256, SHA384, SHA512 ，MD5 算法</p>
+<div class="codehilite"><pre><span></span>import hashlib
+
+m=hashlib.md5()# m=hashlib.sha256()
+
+m.update(&#39;hello&#39;.encode(&#39;utf8&#39;))
+print(m.hexdigest())  #5d41402abc4b2a76b9719d911017c592
+
+m.update(&#39;alvin&#39;.encode(&#39;utf8&#39;))
+
+print(m.hexdigest())  #92a7e713c30abbb0319fa07da2a5c4af
+
+m2=hashlib.md5()
+m2.update(&#39;helloalvin&#39;.encode(&#39;utf8&#39;))
+print(m2.hexdigest()) #92a7e713c30abbb0319fa07da2a5c4af
+</pre></div>
+
+<p>以上加密算法虽然依然非常厉害，但有时候存在缺陷，即：通过撞库可以反解。所以，有必要对加密算法中添加自定义key再来做加密。</p>
+<p><div class="codehilite"><pre><span></span>import hashlib
+# ######## 256 ########
+hash = hashlib.sha256(&#39;898oaFs09f&#39;.encode(&#39;utf8&#39;))
+hash.update(&#39;alvin&#39;.encode(&#39;utf8&#39;))
+print (hash.hexdigest())#e79e68f070cdedcfe63eaf1a2e92c83b4cfb1b5c6bc452d214c1b7e77cdfd1c7
+</pre></div>
+python 还有一个 hmac 模块，它内部对我们创建 key 和 内容 再进行处理然后再加密:</p>
+<div class="codehilite"><pre><span></span>import hmac
+h = hmac.new(&#39;alvin&#39;.encode(&#39;utf8&#39;))
+h.update(&#39;hello&#39;.encode(&#39;utf8&#39;))
+print (h.hexdigest())#320df9832eab4c038b6c1d7ed73a5940
+</pre></div>
+
+<h4 id="json">常用模块之json<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
+<p>json</p>
+<p>如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON，因为JSON表示出来就是一个字符串，可以被所有语言读取，也可以方便地存储到磁盘或者通过网络传输。JSON不仅是标准格式，并且比XML更快，而且可以直接在Web页面中读取，非常方便。</p>
+<p>案例</p>
+<p><div class="codehilite"><pre><span></span>#----------------------------序列化
+import json
+dic={&#39;name&#39;:&#39;alvin&#39;,&#39;age&#39;:23,&#39;sex&#39;:&#39;male&#39;}
+print(type(dic))#&lt;class &#39;dict&#39;&gt;
+j=json.dumps(dic)
+&gt;&gt;&gt; &#39;{&quot;age&quot;: 23, &quot;name&quot;: &quot;alvin&quot;, &quot;sex&quot;: &quot;male&quot;}&#39;
+print(type(j))#&lt;class &#39;str&#39;&gt;
+
+反序列化将json字符串转换为字典
+a=&#39;{&quot;age&quot;: 23, &quot;name&quot;: &quot;alvin&quot;, &quot;sex&quot;: &quot;male&quot;}&#39;
+print type(a)  ---&gt;  str
+json.loads(a)
+-&gt;&gt;&gt;:{u&#39;age&#39;: 23, u&#39;name&#39;: u&#39;alvin&#39;, u&#39;sex&#39;: u&#39;male&#39;}
+
+json.dump   json.load
+
+a = {&quot;name&quot;:&quot;Tom&quot;, &quot;age&quot;:23}
+with open(&quot;test.json&quot;, &quot;w&quot;, encoding=&#39;utf-8&#39;) as f:
+    # indent 超级好用，格式化保存字典，默认为None，小于0为零个空格
+    f.write(json.dumps(a, indent=4))
+    # json.dump(a,f,indent=4)   # 和上面的效果一样
+
+
+---------------------
+import json
+with open(&quot;test.json&quot;, &quot;r&quot;, encoding=&#39;utf-8&#39;) as f:
+    aa = json.loads(f.read())
+    f.seek(0)
+    bb = json.load(f)    # 与 json.loads(f.read())
+print(aa)
+print(bb)
+</pre></div>
+注意事项</p>
+<div class="codehilite"><pre><span></span>import json
+#dct=&quot;{&#39;1&#39;:111}&quot;#json 不认单引号
+#dct=str({&quot;1&quot;:111})#报错,因为生成的数据还是单引号:{&#39;one&#39;: 1}
+
+dct=&#39;{&quot;1&quot;:&quot;111&quot;}&#39;
+print(json.loads(dct))
+
+#conclusion:
+#        无论数据是怎样创建的，只要满足json格式，就可以json.loads出来,不一定非要dumps的数据才能loads
+</pre></div>
+
+<h4 id="pickle">pickle模块<a class="headerlink" href="#pickle" title="Permanent link">&para;</a></h4>
+<p>pickle 模块也提供了四个功能：dumps、dump、loads、load，但是Pickle的问题和所有其他编程语言特有的序列化问题一样，就是它只能用于Python，并且可能不同版本的Python彼此都不兼容，因此，只能用Pickle保存那些不重要的数据，不能成功地反序列化也没关系。</p>
+<div class="codehilite"><pre><span></span>##----------------------------序列化
+import pickle
+dic={&#39;name&#39;:&#39;alvin&#39;,&#39;age&#39;:23,&#39;sex&#39;:&#39;male&#39;}
+print(type(dic))#&lt;class &#39;dict&#39;&gt;
+
+j=pickle.dumps(dic)
+print(type(j))#&lt;class &#39;bytes&#39;&gt;
+f=open(&#39;序列化对象_pickle&#39;,&#39;wb&#39;)#注意是w是写入str,wb是写入bytes,j是&#39;bytes&#39;
+f.write(j)  #-------------------等价于pickle.dump(dic,f)
+
+f.close()
+#-------------------------反序列化
+import pickle
+f=open(&#39;序列化对象_pickle&#39;,&#39;rb&#39;)
+
+data=pickle.loads(f.read())#  等价于data=pickle.load(f)
+print(data[&#39;age&#39;])    
+</pre></div>
+
+<h4 id="sys">sys模块<a class="headerlink" href="#sys" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>sys.argv           命令行参数List，第一个元素是程序本身路径
+sys.exit(n)        退出程序，正常退出时exit(0)
+sys.version        获取Python解释程序的版本信息
+sys.maxint         最大的Int值
+sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
+sys.platform       返回操作系统平台名称
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../python6/" title="6. python之迭代器与生成器" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                6. python之迭代器与生成器
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../linux/base/linux1/" title="1. linux发展史" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                1. linux发展史
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/feixia5712" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

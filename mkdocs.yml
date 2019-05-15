@@ -153,6 +153,7 @@ nav:
       - 4. python之文件处理: python/python4.md
       - 5. python之函数: python/python5.md
       - 6. python之迭代器与生成器: python/python6.md
+      - 7. python之内置模块: python/python7.md
   - Linux世界:
     - linux基础:
       - 1. linux发展史: linux/base/linux1.md
