@@ -160,6 +160,7 @@ nav:
       - 2. centos7的安装: linux/base/linux2.md
     - 常见服务搭建:
       - 1. shadowsock搭建: linux/fuwu/ss.md
+      - 2. Chrony服务搭建: linux/fuwu/chrony.md
     - shell脚本:
       - 1. xx
   - 深入剖析Kubernetes:
