@@ -154,6 +154,7 @@ nav:
       - 5. python之函数: python/python5.md
       - 6. python之迭代器与生成器: python/python6.md
       - 7. python之内置模块: python/python7.md
+      - 8. python之面向对象一: python/python8.md
   - Linux世界:
     - linux基础:
       - 1. linux发展史: linux/base/linux1.md
