@@ -13,7 +13,7 @@
         <meta name="description" content="个人知识的海洋">
       
       
-        <link rel="canonical" href="https://feixia5712.github.io/mynote/linux/base/linux2/">
+        <link rel="canonical" href="https://feixia5712.github.io/mynote/linux/base/linux3/">
       
       
         <meta name="author" content="张殿可">
@@ -42,7 +42,7 @@
     
     
       
-        <title>2. centos7的安装 - MYNOTE</title>
+        <title>3. 免密配置 - MYNOTE</title>
       
     
     
@@ -108,7 +108,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#1" tabindex="1" class="md-skip">
+      <a href="#_1" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -133,7 +133,7 @@
               MYNOTE
             </span>
             <span class="md-header-nav__topic">
-              2. centos7的安装
+              3. 免密配置
             </span>
           
         </div>
@@ -1615,6 +1615,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../linux2/" title="2. centos7的安装" class="md-nav__link">
+      2. centos7的安装
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -1624,11 +1636,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        2. centos7的安装
+        3. 免密配置
       </label>
     
-    <a href="./" title="2. centos7的安装" class="md-nav__link md-nav__link--active">
-      2. centos7的安装
+    <a href="./" title="3. 免密配置" class="md-nav__link md-nav__link--active">
+      3. 免密配置
     </a>
     
       
@@ -1640,57 +1652,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 准备环境" class="md-nav__link">
-    1. 准备环境
+  <a href="#_1" title="几种密钥配置" class="md-nav__link">
+    几种密钥配置
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" title="1.1 系统" class="md-nav__link">
-    1.1 系统
+  <a href="#1-root" title="1 普通用户切换到root免密" class="md-nav__link">
+    1 普通用户切换到root免密
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" title="1.2 虚拟机" class="md-nav__link">
-    1.2 虚拟机
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13" title="1.3 文件准备" class="md-nav__link">
-    1.3 文件准备
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" title="2. 安装" class="md-nav__link">
-    2. 安装
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-vmware" title="2.1 打开vmware" class="md-nav__link">
-    2.1 打开vmware
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22" title="2.2 新建虚拟机" class="md-nav__link">
-    2.2 新建虚拟机
+  <a href="#_2" title="两台机器之间的免密登录" class="md-nav__link">
+    两台机器之间的免密登录
   </a>
   
 </li>
@@ -1708,18 +1686,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../linux3/" title="3. 免密配置" class="md-nav__link">
-      3. 免密配置
-    </a>
   </li>
 
         
@@ -1932,57 +1898,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 准备环境" class="md-nav__link">
-    1. 准备环境
+  <a href="#_1" title="几种密钥配置" class="md-nav__link">
+    几种密钥配置
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" title="1.1 系统" class="md-nav__link">
-    1.1 系统
+  <a href="#1-root" title="1 普通用户切换到root免密" class="md-nav__link">
+    1 普通用户切换到root免密
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" title="1.2 虚拟机" class="md-nav__link">
-    1.2 虚拟机
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13" title="1.3 文件准备" class="md-nav__link">
-    1.3 文件准备
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" title="2. 安装" class="md-nav__link">
-    2. 安装
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-vmware" title="2.1 打开vmware" class="md-nav__link">
-    2.1 打开vmware
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22" title="2.2 新建虚拟机" class="md-nav__link">
-    2.2 新建虚拟机
+  <a href="#_2" title="两台机器之间的免密登录" class="md-nav__link">
+    两台机器之间的免密登录
   </a>
   
 </li>
@@ -2008,120 +1940,67 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/linux/base/linux2.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/linux/base/linux3.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><center><h1>操作系统安装</h1></center></p>
-<h2 id="1">1. 准备环境<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<p>&#160; &#160; &#160; &#160;在没安装之前，我先普及一下虚拟化软件。系统镜像等概念。已经你接下来需要做是什么。</p>
-<h3 id="11">1.1 系统<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
-<p>&#160; &#160; &#160; &#160;系统对我们来说最常见了，比如Windows XP, Windows 7，Windows 10等等，都是我们生活中常见的。还有一个背后比Window更强大的开源（免费试用，windows正版需要买）操作系统，那就是Linux，接下来我们就打开这个神秘的面纱。</p>
-<p>&#160; &#160; &#160; &#160; 期中Linux系统又分好多（好比人分男人有女人，期中男人有分高矮胖瘦），互联网使用最多的linux操作系统那就是centos和ubuntu[开发用的比较多]。Linux系统也分有桌面系统和无桌面的系统。后面会主要以没有桌面[非图形化]的系统为例讲述。</p>
-<h3 id="12">1.2 虚拟机<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
-<p>&#160; &#160; &#160; &#160;平时我们常用的电脑都是windows系统的电脑。而我们将要学的是Linux操作系统，所以需要安装一个Linux系统，有以下常用的三个办法</p>
-<ul>
-<li>双系统，也就是在windows电脑上在安装一个Linux的系统。</li>
-<li>Linux系统，直接把自己的电脑安装一个Linux系统。</li>
-<li>虚拟机，我们在windows电脑上安装一个虚拟机，在虚拟机中再安装一个Linux系统</li>
-</ul>
-<p>&#160; &#160; &#160; &#160;以上 我个人优先推荐使用最后一种方法。即使你虚拟机系统整坏了。你重新在虚拟机中安装一个Linux系统即可。双系统的话，要是双系统中任何有一个系统有问题都有可能导致你整个双系统有问题，甚至系统启动不了。</p>
-<p>&#160; &#160; &#160; &#160;国内使用虚拟化软件的最多的就是VmWware，还有其他的如XBOX，openstack，KVM,XZEN，等等，期中Vmware是使用非常多的优秀桌面软件。</p>
-<h3 id="13">1.3 文件准备<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
-<p>&#160; &#160; &#160; &#160;我们需要准备一下软件</p>
-<table>
-<thead>
-<tr>
-<th>文件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VMware WorkStation</td>
-<td>虚拟化软件</td>
-</tr>
-<tr>
-<td>CentOS-7-x86_64-Minimal-1810</td>
-<td>系统镜像</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>本教程以安装Centos7为系统镜像安装</p>
-</blockquote>
-<p>系统可以到<a href="http://mirrors.163.com/centos/7.6.1810/isos/x86_64/">163镜像上下载</a></p>
-<details class="note"><summary>系统区别</summary><div class="codehilite"><pre><span></span><span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">DVD</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                       <span class="mi">26</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mo">07</span><span class="p">:</span><span class="mi">55</span>      <span class="mi">4</span><span class="n">G</span>   <span class="n">DVD</span><span class="err">版本的镜像</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">DVD</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>                   <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>     <span class="mi">86</span><span class="n">K</span>   
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">Everything</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                <span class="mi">26</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">22</span><span class="p">:</span><span class="mi">28</span>     <span class="mi">10</span><span class="n">G</span>   <span class="err">最全的系统镜像</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">Everything</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>            <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>    <span class="mi">101</span><span class="n">K</span>  
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">LiveGNOME</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                 <span class="mi">25</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mo">01</span><span class="p">:</span><span class="mi">41</span>      <span class="mi">1</span><span class="n">G</span>   <span class="err">光盘上的系统，你可以通过光盘启动电脑，启动出一个</span><span class="n">Linux</span><span class="err">系统（类似于</span><span class="nb">bin</span><span class="err">版本在安装结束后在硬盘上的状态），它也有图形界面，也有终端。</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">LiveGNOME</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>             <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>     <span class="mi">28</span><span class="n">K</span>   
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">LiveKDE</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                   <span class="mi">25</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mo">01</span><span class="p">:</span><span class="mi">53</span>      <span class="mi">2</span><span class="n">G</span>   <span class="err">图形版本是</span><span class="n">KDE</span><span class="err">桌面系统</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">LiveKDE</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>               <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>     <span class="mi">37</span><span class="n">K</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">Minimal</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                   <span class="mi">26</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mo">05</span><span class="p">:</span><span class="mi">25</span>    <span class="mi">918</span><span class="n">M</span>   <span class="err">最小化的系统（不带图形界面）</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">Minimal</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>               <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>     <span class="mi">36</span><span class="n">K</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">NetInstall</span><span class="o">-</span><span class="mf">1810.</span><span class="n">iso</span>                <span class="mi">26</span><span class="o">-</span><span class="n">Nov</span><span class="o">-</span><span class="mi">2018</span> <span class="mo">00</span><span class="p">:</span><span class="mi">21</span>    <span class="mi">507</span><span class="n">M</span>   <span class="err">通过网络安装</span><span class="p">(</span><span class="n">network</span> <span class="n">install</span> <span class="err">缩写</span><span class="p">)</span> <span class="err">不建议因为安装的时候。会联网去下载必要的包，很慢。</span>
-<span class="n">CentOS</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">NetInstall</span><span class="o">-</span><span class="mf">1810.</span><span class="n">torrent</span>            <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">23</span><span class="p">:</span><span class="mo">03</span>     <span class="mi">20</span><span class="n">K</span>
-<span class="n">sha256sum</span><span class="o">.</span><span class="n">txt</span>                                      <span class="mo">01</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">21</span><span class="p">:</span><span class="mi">16</span>     <span class="mi">598</span>   <span class="err">系统镜像的</span><span class="n">sha256</span><span class="err">的值</span><span class="p">(</span><span class="err">类似</span><span class="n">MD5</span><span class="err">的值，一种算法。为了防止你从网下下载下来的系统镜像不对，可以通过这个值来对比。</span><span class="p">)</span>
-<span class="n">sha256sum</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">asc</span>                                  <span class="mo">03</span><span class="o">-</span><span class="n">Dec</span><span class="o">-</span><span class="mi">2018</span> <span class="mi">22</span><span class="p">:</span><span class="mi">50</span>    <span class="mi">1458</span>
-<span class="err">期中后缀名是</span><span class="n">torrent</span><span class="err">都是迅雷下载的文件。也就是说先把这个下载下来，然后双击这个文件的话，直接迅雷弹出然后继续下载该系统</span>
+                  <h1>3. 免密配置</h1>
+                
+                <h3 id="_1">几种密钥配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h4 id="1-root">1 普通用户切换到root免密<a class="headerlink" href="#1-root" title="Permanent link">&para;</a></h4>
+<p>原理：</p>
+<p>主要实现就是将普通用户生成的公钥放到root下，来实现免密登录</p>
+<div class="codehilite"><pre><span></span>1登录时我们是普通用户进来
+2 生成密钥
+[zdk@localhost ~]$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/zdk/.ssh/id_rsa): 
+Created directory &#39;/home/zdk/.ssh&#39;.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/zdk/.ssh/id_rsa.
+Your public key has been saved in /home/zdk/.ssh/id_rsa.pub.
+The key fingerprint is:
+ab:4b:f9:bc:81:76:df:41:a9:cd:c6:f1:1c:33:67:dc zdk@localhost
+The key&#39;s randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|                 |
+|             . ..|
+|        S   + + E|
+|       o . * + * |
+|      = + . * o  |
+|     o = o o .   |
+|      o.+.. .    |
++-----------------+
+[zdk@localhost ~]$ 
+进入相关目录拷贝公钥
+[zdk@localhost ~]$ cd .ssh/
+[zdk@localhost .ssh]$ ls
+id_rsa  id_rsa.pub
+[zdk@localhost .ssh]$ ls -l id_rsa.pub 
+-rw-r--r--. 1 zdk zdk 395 5月  24 06:31 id_rsa.pub
+[zdk@localhost .ssh]$ cat id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAzznqrMiaqBB4SkHh+XNmuT6wGg7aTTn7PBDOOxGAsEGDRWipiyekDsSFQjL1zNyEIJHUTQKov73vkWRE2irRwjXWTjecpVn3HMEyyInxbmNmS/hD4St9ij/FpLP562hZdi0sN4B8xd+VegVhPYStIlWIaZQ/XJi5Ao7o5y8xIs3rGBNwRoUOy9Q/yzIrFGp4E3NmqV9UcbMcJrmgZ3RPFbcLQI/H+hRElAg/4Vg3fANMxtOerhw/t1HiGg/z9/9kgW8CHjcttKjKBk6COifvwxtBzxD6W/FGCyAaaizIe175hgpkyvG1GBFPTGIAXU0gpmxFwD8T+Q8w19mmHGVHSQ== zdk@localhost
+切换到root进入到相关目录
+[root@localhost ~]# cd /root/.ssh/
+[root@localhost .ssh]# ls
+id_rsa  id_rsa.pub  known_hosts
+创建authorized_keys，将刚才的公钥拷贝进去
+[root@localhost .ssh]# touch authorized_keys
+[root@localhost .ssh]# vim authorized_keys 
+现在就可以实现普通用户案切换到root免密
+
+[zdk@localhost ~]$ ssh root@::
+The authenticity of host &#39;:: (::)&#39; can&#39;t be established.
+RSA key fingerprint is 15:27:47:e9:c2:58:b5:e0:20:b0:c8:c3:a6:88:47:14.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &#39;::&#39; (RSA) to the list of known hosts.
+Last login: Fri May 24 06:29:33 2019 from 192.168.94.1
 </pre></div>
 
-</details>
-<h2 id="2">2. 安装<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<h3 id="21-vmware">2.1 打开vmware<a class="headerlink" href="#21-vmware" title="Permanent link">&para;</a></h3>
-<p>&#160; &#160; &#160; &#160;首先我们安装好vmware以后，双击打开vmware，新的安装的类似如下界面：</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p1.png" /></p>
-<h3 id="22">2.2 新建虚拟机<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
-<p>&#160; &#160; &#160; &#160;新建虚拟机也就是在你的windows电脑上开始新安装一个操作系统。</p>
-<p>以下没有特殊说明的话，都按照图片的来
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p2.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p3.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p4.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p5.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p6.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p7.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p8.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p9.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p10.png" />
-按照删除声卡方式一样。也把打印机也删除[减少笔记本的性能消耗]</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p11.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p12.png" /></p>
-<p>&#160; &#160; &#160; &#160;配置完毕后，开始安装系统了。</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p13.png" /></p>
-<p>&#160; &#160; &#160; &#160;进入系统后。我们鼠标点击进入，然后使用键盘上的上下箭头选择第一个[高亮为选中]</p>
-<blockquote>
-<p>我们按下CTRL+ALT组合按钮。此时鼠标就会从虚拟机中脱离出来。</p>
-</blockquote>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p14.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">解释</p>
-<div class="codehilite"><pre><span></span><span class="mf">1.</span> <span class="n">Install</span> <span class="n">Centos</span> <span class="mi">7</span>  <span class="err">安装</span><span class="n">Centos7</span> <span class="err">系统</span>
-<span class="mf">2.</span> <span class="n">Test</span> <span class="n">this</span> <span class="n">media</span> <span class="o">&amp;&amp;</span> <span class="n">Install</span> <span class="n">Centos</span> <span class="mi">7</span> <span class="err">先检查，系统盘是否有问题，没有问题在安装</span><span class="p">[</span><span class="err">别选择该项，自建非常的慢</span><span class="p">]</span>
-<span class="mf">3.</span> <span class="n">Troubleshooting</span> <span class="err">修复现有的</span><span class="n">centos7</span> <span class="err">使用</span>
-</pre></div>
-
-</div>
-<p>按下Enter按键进行安装。</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p15.png" /></p>
-<p>保持默认，点击右下角的Continue[中文是继续意思]</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p16.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p17.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p18.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p19.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p20.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p21.png" /></p>
-<p>此时坐等系统安装完毕。看你电脑的配置如何了。SSD盘的应该很快的。</p>
-<blockquote>
-<p>普及一下root用户。Linux有个超级管理员用户就是默认就是root用户[uid=0]，后面会详解这个</p>
-</blockquote>
-<p>&#160; &#160; &#160; &#160;看到右下角的Reboot按钮。此时就看到系统已经安装完毕了。我们点击Reboot按钮重启。然后等待系统重启，重启的过程中不要任何操作。</p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p22.png" /></p>
-<p>看到如下图的<code>localhost login:</code>就说明重启OK了。 </p>
-<p><img alt="image" src="../../../pictures/linux/tutorial/vmware/p23.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p24.png" />
-<img alt="image" src="../../../pictures/linux/tutorial/vmware/p25.png" /></p>
-<p>&#160; &#160; &#160; &#160;到此为止，从系统的安装，配置系统，重启系统，登录系统。接下来我们就开始愉快的玩耍Linux系统了。</p>
+<h4 id="_2">两台机器之间的免密登录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>原理跟上面一样，主要将公钥拷贝到对方的authorized_keys 文件即可实现免密登录</p>
                 
                   
                 
@@ -2142,7 +2021,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../linux1/" title="1. linux发展史" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../linux2/" title="2. centos7的安装" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2151,19 +2030,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                1. linux发展史
+                2. centos7的安装
               </span>
             </div>
           </a>
         
         
-          <a href="../linux3/" title="3. 免密配置" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../linux_vim/" title="4. vimrc常用配置" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                3. 免密配置
+                4. vimrc常用配置
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
