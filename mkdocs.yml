@@ -164,6 +164,8 @@ nav:
     - 常见服务搭建:
       - 1. shadowsock搭建: linux/fuwu/ss.md
       - 2. Chrony服务搭建: linux/fuwu/chrony.md
+      - 3. kafka介绍: linux/fuwu/kafka.md
+      - 4. kafka的安装: linux/fuwu/kafka_install.md
     - shell脚本:
       - 1. xx
   - 深入剖析Kubernetes:
