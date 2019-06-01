@@ -172,6 +172,9 @@ nav:
   - Mysql基础:
       - 1. mysql介绍: mysql/mysql_index.md
       - 2. mysql安装: mysql/mysql_install.md
+      - 3. mysql的基本命令: mysql/mysql_cmd.md
+      - 4. mysql进阶:
+         - 4.1. mysql进阶1: mysql/mysql_jin.md
   - 深入剖析Kubernetes:
     - 1. 打通“容器技术”的任督二脉: kubernetes/kubernetes_mynote1.md
     - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md
