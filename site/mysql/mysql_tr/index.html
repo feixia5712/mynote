@@ -13,7 +13,7 @@
         <meta name="description" content="个人知识的海洋">
       
       
-        <link rel="canonical" href="https://feixia5712.github.io/mynote/syntax/nest_main/">
+        <link rel="canonical" href="https://feixia5712.github.io/mynote/mysql/mysql_tr/">
       
       
         <meta name="author" content="张殿可">
@@ -42,7 +42,7 @@
     
     
       
-        <title>20.1. 介绍 - MYNOTE</title>
+        <title>4.2. mysql事务 - MYNOTE</title>
       
     
     
@@ -108,6 +108,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#mysql" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -129,7 +133,7 @@
               MYNOTE
             </span>
             <span class="md-header-nav__topic">
-              20.1. 介绍
+              4.2. mysql事务
             </span>
           
         </div>
@@ -237,12 +241,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
     
     <label class="md-nav__link" for="nav-1">
       mkdocs安装
@@ -330,12 +332,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
     
     <label class="md-nav__link" for="nav-1-3">
       三. 语法
@@ -353,7 +353,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../main/" title="1. 语法总览" class="md-nav__link">
+    <a href="../../syntax/main/" title="1. 语法总览" class="md-nav__link">
       1. 语法总览
     </a>
   </li>
@@ -365,7 +365,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../headline/" title="2. 标题" class="md-nav__link">
+    <a href="../../syntax/headline/" title="2. 标题" class="md-nav__link">
       2. 标题
     </a>
   </li>
@@ -377,7 +377,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../paragraph/" title="3. 段落" class="md-nav__link">
+    <a href="../../syntax/paragraph/" title="3. 段落" class="md-nav__link">
       3. 段落
     </a>
   </li>
@@ -389,7 +389,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../quote/" title="4. 引用" class="md-nav__link">
+    <a href="../../syntax/quote/" title="4. 引用" class="md-nav__link">
       4. 引用
     </a>
   </li>
@@ -401,7 +401,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../table/" title="5. 表格" class="md-nav__link">
+    <a href="../../syntax/table/" title="5. 表格" class="md-nav__link">
       5. 表格
     </a>
   </li>
@@ -432,7 +432,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../code_inline/" title="6.1. 行内" class="md-nav__link">
+    <a href="../../syntax/code_inline/" title="6.1. 行内" class="md-nav__link">
       6.1. 行内
     </a>
   </li>
@@ -444,7 +444,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../code_block/" title="6.2. 区块" class="md-nav__link">
+    <a href="../../syntax/code_block/" title="6.2. 区块" class="md-nav__link">
       6.2. 区块
     </a>
   </li>
@@ -456,7 +456,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../code_highlight/" title="6.3. 高亮" class="md-nav__link">
+    <a href="../../syntax/code_highlight/" title="6.3. 高亮" class="md-nav__link">
       6.3. 高亮
     </a>
   </li>
@@ -492,7 +492,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../font_stress/" title="7.1. 斜体,粗体,粗斜体" class="md-nav__link">
+    <a href="../../syntax/font_stress/" title="7.1. 斜体,粗体,粗斜体" class="md-nav__link">
       7.1. 斜体,粗体,粗斜体
     </a>
   </li>
@@ -504,7 +504,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../font_updown/" title="7.2. 上标,下标" class="md-nav__link">
+    <a href="../../syntax/font_updown/" title="7.2. 上标,下标" class="md-nav__link">
       7.2. 上标,下标
     </a>
   </li>
@@ -516,7 +516,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../font_underline/" title="7.3. 下划线" class="md-nav__link">
+    <a href="../../syntax/font_underline/" title="7.3. 下划线" class="md-nav__link">
       7.3. 下划线
     </a>
   </li>
@@ -528,7 +528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../font_line/" title="7.4. 横线" class="md-nav__link">
+    <a href="../../syntax/font_line/" title="7.4. 横线" class="md-nav__link">
       7.4. 横线
     </a>
   </li>
@@ -540,7 +540,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../font_underline_line/" title="7.5. 下划线+横线" class="md-nav__link">
+    <a href="../../syntax/font_underline_line/" title="7.5. 下划线+横线" class="md-nav__link">
       7.5. 下划线+横线
     </a>
   </li>
@@ -576,7 +576,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../list_noseq/" title="8.1. 无序列表" class="md-nav__link">
+    <a href="../../syntax/list_noseq/" title="8.1. 无序列表" class="md-nav__link">
       8.1. 无序列表
     </a>
   </li>
@@ -588,7 +588,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../list_seq/" title="8.2. 有序列表" class="md-nav__link">
+    <a href="../../syntax/list_seq/" title="8.2. 有序列表" class="md-nav__link">
       8.2. 有序列表
     </a>
   </li>
@@ -600,7 +600,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../list_task/" title="8.3. 任务列表" class="md-nav__link">
+    <a href="../../syntax/list_task/" title="8.3. 任务列表" class="md-nav__link">
       8.3. 任务列表
     </a>
   </li>
@@ -617,7 +617,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../cutline/" title="9. 分割线" class="md-nav__link">
+    <a href="../../syntax/cutline/" title="9. 分割线" class="md-nav__link">
       9. 分割线
     </a>
   </li>
@@ -648,7 +648,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../link_normal/" title="10.1. 普通链接" class="md-nav__link">
+    <a href="../../syntax/link_normal/" title="10.1. 普通链接" class="md-nav__link">
       10.1. 普通链接
     </a>
   </li>
@@ -660,7 +660,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../link_auto/" title="10.2. 自动链接" class="md-nav__link">
+    <a href="../../syntax/link_auto/" title="10.2. 自动链接" class="md-nav__link">
       10.2. 自动链接
     </a>
   </li>
@@ -672,7 +672,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../link_anchor/" title="10.3. 锚点提示" class="md-nav__link">
+    <a href="../../syntax/link_anchor/" title="10.3. 锚点提示" class="md-nav__link">
       10.3. 锚点提示
     </a>
   </li>
@@ -708,7 +708,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../image_inline/" title="11.1. 行内式" class="md-nav__link">
+    <a href="../../syntax/image_inline/" title="11.1. 行内式" class="md-nav__link">
       11.1. 行内式
     </a>
   </li>
@@ -720,7 +720,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../image_index/" title="11.2. 参考式" class="md-nav__link">
+    <a href="../../syntax/image_index/" title="11.2. 参考式" class="md-nav__link">
       11.2. 参考式
     </a>
   </li>
@@ -737,7 +737,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../escape/" title="12. 转义" class="md-nav__link">
+    <a href="../../syntax/escape/" title="12. 转义" class="md-nav__link">
       12. 转义
     </a>
   </li>
@@ -768,7 +768,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../highlight_code/" title="13.1. 代码高亮" class="md-nav__link">
+    <a href="../../syntax/highlight_code/" title="13.1. 代码高亮" class="md-nav__link">
       13.1. 代码高亮
     </a>
   </li>
@@ -780,7 +780,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../highlight_background/" title="13.2. 背景高亮" class="md-nav__link">
+    <a href="../../syntax/highlight_background/" title="13.2. 背景高亮" class="md-nav__link">
       13.2. 背景高亮
     </a>
   </li>
@@ -816,7 +816,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_main/" title="14.1. 介绍" class="md-nav__link">
+    <a href="../../syntax/note_main/" title="14.1. 介绍" class="md-nav__link">
       14.1. 介绍
     </a>
   </li>
@@ -828,7 +828,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_full/" title="14.2. 完整格式" class="md-nav__link">
+    <a href="../../syntax/note_full/" title="14.2. 完整格式" class="md-nav__link">
       14.2. 完整格式
     </a>
   </li>
@@ -840,7 +840,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_empty-title/" title="14.3. 空标题" class="md-nav__link">
+    <a href="../../syntax/note_empty-title/" title="14.3. 空标题" class="md-nav__link">
       14.3. 空标题
     </a>
   </li>
@@ -852,7 +852,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_none-title/" title="14.4. 无标题" class="md-nav__link">
+    <a href="../../syntax/note_none-title/" title="14.4. 无标题" class="md-nav__link">
       14.4. 无标题
     </a>
   </li>
@@ -864,7 +864,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_none-type/" title="14.5. 无类型" class="md-nav__link">
+    <a href="../../syntax/note_none-type/" title="14.5. 无类型" class="md-nav__link">
       14.5. 无类型
     </a>
   </li>
@@ -876,7 +876,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_details/" title="14.6. 折叠" class="md-nav__link">
+    <a href="../../syntax/note_details/" title="14.6. 折叠" class="md-nav__link">
       14.6. 折叠
     </a>
   </li>
@@ -888,7 +888,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_style/" title="14.7. 11种颜色样式" class="md-nav__link">
+    <a href="../../syntax/note_style/" title="14.7. 11种颜色样式" class="md-nav__link">
       14.7. 11种颜色样式
     </a>
   </li>
@@ -900,7 +900,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../note_nest/" title="14.8. 嵌套" class="md-nav__link">
+    <a href="../../syntax/note_nest/" title="14.8. 嵌套" class="md-nav__link">
       14.8. 嵌套
     </a>
   </li>
@@ -917,7 +917,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../footnote/" title="15. 脚注" class="md-nav__link">
+    <a href="../../syntax/footnote/" title="15. 脚注" class="md-nav__link">
       15. 脚注
     </a>
   </li>
@@ -929,7 +929,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../meta/" title="16. 元信息" class="md-nav__link">
+    <a href="../../syntax/meta/" title="16. 元信息" class="md-nav__link">
       16. 元信息
     </a>
   </li>
@@ -960,7 +960,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../math_main/" title="17.1. 介绍" class="md-nav__link">
+    <a href="../../syntax/math_main/" title="17.1. 介绍" class="md-nav__link">
       17.1. 介绍
     </a>
   </li>
@@ -972,7 +972,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../math_js/" title="17.2. 导入js" class="md-nav__link">
+    <a href="../../syntax/math_js/" title="17.2. 导入js" class="md-nav__link">
       17.2. 导入js
     </a>
   </li>
@@ -984,7 +984,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../math_usage/" title="17.3. 用法" class="md-nav__link">
+    <a href="../../syntax/math_usage/" title="17.3. 用法" class="md-nav__link">
       17.3. 用法
     </a>
   </li>
@@ -1020,7 +1020,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../emoji_main/" title="18.1. 介绍" class="md-nav__link">
+    <a href="../../syntax/emoji_main/" title="18.1. 介绍" class="md-nav__link">
       18.1. 介绍
     </a>
   </li>
@@ -1032,7 +1032,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../emoji_principle/" title="18.2. 工作原理" class="md-nav__link">
+    <a href="../../syntax/emoji_principle/" title="18.2. 工作原理" class="md-nav__link">
       18.2. 工作原理
     </a>
   </li>
@@ -1044,7 +1044,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../emoji_usage/" title="18.3. 最佳实践" class="md-nav__link">
+    <a href="../../syntax/emoji_usage/" title="18.3. 最佳实践" class="md-nav__link">
       18.3. 最佳实践
     </a>
   </li>
@@ -1061,7 +1061,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../symbol/" title="19. 特殊符号" class="md-nav__link">
+    <a href="../../syntax/symbol/" title="19. 特殊符号" class="md-nav__link">
       19. 特殊符号
     </a>
   </li>
@@ -1071,12 +1071,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-20" type="checkbox" id="nav-1-3-20" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3-20" type="checkbox" id="nav-1-3-20">
     
     <label class="md-nav__link" for="nav-1-3-20">
       20. 嵌套
@@ -1092,18 +1090,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="20.1. 介绍" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../syntax/nest_main/" title="20.1. 介绍" class="md-nav__link">
       20.1. 介绍
     </a>
-    
   </li>
 
         
@@ -1113,7 +1104,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_note_note/" title="20.2. 注解-注解" class="md-nav__link">
+    <a href="../../syntax/nest_note_note/" title="20.2. 注解-注解" class="md-nav__link">
       20.2. 注解-注解
     </a>
   </li>
@@ -1125,7 +1116,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_list_list/" title="20.3. 列表-列表" class="md-nav__link">
+    <a href="../../syntax/nest_list_list/" title="20.3. 列表-列表" class="md-nav__link">
       20.3. 列表-列表
     </a>
   </li>
@@ -1137,7 +1128,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_quote_quote/" title="20.4. 引用-引用" class="md-nav__link">
+    <a href="../../syntax/nest_quote_quote/" title="20.4. 引用-引用" class="md-nav__link">
       20.4. 引用-引用
     </a>
   </li>
@@ -1149,7 +1140,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_note_code/" title="20.5. 注解-代码块" class="md-nav__link">
+    <a href="../../syntax/nest_note_code/" title="20.5. 注解-代码块" class="md-nav__link">
       20.5. 注解-代码块
     </a>
   </li>
@@ -1161,7 +1152,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_list_code/" title="20.6. 列表-代码块" class="md-nav__link">
+    <a href="../../syntax/nest_list_code/" title="20.6. 列表-代码块" class="md-nav__link">
       20.6. 列表-代码块
     </a>
   </li>
@@ -1173,7 +1164,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_quote_code/" title="20.7. 引用-代码块" class="md-nav__link">
+    <a href="../../syntax/nest_quote_code/" title="20.7. 引用-代码块" class="md-nav__link">
       20.7. 引用-代码块
     </a>
   </li>
@@ -1185,7 +1176,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_yellow_code/" title="20.8. 黄色区块-代码" class="md-nav__link">
+    <a href="../../syntax/nest_yellow_code/" title="20.8. 黄色区块-代码" class="md-nav__link">
       20.8. 黄色区块-代码
     </a>
   </li>
@@ -1197,7 +1188,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_green_code/" title="20.9. 绿色区块-代码" class="md-nav__link">
+    <a href="../../syntax/nest_green_code/" title="20.9. 绿色区块-代码" class="md-nav__link">
       20.9. 绿色区块-代码
     </a>
   </li>
@@ -1209,7 +1200,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_red_code/" title="20.10. 红色区块-代码" class="md-nav__link">
+    <a href="../../syntax/nest_red_code/" title="20.10. 红色区块-代码" class="md-nav__link">
       20.10. 红色区块-代码
     </a>
   </li>
@@ -1221,7 +1212,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_greenred_code/" title="20.11. 绿接红区块-代码" class="md-nav__link">
+    <a href="../../syntax/nest_greenred_code/" title="20.11. 绿接红区块-代码" class="md-nav__link">
       20.11. 绿接红区块-代码
     </a>
   </li>
@@ -1233,7 +1224,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_note_list_quote/" title="20.12. 注解-列表-引用" class="md-nav__link">
+    <a href="../../syntax/nest_note_list_quote/" title="20.12. 注解-列表-引用" class="md-nav__link">
       20.12. 注解-列表-引用
     </a>
   </li>
@@ -1245,7 +1236,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_list_list_quote/" title="20.13. 列表-列表-引用" class="md-nav__link">
+    <a href="../../syntax/nest_list_list_quote/" title="20.13. 列表-列表-引用" class="md-nav__link">
       20.13. 列表-列表-引用
     </a>
   </li>
@@ -1257,7 +1248,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../nest_quote_quote_code/" title="20.14. 引用-引用-代码" class="md-nav__link">
+    <a href="../../syntax/nest_quote_quote_code/" title="20.14. 引用-引用-代码" class="md-nav__link">
       20.14. 引用-引用-代码
     </a>
   </li>
@@ -1798,10 +1789,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Mysql基础
@@ -1819,7 +1812,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mysql/mysql_index/" title="1. mysql介绍" class="md-nav__link">
+    <a href="../mysql_index/" title="1. mysql介绍" class="md-nav__link">
       1. mysql介绍
     </a>
   </li>
@@ -1831,7 +1824,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mysql/mysql_install/" title="2. mysql安装" class="md-nav__link">
+    <a href="../mysql_install/" title="2. mysql安装" class="md-nav__link">
       2. mysql安装
     </a>
   </li>
@@ -1843,7 +1836,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mysql/mysql_cmd/" title="3. mysql的基本命令" class="md-nav__link">
+    <a href="../mysql_cmd/" title="3. mysql的基本命令" class="md-nav__link">
       3. mysql的基本命令
     </a>
   </li>
@@ -1853,10 +1846,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" checked>
     
     <label class="md-nav__link" for="nav-4-4">
       4. mysql进阶
@@ -1874,7 +1869,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mysql/mysql_jin/" title="4.1. mysql进阶" class="md-nav__link">
+    <a href="../mysql_jin/" title="4.1. mysql进阶" class="md-nav__link">
       4.1. mysql进阶
     </a>
   </li>
@@ -1884,11 +1879,79 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../mysql/mysql_tr/" title="4.2. mysql事务" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        4.2. mysql事务
+      </label>
+    
+    <a href="./" title="4.2. mysql事务" class="md-nav__link md-nav__link--active">
       4.2. mysql事务
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" title="mysql事务" class="md-nav__link">
+    mysql事务
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="事务控制语句：" class="md-nav__link">
+    事务控制语句：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_1" title="MYSQL 事务处理主要有两种方法：" class="md-nav__link">
+    MYSQL 事务处理主要有两种方法：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="实例展示" class="md-nav__link">
+    实例展示
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1898,7 +1961,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mysql/mysql_search/" title="4.3. mysql多表查询" class="md-nav__link">
+    <a href="../mysql_search/" title="4.3. mysql多表查询" class="md-nav__link">
       4.3. mysql多表查询
     </a>
   </li>
@@ -2005,17 +2068,220 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" title="mysql事务" class="md-nav__link">
+    mysql事务
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="简介" class="md-nav__link">
+    简介
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" title="事务控制语句：" class="md-nav__link">
+    事务控制语句：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql_1" title="MYSQL 事务处理主要有两种方法：" class="md-nav__link">
+    MYSQL 事务处理主要有两种方法：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="实例展示" class="md-nav__link">
+    实例展示
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/syntax/nest_main.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/mysql/mysql_tr.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>20.1. 介绍</h1>
+                  <h1>4.2. mysql事务</h1>
                 
-                <p>几乎每种具有行内、区块的功能模块都能自身及相互之间多层嵌套，本文无法一一阐述，因此仅举几个例子说明</p>
+                <h3 id="mysql">mysql事务<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
+<h4 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说，在人员管理系统中，你删除一个人员，你即需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，这样，这些数据库操作语句就构成一个事务！</p>
+<ul>
+<li>在 MySQL 中只有使用了 Innodb 数据库引擎的数据库或表才支持事务。</li>
+<li>事务处理可以用来维护数据库的完整性，保证成批的 SQL 语句要么全部执行，要么全部不执行。</li>
+<li>事务用来管理 insert,update,delete 语句</li>
+</ul>
+<p>一般来说，事务是必须满足4个条件（ACID）：：原子性（Atomicity，或称不可分割性）、一致性（Consistency）、隔离性（Isolation，又称独立性）、持久性（Durability）。 </p>
+<ul>
+<li>
+<p>原子性：一个事务（transaction）中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</p>
+</li>
+<li>
+<p>一致性：在事务开始之前和事务结束以后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确度、串联性以及后续数据库可以自发性地完成预定的工作。</p>
+</li>
+<li>
+<p>隔离性：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。事务隔离分为不同级别，包括读未提交（Read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（Serializable）。</p>
+</li>
+<li>
+<p>持久性：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+</li>
+</ul>
+<details><summary>注意点</summary><div class="codehilite"><pre><span></span>在 MySQL 命令行的默认设置下，事务都是自动提交的，即执行 SQL 语句后就会马上执行 COMMIT 操作。因此要显式地开启一个事务务须使用命令 BEGIN 或 START TRANSACTION，或者执行命令 SET AUTOCOMMIT=0，用来禁止使用当前会话的自动提交。
+</pre></div>
+
+</details>
+<h4 id="_2">事务控制语句：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>BEGIN 或 START TRANSACTION 显式地开启一个事务；</li>
+<li>COMMIT 也可以使用 COMMIT WORK，不过二者是等价的。COMMIT 会提交事务，并使已对数据库进行的所有修改成为永久性的；</li>
+<li>ROLLBACK 也可以使用 ROLLBACK WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；</li>
+<li>SAVEPOINT identifier，SAVEPOINT 允许在事务中创建一个保存点，一个事务中可以有多个 SAVEPOINT；</li>
+<li>RELEASE SAVEPOINT identifier 删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；</li>
+<li>ROLLBACK TO identifier 把事务回滚到标记点；</li>
+<li>SET TRANSACTION 用来设置事务的隔离级别。InnoDB 存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ 和 SERIALIZABLE。</li>
+</ul>
+<h4 id="mysql_1">MYSQL 事务处理主要有两种方法：<a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h4>
+<p>1、用 BEGIN, ROLLBACK, COMMIT来实现</p>
+<div class="codehilite"><pre><span></span>BEGIN 开始一个事务
+ROLLBACK 事务回滚
+COMMIT 事务确认
+</pre></div>
+
+
+<p>2、直接用 SET 来改变 MySQL 的自动提交模式:</p>
+<div class="codehilite"><pre><span></span>SET AUTOCOMMIT=0 禁止自动提交
+SET AUTOCOMMIT=1 开启自动提交
+</pre></div>
+
+
+<h4 id="_3">实例展示<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>mysql&gt; begin;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; desc info;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(30) | YES  |     | NULL    |                |
+| age   | int(11)     | NO   |     | NULL    |                |
+| score | int(11)     | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql&gt; insert into info(name,age,score) values(&#39;kkk&#39;,19,90);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from info;
++----+--------+-----+-------+
+| id | name   | age | score |
++----+--------+-----+-------+
+|  1 | 张三   |  18 |    80 |
+|  2 | zdk    |  18 |    90 |
+|  3 | alex   |  17 |    70 |
+|  4 | 王五   |  19 |    70 |
+|  6 | kkk    |  38 |    89 |
+| 11 | roort  |  38 |    89 |
+| 12 | kkk    |  19 |    90 |
++----+--------+-----+-------+
+7 rows in set (0.00 sec)
+
+mysql&gt; commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; select * from info;
++----+--------+-----+-------+
+| id | name   | age | score |
++----+--------+-----+-------+
+|  1 | 张三   |  18 |    80 |
+|  2 | zdk    |  18 |    90 |
+|  3 | alex   |  17 |    70 |
+|  4 | 王五   |  19 |    70 |
+|  6 | kkk    |  38 |    89 |
+| 11 | roort  |  38 |    89 |
+| 12 | kkk    |  19 |    90 |
++----+--------+-----+-------+
+7 rows in set (0.00 sec)
+
+mysql&gt; begin;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; insert into info(name,age,score) values(&#39;my&#39;,39,2000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from info;
++----+--------+-----+-------+
+| id | name   | age | score |
++----+--------+-----+-------+
+|  1 | 张三   |  18 |    80 |
+|  2 | zdk    |  18 |    90 |
+|  3 | alex   |  17 |    70 |
+|  4 | 王五   |  19 |    70 |
+|  6 | kkk    |  38 |    89 |
+| 11 | roort  |  38 |    89 |
+| 12 | kkk    |  19 |    90 |
+| 13 | my     |  39 |  2000 |
++----+--------+-----+-------+
+8 rows in set (0.00 sec)
+
+mysql&gt; rollback;  ##回滚
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; select * from info;
++----+--------+-----+-------+
+| id | name   | age | score |
++----+--------+-----+-------+
+|  1 | 张三   |  18 |    80 |
+|  2 | zdk    |  18 |    90 |
+|  3 | alex   |  17 |    70 |
+|  4 | 王五   |  19 |    70 |
+|  6 | kkk    |  38 |    89 |
+| 11 | roort  |  38 |    89 |
+| 12 | kkk    |  19 |    90 |
++----+--------+-----+-------+
+7 rows in set (0.00 sec)
+
+mysql&gt; 
+##最后数据没有写入
+</pre></div>
                 
                   
                 
@@ -2036,7 +2302,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../symbol/" title="19. 特殊符号" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../mysql_jin/" title="4.1. mysql进阶" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2045,19 +2311,19 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                19. 特殊符号
+                4.1. mysql进阶
               </span>
             </div>
           </a>
         
         
-          <a href="../nest_note_note/" title="20.2. 注解-注解" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../mysql_search/" title="4.3. mysql多表查询" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                20.2. 注解-注解
+                4.3. mysql多表查询
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

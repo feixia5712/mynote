@@ -168,6 +168,7 @@ nav:
       - 2. Chrony服务搭建: linux/fuwu/chrony.md
       - 3. kafka介绍: linux/fuwu/kafka.md
       - 4. kafka的安装: linux/fuwu/kafka_install.md
+      - 5  snmptrapd服务配置: linux/fuwu/snmp.md
     - shell脚本:
       - 1. xx
   - Mysql基础:
