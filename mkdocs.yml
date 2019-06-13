@@ -179,6 +179,10 @@ nav:
          - 4.1. mysql进阶: mysql/mysql_jin.md
          - 4.2. mysql事务: mysql/mysql_tr.md
          - 4.3. mysql多表查询: mysql/mysql_search.md
+      - 5. mysql备份:
+         - 5.1. mysqldump讲解: mysql/mysqldump_info.md
+         - 5.2. mysqldump备份: mysql/mysql_backup.md
+         - 5.3. Xtrabackup备份: mysql/Xtrabackup.md
   - 深入剖析Kubernetes:
     - 1. 打通“容器技术”的任督二脉: kubernetes/kubernetes_mynote1.md
     - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md
