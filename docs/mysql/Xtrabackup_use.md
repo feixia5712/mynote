@@ -733,3 +733,4 @@ innobackupex --user=root  --password=123456  --stream=tar /tmp  | gzip >/tmp/`da
 解压
  tar -zxvf 2019-06-16.tar.gz
 ```
+[参考网址](https://www.e-learn.cn/content/mysql/835334)
