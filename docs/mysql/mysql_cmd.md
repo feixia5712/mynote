@@ -16,6 +16,14 @@ create table leco (id int(12) not null primary key auto_increment,name varchar(2
 update leco set id=4 where name='zdk'
 
 ```
+#### 插入数据
+
+```
+INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+或者
+INSERT INTO table_name VALUES (值1, 值2,....)
+insert into info values(2,"李四",20,55);
+```
 #### 删除数据
 
 ```
