@@ -15,19 +15,22 @@
 1 备份过程
 
  innobackupex备份过程如下图：备份开始时首先会开启一个后台检测进程，实时检测mysql redo的变化，一旦发现redo中有新的日志写入，立刻将日志记入后台日志文件xtrabackup_log中。之后复制innodb的数据文件和系统表空间文件ibdata1，待复制结束后，执行flush tables with read lock操作，复制.frm，MYI，MYD，等文件（执行flush tableswith read lock的目的是为了防止数据表发生DDL操作，并且在这一时刻获得binlog的位置）最后会发出unlock tables，把表设置为可读可写状态，最终停止xtrabackup_log。 
-
+![p1](../pictures/linux/tutorial/mysql/p1.png "p1")
 2 全量备份恢复
 
 这一阶段会启动xtrabackup内嵌的innodb实例，回放xtrabackup日志xtrabackup_log，将提交的事务信息变更应用到innodb数据/表空间，同时回滚未提交的事务(这一过程类似innodb的实例恢复）。恢复过程如下图：
 
+![p2](../pictures/linux/tutorial/mysql/p2.png "p2")
 3  增量备份原理
 
  innobackupex增量备份过程中的"增量"处理，其实主要是相对innodb而言，对myisam和其他存储引擎而言，它仍然是全拷贝(全备份)"。增量"备份的过程主要是通过拷贝innodb中有变更的"页"（这些变更的数据页指的是"页"的LSN大于xtrabackup_checkpoints中给定的LSN）。增量备份是基于全备的，第一次增备的数据必须要基于上一次的全备，之后的每次增备都是基于上一次的增备，最终达到一致性的增备。增量备份的过程如下，和全备的过程很类似，区别仅在第2步。
 
+![p3](../pictures/linux/tutorial/mysql/p3.png "p3")
 4 增量备份恢复
 
  和全备恢复类似，也需要两步，一是数据文件的恢复，如图4，这里的数据来源由3部分组成：全备份，增量备份和xtrabackup log。二是对未提交事务的回滚，如图所示
 
+![p4](../pictures/linux/tutorial/mysql/p4.png "p4")
 #### 开始使用
 
 1 常用参数
@@ -558,4 +561,175 @@ chown mysql:mysql /data/mysql -R
 
 #### 增量备份与恢复
 
+1 增量备份注意事项
 
+- --incremental-basedir 第一次增量备份，--incremental-basedir肯定是全备目录，第二次增量备份，--incremental-basedir为第一次增量备份目录，依此类推！
+- 增量备份仅能应用于InnoDB或XtraDB表，对于MyISAM表而言，执行增量备份时其实进行的是完全备份。
+- 应用增量备份的时候只能按照备份的顺序来应用。如果应用顺序错误，那么备份就不可用。如果无法确定顺序，可以查看xtrabackup-checkpoints来确定顺序。
+
+2 实例展示
+
+```
+第一步完整备份
+innobackupex --default-files=/etc/my.cnf   --user=root --password=123456 /opt/full/
+备份后的路径:/opt/full/2019-06-16_05-06-53
+[root@localhost 2019-06-16_05-06-53]# more xtrabackup_binlog_info 
+mysql-bin.000002	154
+[root@localhost 2019-06-16_05-06-53]# cat xtrabackup_checkpoints 
+backup_type = full-backuped
+from_lsn = 0
+to_lsn = 2646337
+last_lsn = 2646346
+compact = 0
+recover_binlog_info = 0
+flushed_lsn = 2646346
+
+第二部增量备份1
+插入一条数据
+mysql> insert into test values(2000, 'ken');
+Query OK, 1 row affected (0.00 sec)
+innobackupex  --defaults-file=/etc/my.cnf  --user=root --password=123456  --incremental --incremental-basedir=/opt/full/2019-06-16_05-06-53 /opt/incr
+增量备份后的路径:/opt/incr/2019-06-16_05-11-28
+[root@localhost 2019-06-16_05-11-28]# more xtrabackup_binlog_info 
+mysql-bin.000002	445
+[root@localhost 2019-06-16_05-11-28]#
+[root@localhost 2019-06-16_05-11-28]# more xtrabackup_checkpoints 
+backup_type = incremental
+from_lsn = 2646337
+to_lsn = 2646736
+last_lsn = 2646745
+compact = 0
+recover_binlog_info = 0
+flushed_lsn = 2646745
+[root@localhost 2019-06-16_05-11-28]# more xtrabackup_info 
+uuid = 285871c8-8fb2-11e9-9a26-000c29ae4d8e
+name = 
+tool_name = innobackupex
+tool_command = --defaults-file=/etc/my.cnf --user=root --password=... --incremental --incremental-basedir=/opt/full/2
+019-06-16_05-06-53 /opt/incr
+tool_version = 2.4.14
+ibbackup_version = 2.4.14
+server_version = 5.7.24-log
+start_time = 2019-06-16 05:11:28
+end_time = 2019-06-16 05:11:35
+lock_time = 0
+binlog_pos = filename 'mysql-bin.000002', position '445'
+innodb_from_lsn = 2646337
+innodb_to_lsn = 2646736
+partial = N
+incremental = Y
+format = file
+compact = N
+compressed = N
+encrypted = N
+增量备份2
+插入几条数据
+mysql> create table big_table (id  int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into big_table values(10000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into big_table values(20000);
+Query OK, 1 row affected (0.01 sec)
+
+--incremental-basedir参数应该根据实际情况确定
+innobackupex  --defaults-file=/etc/my.cnf  --user=root --password=123456  --incremental --incremental-basedir=/opt/incr/2019-06-16_05-11-28 /opt/incr/
+增量备份后的目录:/opt/incr/2019-06-16_05-36-23
+```
+
+??? note "注意一点"
+    ```
+    注意：Xtrabackup增量备份时，需要设置参数--incremental-basedir 其实这个参数不是必须的。可以用--incremental-lsn来替代。
+    完整备份后，检查备份目录下的xtrabackup_checkpoints文件，找到to_lsn，然后使用下面脚本做增量备份。
+    innobackupex  --user=backuser --password=kkk123456  /u02/mysql_backup/full/
+    [root@DB-Server 2017-07-25_12-49-57]# more xtrabackup_checkpoints
+    backup_type = full-backuped
+    from_lsn = 0
+    to_lsn = 1733142
+    last_lsn = 1733142
+    compact = 0
+    recover_binlog_info = 0
+    innobackupex --user=backuser  --password=kkk123456  --incremental --incremental-lsn=1733142 /u02/mysql_backup/incr/
+    ```
+#### 增量备份恢复
+
+1 恢复完全备份
+
+```
+innobackupex --defaults-file=/usr/my.cnf  --apply-log --redo-only /opt/full/2019-06-16_05-06-53/
+[root@localhost 2019-06-16_05-06-53]# more xtrabackup_checkpoints 
+backup_type = log-applied
+from_lsn = 0
+to_lsn = 2646337
+last_lsn = 2646346
+compact = 0
+recover_binlog_info = 0
+flushed_lsn = 2646346
+```
+
+??? note "注意点"
+    ```
+    注意如果后续必须应用增量备份，则必须加上--redo-only. 否则后续不能应用增量备份。
+    ```
+
+
+2 增量备份还原
+
+```
+需要指定第一次备份的目录:/opt/incr/2019-06-16_05-11-28
+innobackupex --apply-log --redo-only --incremental /opt/full/2019-06-16_05-06-53 --incremental-dir=/opt/incr/2019-06-16_05-11-28
+[root@localhost 2019-06-16_05-11-28]# more xtrabackup_checkpoints 
+backup_type = incremental
+from_lsn = 2646337
+to_lsn = 2646736
+last_lsn = 2646745
+compact = 0
+recover_binlog_info = 0
+flushed_lsn = 2646745
+
+```
+
+
+??? note "注意点"
+    ```
+    注意：增量备份必须按一定顺序Apply，否则后面的增量备份都无效了！
+    ```
+
+3 增量备份还原
+
+```
+需要指定第一次备份的目录:/opt/incr/2019-06-16_05-36-23
+innobackupex --apply-log  --redo-only --incremental /opt/full/2019-06-16_05-06-53 --incremental-dir=/opt/incr/2019-06-16_05-36-23
+[root@localhost 2019-06-16_05-36-23]# more xtrabackup_checkpoints 
+backup_type = incremental
+from_lsn = 2646736
+to_lsn = 2653276
+last_lsn = 2653285
+compact = 0
+recover_binlog_info = 0
+flushed_lsn = 2653285
+
+```
+
+4 关闭MySQL服务并移除数据目录。
+
+```
+ /etc/init.d/mysql stop
+mv /data/mysql /data/mysql_bak
+```
+5 将备份文件拷贝回MySQL数据目录
+```
+恢复全量备份那种
+innobackupex  --defaults-file=/etc/my.cnf  --copy-back /opt/full/2019-06-16_05-06-53/
+chown mysql:mysql /data/mysql -R
+```
+6 验证数据
+
+#### other
+打包压缩
+```
+innobackupex --user=root  --password=123456  --stream=tar /tmp  | gzip >/tmp/`date +%F`.tar.gz
+解压
+ tar -zxvf 2019-06-16.tar.gz
+```
