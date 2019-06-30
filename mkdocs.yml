@@ -157,6 +157,8 @@ nav:
       - 8. python之面向对象一: python/python8.md
       - 9. python之面向对象二: python/python9.md
       - 10. python之面向对象三: python/python10.md
+  - django:
+      - 1. django基础: django/django_base.md
   - Linux世界:
     - linux基础:
       - 1. linux发展史: linux/base/linux1.md
@@ -184,6 +186,9 @@ nav:
          - 5.2. mysqldump备份: mysql/mysql_backup.md
          - 5.3. Xtrabackup安装: mysql/Xtrabackup.md
          - 5.4. Xtrabackup使用: mysql/Xtrabackup_use.md
+  - nginx相关:
+    - 1. nginx的安装: nginx/nginx_install.md     
+    - 2. nginx配置文件讲解: nginx/nginx_conf.md
   - 深入剖析Kubernetes:
     - 1. 打通“容器技术”的任督二脉: kubernetes/kubernetes_mynote1.md
     - 2. 小鲸鱼大事记（一）：初出茅庐: kubernetes/kubernetes_mynote2.md
