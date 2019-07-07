@@ -1706,9 +1706,83 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#djangosetting" title="django的setting设置" class="md-nav__link">
+    django的setting设置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#django_3" title="django视图函数" class="md-nav__link">
-    django视图函数
+  <a href="#static" title="static配置" class="md-nav__link">
+    static配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" title="django的视图函数说明" class="md-nav__link">
+    django的视图函数说明
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" title="request的属性跟方法" class="md-nav__link">
+    request的属性跟方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#render-redirect" title="render 与  redirect" class="md-nav__link">
+    render 与  redirect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="模板介绍" class="md-nav__link">
+    模板介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="变量引用" class="md-nav__link">
+    变量引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatecontext" title="Template和Context对象" class="md-nav__link">
+    Template和Context对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="万能的句点号" class="md-nav__link">
+    万能的句点号
   </a>
   
 </li>
@@ -2368,9 +2442,83 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#djangosetting" title="django的setting设置" class="md-nav__link">
+    django的setting设置
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
-  <a href="#django_3" title="django视图函数" class="md-nav__link">
-    django视图函数
+  <a href="#static" title="static配置" class="md-nav__link">
+    static配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" title="django的视图函数说明" class="md-nav__link">
+    django的视图函数说明
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request" title="request的属性跟方法" class="md-nav__link">
+    request的属性跟方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#render-redirect" title="render 与  redirect" class="md-nav__link">
+    render 与  redirect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="模板介绍" class="md-nav__link">
+    模板介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="变量引用" class="md-nav__link">
+    变量引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templatecontext" title="Template和Context对象" class="md-nav__link">
+    Template和Context对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="万能的句点号" class="md-nav__link">
+    万能的句点号
   </a>
   
 </li>
@@ -2649,7 +2797,222 @@ urlpatterns = [
 在APP里面创建一个urls.py文件，然后所有的关于这个项目的都写在这里面就行了。
 </pre></div>
 
-<h4 id="django_3">django视图函数<a class="headerlink" href="#django_3" title="Permanent link">&para;</a></h4>
+<h3 id="djangosetting">django的setting设置<a class="headerlink" href="#djangosetting" title="Permanent link">&para;</a></h3>
+<h4 id="static">static配置<a class="headerlink" href="#static" title="Permanent link">&para;</a></h4>
+<p>需要在setting.py里面加上静态文件配置</p>
+<div class="codehilite"><pre><span></span>STATIC_URL = &#39;/static/&#39;  #alias别名的意思,调用的时候是用的它
+
+#实际的路径===&gt;statics与创建的包的名字一样,通过下边可以找到ststics目录
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,&quot;statics&quot;),
+)
+</pre></div>
+
+<p>1 创建statics包，里面放入静态文件js等(跟创建的项目同级)</p>
+<p>2 在templates的html文件里面调用的写法如下</p>
+<p>引入 {% load staticfiles %}   #必须引入</p>
+<p>写入
+<script src="{% static 'jquery-3.1.1.js' %}"></script>
+<div class="codehilite"><pre><span></span>{% load staticfiles %}   #必须引入
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            line-height: 40px;
+            background-color: green;
+            color:white;
+            text-align: center;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;hello world {{ time  }}&lt;/h1&gt;
+{#&lt;script src=&quot;/static/jquery-3.1.1.js&quot;&gt;&lt;/script&gt;#} #第一种写法
+&lt;script src=&quot;{% static &#39;jquery-3.1.1.js&#39; %}&quot;&gt;&lt;/script&gt; #第二种写法
+
+&lt;script&gt;
+    $(&quot;h1&quot;).css(&quot;color&quot;,&quot;red&quot;)
+&lt;/script&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+实际目录结构如下
+<div class="codehilite"><pre><span></span>├── mysite
+│   ├── blog
+│   ├── mysite
+|   |—— statics
+|   |—— templates 
+</pre></div></p>
+<h3 id="django_3">django的视图函数说明<a class="headerlink" href="#django_3" title="Permanent link">&para;</a></h3>
+<p>http请求中产生两个核心对象：</p>
+<div class="codehilite"><pre><span></span>    http请求：HttpRequest对象
+
+    http响应：HttpResponse对象
+</pre></div>
+
+
+<p>所在位置：django.http</p>
+<h5 id="request">request的属性跟方法<a class="headerlink" href="#request" title="Permanent link">&para;</a></h5>
+<p><div class="codehilite"><pre><span></span># path：       请求页面的全路径，不包括域名
+#
+# method：     请求中使用的HTTP方法的字符串表示。全大写表示。例如
+#
+#                    if  req.method==&quot;GET&quot;:
+#
+#                              do_something()
+#
+#                    elseif req.method==&quot;POST&quot;:
+#
+#                              do_something_else()
+#
+# GET:         包含所有HTTP GET参数的类字典对象
+#
+# POST：       包含所有HTTP POST参数的类字典对象
+#
+#              服务器收到空的POST请求的情况也是可能发生的，也就是说，表单form通过
+#              HTTP POST方法提交请求，但是表单中可能没有数据，因此不能使用
+#              if req.POST来判断是否使用了HTTP POST 方法；应该使用  if req.method==&quot;POST&quot;
+#
+#
+#
+# COOKIES:     包含所有cookies的标准Python字典对象；keys和values都是字符串。
+#
+# FILES：      包含所有上传文件的类字典对象；FILES中的每一个Key都是&lt;input type=&quot;file&quot; name=&quot;&quot; /&gt;标签中                     name属性的值，FILES中的每一个value同时也是一个标准的python字典对象，包含下面三个Keys：
+#
+#             filename：      上传文件名，用字符串表示
+#             content_type:   上传文件的Content Type
+#             content：       上传文件的原始内容
+#
+#
+# user：       是一个django.contrib.auth.models.User对象，代表当前登陆的用户。如果访问用户当前
+#              没有登陆，user将被初始化为django.contrib.auth.models.AnonymousUser的实例。你
+#              可以通过user的is_authenticated()方法来辨别用户是否登陆：
+#              if req.user.is_authenticated();只有激活Django中的AuthenticationMiddleware
+#              时该属性才可用
+#
+# session：    唯一可读写的属性，代表当前会话的字典对象；自己有激活Django中的session支持时该属性才可用。
+
+#方法
+get_full_path(),   比如：http://127.0.0.1:8000/index33/?name=123 ,req.get_full_path()得到的结果就是/index33/?name=123
+req.path:/index33
+</pre></div>
+具体实例</p>
+<div class="codehilite"><pre><span></span>urls.py
+
+url(r&#39;register&#39;,views.register)
+
+views.py
+
+def register(request):
+    if request.method == &quot;POST&quot;:
+        print (request.POST)
+        print (request.POST.getlist(&quot;username&quot;))
+
+        return HttpResponse(&quot;注册成功&quot;)
+    return render(request,&quot;register.html&quot;, locals())
+
+temlpates/register.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+{%csrf_token%}
+&lt;form action=&quot;/blog/register/&quot; method=&quot;POST&quot;&gt;
+    &lt;p&gt;姓名&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;性别&lt;input type=&quot;text&quot; name=&quot;sex&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;邮箱&lt;input type=&quot;text&quot; name=&quot;email&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;密码&lt;input type=&quot;password&quot; name=&quot;pwd&quot;&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;&lt;/p&gt;
+&lt;/form&gt;
+{%csrf_token%}
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+
+<h5 id="render-redirect">render 与  redirect<a class="headerlink" href="#render-redirect" title="Permanent link">&para;</a></h5>
+<p>redirect 是直接会跳转新的请求url页面,登录验证的时候可能会用到</p>
+<p>render 会在当前页url不会改变</p>
+<p>页面跳转：         redirect("路径")</p>
+<p>locals()：    可以直接将函数中所有的变量传给模板</p>
+<h3 id="_3">模板介绍<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">变量引用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>变量（使用双大括号来引用变量）：</p>
+<p><div class="codehilite"><pre><span></span>{{ var_name }}
+</pre></div>
+模板引用变量的原理</p>
+<h4 id="templatecontext">Template和Context对象<a class="headerlink" href="#templatecontext" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>&gt;&gt;&gt; python manange.py shell  (进入该django项目的环境)
+&gt;&gt;&gt; from django.template import Context, Template
+&gt;&gt;&gt; t = Template(&#39;My name is {{ name }}.&#39;)
+&gt;&gt;&gt; c = Context({&#39;name&#39;: &#39;Stephane&#39;})
+&gt;&gt;&gt; t.render(c)
+&#39;My name is Stephane.&#39;
+</pre></div>
+
+<p>Django 模板解析非常快捷。 大部分的解析工作都是在后台通过对简短正则表达式一次性调用来完成。 这和基于 XML 的模板引擎形成鲜明对比，那些引擎承担了 XML 解析器的开销，且往往比 Django 模板渲染引擎要慢上几个数量级。</p>
+<h4 id="_5">万能的句点号<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>在到目前为止的例子中，我们通过 context 传递的简单参数值主要是字符串，然而，模板系统能够非常简洁地处理更加复杂的数据结构，例如list、dictionary和自定义的对象。</p>
+<p>具体实例</p>
+<div class="codehilite"><pre><span></span>urls.py
+
+url(r&#39;test&#39;, views.test)
+
+views.py
+
+class Animal:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+def test(request):
+
+    l = [&#39;张三&#39;,&#39;李四&#39;,&#39;王二&#39;,&#39;小五&#39;]
+
+    dic_person = {&quot;name&quot;:&#39;zdk&#39;,&quot;age&quot;:18,&quot;hobby&quot;:&quot;play&quot;}
+
+    animal = Animal(&quot;小白兔&quot;,2)
+
+    render(request,&quot;test.html&quot;,locals())
+
+
+templates/test.html
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+{#列表取数#}
+
+&lt;p&gt;名字是:{{ l.0 }}&lt;/p&gt;
+&lt;p&gt;字典取数:&lt;/p&gt;
+&lt;p&gt;{{ dic_person.name }}&lt;/p&gt;
+&lt;p&gt;{{ dic_person.hobby }}&lt;/p&gt;
+&lt;p&gt;类取数&lt;/p&gt;
+&lt;p&gt;{{ animal.age }}&lt;/p&gt;
+&lt;p&gt;{{ animal.name }}&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
                 
                   
                 
