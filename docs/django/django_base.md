@@ -304,6 +304,258 @@ urlpatterns = [
 
 在APP里面创建一个urls.py文件，然后所有的关于这个项目的都写在这里面就行了。
 ```
-#### django视图函数
+### django的setting设置
+
+#### static配置
+
+需要在setting.py里面加上静态文件配置
+
+```
+STATIC_URL = '/static/'  #alias别名的意思,调用的时候是用的它
+
+#实际的路径===>statics与创建的包的名字一样,通过下边可以找到ststics目录
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,"statics"),
+)
+
+```
+
+1 创建statics包，里面放入静态文件js等(跟创建的项目同级)
+
+2 在templates的html文件里面调用的写法如下
+
+引入 {% load staticfiles %}   #必须引入
+
+写入
+<script src="{% static 'jquery-3.1.1.js' %}"></script>
+```
+{% load staticfiles %}   #必须引入
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .head{
+            line-height: 40px;
+            background-color: green;
+            color:white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>hello world {{ time  }}</h1>
+{#<script src="/static/jquery-3.1.1.js"></script>#} #第一种写法
+<script src="{% static 'jquery-3.1.1.js' %}"></script> #第二种写法
+
+<script>
+    $("h1").css("color","red")
+</script>
+</div>
+</body>
+</html>
+
+```
+实际目录结构如下
+```
+├── mysite
+│   ├── blog
+│   ├── mysite
+|   |—— statics
+|   |—— templates 
+```
+
+### django的视图函数说明
+
+http请求中产生两个核心对象：
+
+        http请求：HttpRequest对象
+
+        http响应：HttpResponse对象
+
+所在位置：django.http
+
+##### request的属性跟方法
+
+```
+# path：       请求页面的全路径，不包括域名
+#
+# method：     请求中使用的HTTP方法的字符串表示。全大写表示。例如
+#
+#                    if  req.method=="GET":
+#
+#                              do_something()
+#
+#                    elseif req.method=="POST":
+#
+#                              do_something_else()
+#
+# GET:         包含所有HTTP GET参数的类字典对象
+#
+# POST：       包含所有HTTP POST参数的类字典对象
+#
+#              服务器收到空的POST请求的情况也是可能发生的，也就是说，表单form通过
+#              HTTP POST方法提交请求，但是表单中可能没有数据，因此不能使用
+#              if req.POST来判断是否使用了HTTP POST 方法；应该使用  if req.method=="POST"
+#
+#
+#
+# COOKIES:     包含所有cookies的标准Python字典对象；keys和values都是字符串。
+#
+# FILES：      包含所有上传文件的类字典对象；FILES中的每一个Key都是<input type="file" name="" />标签中                     name属性的值，FILES中的每一个value同时也是一个标准的python字典对象，包含下面三个Keys：
+#
+#             filename：      上传文件名，用字符串表示
+#             content_type:   上传文件的Content Type
+#             content：       上传文件的原始内容
+#
+#
+# user：       是一个django.contrib.auth.models.User对象，代表当前登陆的用户。如果访问用户当前
+#              没有登陆，user将被初始化为django.contrib.auth.models.AnonymousUser的实例。你
+#              可以通过user的is_authenticated()方法来辨别用户是否登陆：
+#              if req.user.is_authenticated();只有激活Django中的AuthenticationMiddleware
+#              时该属性才可用
+#
+# session：    唯一可读写的属性，代表当前会话的字典对象；自己有激活Django中的session支持时该属性才可用。
+
+#方法
+get_full_path(),   比如：http://127.0.0.1:8000/index33/?name=123 ,req.get_full_path()得到的结果就是/index33/?name=123
+req.path:/index33
+```
+具体实例
+
+```
+urls.py
+
+url(r'register',views.register)
+
+views.py
+
+def register(request):
+    if request.method == "POST":
+        print (request.POST)
+        print (request.POST.getlist("username"))
+
+        return HttpResponse("注册成功")
+    return render(request,"register.html", locals())
+
+temlpates/register.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{%csrf_token%}
+<form action="/blog/register/" method="POST">
+    <p>姓名<input type="text" name="username"></p>
+    <p>性别<input type="text" name="sex"></p>
+    <p>邮箱<input type="text" name="email"></p>
+    <p>密码<input type="password" name="pwd"></p>
+    <p><input type="submit" value="submit"></p>
+</form>
+{%csrf_token%}
+
+</body>
+</html>
+
+```
+
+##### render 与  redirect
+
+redirect 是直接会跳转新的请求url页面,登录验证的时候可能会用到
+
+render 会在当前页url不会改变
+
+页面跳转：         redirect("路径")
+
+locals()：    可以直接将函数中所有的变量传给模板
+
+### 模板介绍
+
+#### 变量引用
+
+ 变量（使用双大括号来引用变量）：
+
+```
+{{ var_name }}
+```
+模板引用变量的原理
+
+#### Template和Context对象
+
+```
+>>> python manange.py shell  (进入该django项目的环境)
+>>> from django.template import Context, Template
+>>> t = Template('My name is {{ name }}.')
+>>> c = Context({'name': 'Stephane'})
+>>> t.render(c)
+'My name is Stephane.'
+```
+
+Django 模板解析非常快捷。 大部分的解析工作都是在后台通过对简短正则表达式一次性调用来完成。 这和基于 XML 的模板引擎形成鲜明对比，那些引擎承担了 XML 解析器的开销，且往往比 Django 模板渲染引擎要慢上几个数量级。
+
+#### 万能的句点号
+
+在到目前为止的例子中，我们通过 context 传递的简单参数值主要是字符串，然而，模板系统能够非常简洁地处理更加复杂的数据结构，例如list、dictionary和自定义的对象。
+
+具体实例
+
+```
+urls.py
+
+url(r'test', views.test)
+
+views.py
+
+class Animal:
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+def test(request):
+
+    l = ['张三','李四','王二','小五']
+
+    dic_person = {"name":'zdk',"age":18,"hobby":"play"}
+
+    animal = Animal("小白兔",2)
+
+    render(request,"test.html",locals())
+
+
+templates/test.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{#列表取数#}
+
+<p>名字是:{{ l.0 }}</p>
+<p>字典取数:</p>
+<p>{{ dic_person.name }}</p>
+<p>{{ dic_person.hobby }}</p>
+<p>类取数</p>
+<p>{{ animal.age }}</p>
+<p>{{ animal.name }}</p>
+
+</body>
+</html>
+
+
+```
 
 
