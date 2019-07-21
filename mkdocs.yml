@@ -159,6 +159,7 @@ nav:
       - 10. python之面向对象三: python/python10.md
   - django:
       - 1. django基础: django/django_base.md
+      - 2. django之ORM: django/django_orm.md
   - Linux世界:
     - linux基础:
       - 1. linux发展史: linux/base/linux1.md

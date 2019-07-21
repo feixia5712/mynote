@@ -557,5 +557,350 @@ templates/test.html
 
 
 ```
+#### 过滤器(filter)
+
+常用的几个
+
+```
+ # 1  add          ：   给变量加上相应的值
+   #
+   # 2  addslashes   :    给变量中的引号前加上斜线
+   #
+   # 3  capfirst     :    首字母大写
+   #
+   # 4  cut          ：   从字符串中移除指定的字符
+   #
+   # 5  date         ：   格式化日期字符串
+   #
+   # 6  default      ：   如果值是False,就替换成设置的默认值，否则就是用本来的值
+   #
+   # 7  default_if_none:  如果值是None，就替换成设置的默认值，否则就使用本来的值
+```
+实例如下
+
+```
+#value1="aBcDe"
+{{ value1|upper }}<br>
+
+#value2=5
+{{ value2|add:3 }}<br>
+
+#value3='he  llo wo r ld'
+{{ value3|cut:' ' }}<br>
+
+#import datetime
+#value4=datetime.datetime.now()
+{{ value4|date:'Y-m-d' }}<br>
+
+#value5=[]
+{{ value5|default:'空的' }}<br>
+
+#value6='<a href="#">跳转</a>'
+
+{{ value6 }}  #默认是不解析的
+
+{% autoescape off %} #让浏览器解析
+  {{ value6 }}
+{% endautoescape %}
+
+{{ value6|safe }}<br>#让浏览器解析出a标签 <a href="#">click</a>
+
+{{ value6|striptags }} #浏览器解析出标签,但是没办法点击 <h1>click</h1>
+
+#value7='1234'
+{{ value7|filesizeformat }}<br>
+{{ value7|first }}<br>
+{{ value7|length }}<br>
+{{ value7|slice:":-1" }}<br>
+
+#value8='http://www.baidu.com/?a=1&b=3'
+{{ value8|urlencode }}<br>  #url编码
+    value9='hello I am yuan'
+```
+####  标签(tag)的使用（使用大括号和百分比的组合来表示使用tag）
+
+##### {% if %} 的使用
+
+```
+
+一般用法
+{% if xxx %}
+{% else %}
+{% endif %}
+```
+具体实例
+
+{% if %}标签计算一个变量值，如果是“true”，即它存在、不为空并且不是false的boolean值,系统则会显示{% if %}和{% endif %}间的所有内容
+```
+{% if num >= 100  %}
+
+    {% if num > 200 %}
+        <p>num大于200</p>
+    {% else %}
+        <p>num大于100小于200</p>
+    {% endif %}
+
+{% elif num < 100 %}
+    <p>num小于100</p>
+
+{% else %}
+    <p>num等于100</p>
+
+{% endif %}
+
+{% if %} 标签接受and，or或者not来测试多个变量值或者否定一个给定的变量
+{% if %} 标签不允许同一标签里同时出现and和or，否则逻辑容易产生歧义，例如下面的标签是不合法的：
+
+{% if obj1 and obj2 or obj3 %}
+```
+
+##### {% for %}的使用
+
+```
+语法
+{% for x in xxx %}
+{% endfor %}
+```
+实例如下
+
+```
+<ul>
+{% for obj in list %}
+    <li>{{ obj.name }}</li>
+{% endfor %}
+</ul>
 
 
+#在标签里添加reversed来反序循环列表：
+
+    {% for obj in list reversed %}
+    ...
+    {% endfor %}
+
+#{% for %}标签可以嵌套：
+
+    {% for country in countries %}
+        <h1>{{ country.name }}</h1>
+        <ul>
+         {% for city in country.city_list %}
+            <li>{{ city }}</li>
+         {% endfor %}
+        </ul>
+    {% endfor %}
+
+
+#系统不支持中断循环，系统也不支持continue语句，{% for %}标签内置了一个forloop模板变量，
+#这个变量含有一些属性可以提供给你一些关于循环的信息
+
+1，forloop.counter表示循环的次数，它从1开始计数，第一次循环设为1:
+
+    {% for item in todo_list %}
+        <p>{{ forloop.counter }}: {{ item }}</p>
+    {% endfor %}
+2，forloop.counter0 类似于forloop.counter，但它是从0开始计数，第一次循环设为0
+3，forloop.revcounter
+4，forloop.revcounter0
+5，forloop.first当第一次循环时值为True，在特别情况下很有用：
+
+    {% for object in objects %}   
+         {% if forloop.first %}<li class="first">{% else %}<li>{% endif %}   
+         {{ object }}   
+        </li>  
+    {% endfor %}  
+    
+# 富有魔力的forloop变量只能在循环中得到，当模板解析器到达{% endfor %}时forloop就消失了
+# 如果你的模板context已经包含一个叫forloop的变量，Django会用{% for %}标签替代它
+# Django会在for标签的块中覆盖你定义的forloop变量的值
+# 在其他非循环的地方，你的forloop变量仍然可用
+
+
+#{% empty %}
+
+{{li }}
+      {%  for i in li %}
+          <li>{{ forloop.counter0 }}----{{ i }}</li>
+      {% empty %}
+          <li>this is empty!</li>
+      {% endfor %}
+
+#         [11, 22, 33, 44, 55]
+#            0----11
+#            1----22
+#            2----33
+#            3----44
+#            4----55
+```
+##### {%csrf_token%}：csrf_token标签
+
+用于生成csrf_token的标签，用于防治跨站攻击验证。注意如果你在view的index里用的是render_to_response方法，不会生效其实，这里是会生成一个input标签，和其他表单标签一起提交给后台的。
+
+在post请求的时候用的比较多
+
+#####{% url %}:  引用路由配置的地址
+
+```
+urls.py
+url(r'register',views.register,name='xxx'),
+
+templates/xx.html
+
+<form action="{%  url 'xxx' %}" method="POST">
+```
+##### {% with %}:用更简单的变量名替代复杂的变量名
+
+```
+{% with total=fhjsaldfhjsdfhlasdfhljsdal %} {{ total }} {% endwith %}
+```
+
+##### load
+
+load主要加载静态文件以及自定义过滤器以及自定义的标签
+
+{% load xxx %}
+
+##### 自定义filter以及标签
+
+第一步:在app(例如blog这个app中)中创建templatetags模块(必须的)
+
+第二步:创建任意 .py 文件，如：my_tags.py
+
+开始创建
+
+```
+from django import template
+from django.utils.safestring import mark_safe
+
+register = template.Library()   #register的名字是固定的,不可改变
+
+
+@register.filter
+def filter_multi(v1,v2):
+    return  v1 * v2
+
+
+@register.simple_tag
+def simple_tag_multi(v1,v2):
+    return  v1 * v2
+
+
+@register.simple_tag
+def my_input(id,arg):
+    result = "<input type='text' id='%s' class='%s' />" %(id,arg,)
+    return mark_safe(result)
+
+```
+第三步在使用自定义simple_tag和filter的html文件中导入之前创建的 my_tags.py ：{% load my_tags %}
+
+调用使用simple_tag和filter
+
+```
+-------------------------------.html
+{% load xxx %}   #首行
+    
+    
+    
+    
+ # num=12
+{{ num|filter_multi:2 }} #24
+
+{{ num|filter_multi:"[22,333,4444]" }}
+
+
+{% simple_tag_multi 2 5 %}  参数不限,但不能放在if for语句中
+{% simple_tag_multi num 5 %}
+```
+最后
+
+在settings中的INSTALLED_APPS配置当前app，不然django无法找到自定义的simple_tag
+
+filter可以用在if等语句后，simple_tag不可以
+
+```
+{% if num|filter_multi:30 > 100 %}
+    {{ num|filter_multi:30 }}
+{% endif %}
+```
+####  extend模板继承
+
+##### {% include %}
+
+在讲解了模板加载机制之后，我们再介绍一个利用该机制的内建模板标签： {% include %} 。该标签允许在（模板中）包含其它的模板的内容。 标签的参数是所要包含的模板名称，可以是一个变量，也可以是用单/双引号硬编码的字符串。 每当在多个模板中出现相同的代码时，就应该考虑是否要使用 {% include %} 来减少重复。
+
+可以在 HTML 页面中使用该指令将一个网页嵌入到另一个中
+
+事例
+
+```
+{% include "test.html" %}
+```
+
+##### extend模版继承
+
+1 定义基础模板
+
+```
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>My helpful timestamp site</h1>
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <hr>
+    <p>Thanks for visiting my site.</p>
+    {% endblock %}
+</body>
+</html>
+```
+block的地方都是在子模板中可以修改的地方
+
+说明:
+
+这个叫做 base.html 的模板定义了一个简单的 HTML 框架文档，我们将在本站点的所有页面中使用。 子模板的作用就是重载、添加或保留那些块的内容。 （如果你一直按顺序学习到这里，保存这个文件到你的template目录下，命名为 base.html .）
+
+我们使用模板标签： {% block %} 。 所有的 {% block %} 标签告诉模板引擎，子模板可以重载这些部分。 每个{% block %}标签所要做的是告诉模板引擎，该模板下的这一块内容将有可能被子模板覆盖。
+
+2 子模板继承并且修改
+
+```
+{% extends "base.html" %}
+ 
+{% block title %}The current time{% endblock %}
+ 
+{% block content %}
+<p>It is now {{ current_date }}.</p>
+{% endblock %}
+```
+
+其他的子模板继承
+
+```
+{% extends "base.html" %}
+ 
+{% block title %}Future time{% endblock %}
+ 
+{% block content %}
+<p>In {{ hour_offset }} hour(s), it will be {{ next_time }}.</p>
+{% endblock %}
+```
+
+每个模板只包含对自己而言 独一无二 的代码。 无需多余的部分。 如果想进行站点级的设计修改，仅需修改 base.html ，所有其它模板会立即反映出所作修改。
+
+??? note "注意点"
+    ```
+    <1>如果在模板中使用 {% extends %} ，必须保证其为模板中的第一个模板标记。 否则，模板继承将不起作用。
+
+    <2>一般来说，基础模板中的 {% block %} 标签越多越好。 记住，子模板不必定义父模板中所有的代码块，因此
+    你可以用合理的缺省值对一些代码块进行填充，然后只对子模板所需的代码块进行（重）定义。 俗话说，钩子越
+    多越好。
+
+    <3>如果发觉自己在多个模板之间拷贝代码，你应该考虑将该代码段放置到父模板的某个 {% block %} 中。
+    如果你需要访问父模板中的块的内容，使用 {{ block.super }}这个标签吧，这一个魔法变量将会表现出父模
+    板中的内容。 如果只想在上级代码块基础上添加内容，而不是全部重载，该变量就显得非常有用了。
+
+    <4>不允许在同一个模板中定义多个同名的 {% block %} 。 存在这样的限制是因为block 标签的工作方式是双向的。
+    也就是说，block 标签不仅挖了一个要填的坑，也定义了在父模板中这个坑所填充的内容。如果模板中出现了两个
+    相同名称的 {% block %} 标签，父模板将无从得知要使用哪个块的内容。
+    ```
