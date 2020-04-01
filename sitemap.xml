@@ -521,6 +521,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://feixia5712.github.io/mynote/nginx/nginx_log/</loc>
+     <lastmod>2020-04-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://feixia5712.github.io/mynote/nginx/nginx_process/</loc>
+     <lastmod>2020-04-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://feixia5712.github.io/mynote/kubernetes/kubernetes_mynote1/</loc>
      <lastmod>2020-04-01</lastmod>
      <changefreq>daily</changefreq>

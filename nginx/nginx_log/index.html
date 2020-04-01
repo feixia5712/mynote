@@ -13,7 +13,7 @@
         <meta name="description" content="个人知识的海洋">
       
       
-        <link rel="canonical" href="https://feixia5712.github.io/mynote/nginx/nginx_install/">
+        <link rel="canonical" href="https://feixia5712.github.io/mynote/nginx/nginx_log/">
       
       
         <meta name="author" content="张殿可">
@@ -42,7 +42,7 @@
     
     
       
-        <title>1. nginx的安装 - MYNOTE</title>
+        <title>3. nginx的日志切割 - MYNOTE</title>
       
     
     
@@ -133,7 +133,7 @@
               MYNOTE
             </span>
             <span class="md-header-nav__topic">
-              1. nginx的安装
+              3. nginx的日志切割
             </span>
           
         </div>
@@ -2062,65 +2062,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        1. nginx的安装
-      </label>
-    
-    <a href="./" title="1. nginx的安装" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../nginx_install/" title="1. nginx的安装" class="md-nav__link">
       1. nginx的安装
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#nginx" title="nginx安装" class="md-nav__link">
-    nginx安装
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginx_1" title="nginx简单介绍" class="md-nav__link">
-    nginx简单介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx_2" title="nginx的安装" class="md-nav__link">
-    nginx的安装
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -2140,11 +2086,58 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../nginx_log/" title="3. nginx的日志切割" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3. nginx的日志切割
+      </label>
+    
+    <a href="./" title="3. nginx的日志切割" class="md-nav__link md-nav__link--active">
       3. nginx的日志切割
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nginx" title="nginx的日志切割" class="md-nav__link">
+    nginx的日志切割
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" title="思路" class="md-nav__link">
+    思路
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -2328,23 +2321,16 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#nginx" title="nginx安装" class="md-nav__link">
-    nginx安装
+  <a href="#nginx" title="nginx的日志切割" class="md-nav__link">
+    nginx的日志切割
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nginx_1" title="nginx简单介绍" class="md-nav__link">
-    nginx简单介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx_2" title="nginx的安装" class="md-nav__link">
-    nginx的安装
+  <a href="#_1" title="思路" class="md-nav__link">
+    思路
   </a>
   
 </li>
@@ -2370,77 +2356,25 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/nginx/nginx_install.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/nginx/nginx_log.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>1. nginx的安装</h1>
+                  <h1>3. nginx的日志切割</h1>
                 
-                <h3 id="nginx">nginx安装<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
-<h4 id="nginx_1">nginx简单介绍<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h4>
-<p>Nginx本身是一款静态（html，css，js，jpg等）www软件 静态小文件高并发量，同时占用的资源很少，3W并发量 10个线程150w。</p>
-<p>Nginx使用平台：unix linux,windows都可以</p>
-<p>官网地址:<a href="http://nginx.org/">http://nginx.org/</a></p>
-<h4 id="nginx_2">nginx的安装<a class="headerlink" href="#nginx_2" title="Permanent link">&para;</a></h4>
-<p>1 安装pcre</p>
-<p>PCRE 作用是让 Nginx 支持 Rewrite 功能。</p>
-<div class="codehilite"><pre><span></span>yum install -y pcre-devel
-或者
-wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
-tar zxvf pcre-8.35.tar.gz
-cd pcre-8.35
-./configure &amp;&amp; make &amp;&amp; make install
-查看是否已经安装
-[root@localhost mynote]#  pcre-config  --version
-7.8
+                <h3 id="nginx">nginx的日志切割<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
+<h4 id="_1">思路<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>如果使用默认日志配置，经过一段时间运行后，access.log和error.log文件会变得非常大，使维护和排查问题变得不便，所以非常有必要做日志切割。</p>
+<p>通常的思路是：使用nginx的-s reopen命令，结合linux系统的crontab定时任务命令，弄一个定时任务按时切割日志文件。</p>
+<div class="codehilite"><pre><span></span>#!/bin/bash
+#Rotate the nginx logs to prevent a single logfile from consuming too much disk space.
+LOGS_PATH=/usr/local/nginx/logs/history
+CUR_LOGS_PATH=/usr/local/nginx/logs
+YESTERDAY=$(date -d &quot;yesterday&quot; +%Y-%m-%d)
+mv ${CUR_LOGS_PATH}/access.log ${LOGS_PATH}/access_${YESTERDAY}.log
+mv ${CUR_LOGS_PATH}/error.log ${LOGS_PATH}/error_${YESTERDAY}.log
+#向nginx master进程发送USR1信号，USR1信号是重新打开日志文件，相当于-s reopen命令
+kill -USR1 $(cat /usr/local/nginx/logs/nginx.pid)
 </pre></div>
-
-<p>2 nginx的安装</p>
-<p><div class="codehilite"><pre><span></span>yum -y install pcre-devel openssl openssl-devel
-useradd nginx -s /sbin/nologin -M
-cd /usr/local/src
-wget http://nginx.org/download/nginx-1.14.2.tar.gz
-tar nginx-1.14.2.tar.gz
-cd nginx-1.14.2
-./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
-make &amp;&amp; make install
-以上不报错代表安装成功 
-</pre></div>
-3  启动并检查</p>
-<div class="codehilite"><pre><span></span>检查配置文件:
-[root@localhost sbin]# /usr/local/nginx/sbin/nginx -t
-nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok
-nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful
-启动
-[root@localhost sbin]# /usr/local/nginx/sbin/nginx
-[root@localhost sbin]# ps -ef|grep nginx
-root       1956      1  0 06:04 ?        00:00:00 nginx: master process /usr/local/nginx/sbin/nginx
-nginx      1957   1956  0 06:04 ?        00:00:00 nginx: worker process      
-root       1979   1874  0 06:04 pts/2    00:00:00 grep nginx
-浏览器访问或者curl请求看是否启动成功
-浏览器访问本机ip(端口默认是80)
-curl请求
-[root@localhost sbin]# curl 192.168.94.130:80 -I
-HTTP/1.1 200 OK
-Server: nginx/1.14.2
-Date: Sat, 29 Jun 2019 22:06:52 GMT
-Content-Type: text/html
-Content-Length: 612
-Last-Modified: Thu, 27 Jun 2019 22:04:53 GMT
-Connection: keep-alive
-ETag: &quot;5d153d85-264&quot;
-Accept-Ranges: bytes
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title"><em>注意点</em></p>
-<p>检查nginx配置文件: /usr/local/nginx/sbin/nginx -t</p>
-<p>启动nginx:         /usr/local/nginx/sbin/nginx</p>
-<p>重新加载配置文件:  /usr/local/nginx/sbin/nginx -s reload</p>
-<p>nginx不通的排错</p>
-<p>1、ping ip  物理通不通</p>
-<p>2、telnet ip 浏览器到web服务器通不通</p>
-<p>3、服务器本地 curl  127.0.0.1 web服务开没开 </p>
-</div>
                 
                   
                 
@@ -2461,7 +2395,7 @@ Accept-Ranges: bytes
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../mysql/Xtrabackup_use/" title="5.4. Xtrabackup使用" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../nginx_conf/" title="2. nginx配置文件讲解" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2470,19 +2404,19 @@ Accept-Ranges: bytes
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                5.4. Xtrabackup使用
+                2. nginx配置文件讲解
               </span>
             </div>
           </a>
         
         
-          <a href="../nginx_conf/" title="2. nginx配置文件讲解" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../nginx_process/" title="4. nginx的日志进程结构" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                2. nginx配置文件讲解
+                4. nginx的日志进程结构
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
