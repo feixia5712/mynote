@@ -531,6 +531,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://feixia5712.github.io/mynote/nginx/nginx_regex/</loc>
+     <lastmod>2020-04-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://feixia5712.github.io/mynote/kafka/producer/</loc>
      <lastmod>2020-04-12</lastmod>
      <changefreq>daily</changefreq>
