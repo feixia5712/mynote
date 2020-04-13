@@ -2240,6 +2240,60 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tcp" title="生产者是如何管理TCP连接" class="md-nav__link">
+    生产者是如何管理TCP连接
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_1" title="何时创建 TCP 连接" class="md-nav__link">
+    何时创建 TCP 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_2" title="何时关闭 TCP 连接" class="md-nav__link">
+    何时关闭 TCP 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="消息交付可靠性" class="md-nav__link">
+    消息交付可靠性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="实现精确一次方案" class="md-nav__link">
+    实现精确一次方案
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2493,6 +2547,60 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tcp" title="生产者是如何管理TCP连接" class="md-nav__link">
+    生产者是如何管理TCP连接
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_1" title="何时创建 TCP 连接" class="md-nav__link">
+    何时创建 TCP 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_2" title="何时关闭 TCP 连接" class="md-nav__link">
+    何时关闭 TCP 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="总结" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="消息交付可靠性" class="md-nav__link">
+    消息交付可靠性
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="实现精确一次方案" class="md-nav__link">
+    实现精确一次方案
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2609,6 +2717,48 @@ Producer 端压缩、Broker 端保持、Consumer 端解压缩</li>
 </ul>
 <p>如果 acks = 0，就表示生产者也不知道自己产生的消息是否被服务器接收了，它才知道它写成功了。如果发送的途中产生了错误，生产者也不知道，它也比较懵逼，因为没有返回任何消息。这就类似于 UDP 的运输层协议，只管发，服务器接受不接受它也不关心。</p>
 <p>如果 acks = 1，只要集群的 Leader 接收到消息，就会给生产者返回一条消息，告诉它写入成功。如果发送途中造成了网络异常或者 Leader 还没选举出来等其他情况导致消息写入失败，生产者会受到错误消息，这时候生产者往往会再次重发数据。因为消息的发送也分为 同步 和 异步，Kafka 为了保证消息的高效传输会决定是同步发送还是异步发送。如果让客户端等待服务器的响应（通过调用 Future 中的 get() 方法），显然会增加延迟，如果客户端使用回调，就会解决这个问题。</p>
+<h3 id="tcp">生产者是如何管理TCP连接<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Apache Kafka 的所有通信都是基于 TCP 的，而不是基于 HTTP 或其他协议</li>
+<li>Kafka 生产者程序概览</li>
+</ul>
+<p>Kafka 的 Java 生产者 API 主要的对象就是 KafkaProducer。通常我们开发一个生产者的步骤有 4 步。</p>
+<p>第 1 步：构造生产者对象所需的参数对象。</p>
+<p>第 2 步：利用第 1 步的参数对象，创建 KafkaProducer 对象实例。</p>
+<p>第 3 步：使用 KafkaProducer 的 send 方法发送消息。</p>
+<p>第 4 步：调用 KafkaProducer 的 close 方法关闭生产者并释放各种系统资源。</p>
+<h4 id="tcp_1">何时创建 TCP 连接<a class="headerlink" href="#tcp_1" title="Permanent link">&para;</a></h4>
+<p>在创建 KafkaProducer 实例时，生产者应用会在后台创建并启动一个名为 Sender 的线程，该 Sender 线程开始运行时首先会创建与 Broker 的连接。
+在配置bootstrap.servers时注意
+<div class="codehilite"><pre><span></span>bootstrap.servers 参数。它是 Producer 的核心参数之一，指定了这个 Producer 启动时要连接的 Broker 地址。请注意，这里的“启动时”，代表的是 Producer 启动时会发起与这些 Broker 的连接。因此，如果你为这个参数指定了 1000 个 Broker 连接信息，那么很遗憾，你的 Producer 启动时会首先创建与这 1000 个 Broker 的 TCP 连接。
+
+在实际使用过程中，我并不建议把集群中所有的 Broker 信息都配置到 bootstrap.servers 中，通常你指定 3～4 台就足以了。因为 Producer 一旦连接到集群中的任一台 Broker，就能拿到整个集群的 Broker 信息，故没必要为 bootstrap.servers 指定所有的 Broker。
+</pre></div>
+TCP 连接还可能在两个地方被创建：一个是在更新元数据后，另一个是在消息发送时。为什么说是可能？因为这两个地方并非总是创建 TCP 连接。当 Producer 更新了集群的元数据信息之后，如果发现与某些 Broker 当前没有连接，那么它就会创建一个 TCP 连接。同样地，当要发送消息时，Producer 发现尚不存在与目标 Broker 的连接，也会创建一个。</p>
+<h4 id="tcp_2">何时关闭 TCP 连接<a class="headerlink" href="#tcp_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Producer 端关闭 TCP 连接的方式有两种：一种是用户主动关闭；一种是 Kafka 自动关闭。
+1 第一种用户kill
+2 Kafka 帮你关闭这与 Producer 端参数 connections.max.idle.ms 的值有关。默认情况下该参数值是 9 分钟，即如果在 9 分钟内没有任何请求“流过”某个 TCP 连接，那么 Kafka 会主动帮你把该 TCP 连接关闭</li>
+</ul>
+<h4 id="_9">总结<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>KafkaProducer 实例创建时启动 Sender 线程，从而创建与 bootstrap.servers 中所有 Broker 的 TCP 连接。</p>
+<p>KafkaProducer 实例首次更新元数据信息之后，还会再次创建与集群中所有 Broker 的 TCP 连接。</p>
+<p>如果 Producer 端发送消息到某台 Broker 时发现没有与该 Broker 的 TCP 连接，那么也会立即创建连接。</p>
+<p>如果设置 Producer 端 connections.max.idle.ms 参数大于 0，则步骤 1 中创建的 TCP 连接会被自动关闭；如果设置该参数 =-1，那么步骤 1 中创建的 TCP 连接将无法被关闭，从而成为“僵尸”连接。</p>
+<h3 id="_10">消息交付可靠性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>kafka 对 Producer 和 Consumer 要处理的消息提供什么样的承诺。常见的承诺有以下三种：</p>
+<ul>
+<li>最多一次（at most once）：消息可能会丢失，但绝不会被重复发送。</li>
+<li>至少一次（at least once）：消息不会丢失，但有可能被重复发送。</li>
+<li>精确一次（exactly once）：消息不会丢失，也不会被重复发送。</li>
+</ul>
+<p>Kafka 默认提供的交付可靠性保障是第二种，即至少一次,只有 Broker 成功“提交”消息且 Producer 接到 Broker 的应答才会认为该消息成功发送。不过倘若消息成功“提交”，但 Broker 的应答没有成功发送回 Producer 端（比如网络出现瞬时抖动），那么 Producer 就无法确定消息是否真的提交成功了。因此，它只能选择重试，也就是再次发送相同的消息。这就是 Kafka 默认提供至少一次可靠性保障的原因，不过这会导致消息重复发送。</p>
+<h4 id="_11">实现精确一次方案<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li>幂等性 Producer</li>
+<li>事务型 Producer</li>
+</ul>
                 
                   
                 
