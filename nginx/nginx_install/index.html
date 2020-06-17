@@ -1715,6 +1715,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/base/linux_you/" title="5 linux内核参数优化" class="md-nav__link">
+      5  linux内核参数优化
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2180,6 +2192,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nginx_3" title="nginx编译安装参数讲解" class="md-nav__link">
+    nginx编译安装参数讲解
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2481,6 +2500,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nginx_3" title="nginx编译安装参数讲解" class="md-nav__link">
+    nginx编译安装参数讲解
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2571,8 +2597,63 @@ Accept-Ranges: bytes
 <p>nginx不通的排错</p>
 <p>1、ping ip  物理通不通</p>
 <p>2、telnet ip 浏览器到web服务器通不通</p>
-<p>3、服务器本地 curl  127.0.0.1 web服务开没开 </p>
+<p>3、服务器本地 curl  127.0.0.1 web服务开没开</p>
 </div>
+<h4 id="nginx_3">nginx编译安装参数讲解<a class="headerlink" href="#nginx_3" title="Permanent link">&para;</a></h4>
+<p>1 刚刚下载好并且解压的目录结构如下
+<div class="codehilite"><pre><span></span>├── auto 编译时的库文件
+├── conf 配置文件
+├── contrib 增强显示,可以让配置文件显示颜色
+├── html 基本默认html
+├── man  帮助文件
+└── src 源代码文件
+├── CHANGES
+├── CHANGES.ru
+├── configure
+├── LICENSE
+├── README
+
+拷贝contrib到vim配置文件下，让配置文件有颜色
+cp -r contrib/vim/* ~/.vim/ 
+</pre></div>
+2 编译
+<div class="codehilite"><pre><span></span>[root@localhost nginx-1.14.2]# ./configure --help
+
+主要涉及几类配置
+1 --with 可以在编译的时候指定编译进配置默认不会编译进配置
+2 --without 默认编译进配置,在编译的时候指定,会移除这个配置
+3 基本编译参数指定选项
+4 编译第三方模块
+  --help                             print this message
+
+  --prefix=PATH                      set installation prefix
+  --sbin-path=PATH                   set nginx binary pathname
+  --modules-path=PATH                set modules path
+  --conf-path=PATH                   set nginx.conf pathname
+  --error-log-path=PATH              set error log pathname
+  --pid-path=PATH                    set nginx.pid pathname
+  --lock-path=PATH                   set nginx.lock pathname
+
+  --user=USER                        set non-privileged user for
+                                     worker processes
+  --group=GROUP                      set non-privileged group for
+......
+</pre></div></p>
+<p>3 configure之后生成中间文件objs</p>
+<div class="codehilite"><pre><span></span>所有被编译进nginx的模块我们可以在这里看到ngx_modules.c
+[root@localhost objs]# cat ngx_modules.c
+
+#include &lt;ngx_config.h&gt;
+#include &lt;ngx_core.h&gt;
+
+extern ngx_module_t  ngx_core_module;
+extern ngx_module_t  ngx_errlog_module;
+extern ngx_module_t  ngx_conf_module;
+extern ngx_module_t  ngx_regex_module;
+extern ngx_module_t  ngx_events_module;
+extern ngx_module_t  ngx_event_core_module;
+...
+</pre></div>
                 
                   
                 

@@ -1715,6 +1715,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../linux/base/linux_you/" title="5 linux内核参数优化" class="md-nav__link">
+      5  linux内核参数优化
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2511,12 +2523,62 @@ nginx      1563   1562  0 21:43 ?        00:00:00 nginx: worker process
 <p>常见的一些信号发送命令以及对应关系
 <img alt="cmd" src="../../img/nginx_pid.png" title="title" /></p>
 <h3 id="nginx_2">nginx的热升级流程<a class="headerlink" href="#nginx_2" title="Permanent link">&para;</a></h3>
-<p>1 将旧的nginx文件换成新的nginx文件
-2 向master进程发送USR2信号
-3 master进程修改pid文件名,加后缀.oldbin
-4 master进程用新nginx文件启动新的master进程
-5 向老master进程发送WINCH信号,关闭老的worker
-6 回滚;向老的master发送HUP,向新的master发送QUIT</p>
+<p>1 将旧的nginx文件换成新的nginx文件</p>
+<p>2 向master进程发送USR2信号</p>
+<p>3 master进程修改pid文件名,加后缀.oldbin</p>
+<p>4 master进程用新nginx文件启动新的master进程</p>
+<p>5 向老master进程发送WINCH信号,关闭老的worker</p>
+<p>6 回滚;向老的master发送HUP,向新的master发送QUIT</p>
+<p>具体步骤如下</p>
+<div class="codehilite"><pre><span></span>1 查看当前版本
+[root@localhost sbin]# ./nginx -V
+nginx version: nginx/1.14.2
+2 下载最新版本并且解压编译安装得到二进制启动文件nginx
+
+3 备份老的nginx二进制文件
+cp nginx nginx.old
+4 使用最新版本编译好的ngin二进制文件去替换老的nginx二进制文件
+[root@localhost sbin]# ./nginx -v
+nginx version: nginx/1.18.0
+[root@localhost sbin]# cp -r nginx /usr/local/nginx/sbin/ -f
+5 给老的master进程发信号,新的master会启动
+[root@localhost sbin]# ps -ef|grep nginx
+root       3141      1  0 19:38 ?        00:00:00 nginx: master process ./nginx
+nobody     3142   3141  0 19:38 ?        00:00:00 nginx: worker process
+nobody     3143   3141  0 19:38 ?        00:00:00 nginx: worker process
+root       3590   3115  0 20:31 pts/2    00:00:00 vim nginx_process.md
+root       6388   3748  0 20:44 pts/4    00:00:00 grep nginx
+[root@localhost sbin]# kill -USR2 3141
+[root@localhost sbin]# ps -ef|grep nginx
+root       3141      1  0 19:38 ?        00:00:00 nginx: master process ./nginx
+nobody     3142   3141  0 19:38 ?        00:00:00 nginx: worker process
+nobody     3143   3141  0 19:38 ?        00:00:00 nginx: worker process
+root       3590   3115  0 20:31 pts/2    00:00:00 vim nginx_process.md
+root       6393   3141  0 20:45 ?        00:00:00 nginx: master process ./nginx
+nobody     6394   6393  0 20:45 ?        00:00:00 nginx: worker process
+root       6396   3748  0 20:45 pts/4    00:00:00 grep nginx
+
+6 现在情况是新老master并存但是老的master以及worker目前已经不接受请求了
+发送信号优雅关闭老的woker进程
+kill -WINCH 3141 
+[root@localhost sbin]# ps -ef|grep nginx
+root       3141      1  0 19:38 ?        00:00:00 nginx: master process ./nginx
+root       3590   3115  0 20:31 pts/2    00:00:00 vim nginx_process.md
+root       6393   3141  0 20:45 ?        00:00:00 nginx: master process ./nginx
+nobody     6394   6393  0 20:45 ?        00:00:00 nginx: worker process
+root       6418   3748  0 20:49 pts/4    00:00:00 grep nginx
+7现在发现老的worker进程没了,但是老的master进程还在,老的master进程自己不会死掉,保留是为了回滚使用
+回滚
+[root@localhost sbin]# kill -HUP 3141
+[root@localhost sbin]# kill -QUIT 6393
+[root@localhost sbin]# ps -ef|grep nginx
+root       3141      1  0 19:38 ?        00:00:00 nginx: master process ./nginx
+root       3590   3115  0 20:31 pts/2    00:00:00 vim nginx_process.md
+nobody     6427   3141  0 20:51 ?        00:00:00 nginx: worker process
+nobody     6428   3141  0 20:51 ?        00:00:00 nginx: worker process
+root       6434   3748  0 20:52 pts/4    00:00:00 grep nginx
+8 回滚成功
+</pre></div>
                 
                   
                 
