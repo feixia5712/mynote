@@ -42,7 +42,7 @@
     
     
       
-        <title>4. nginx的日志进程结构 - MYNOTE</title>
+        <title>4. nginx的日志进程结构及热升级 - MYNOTE</title>
       
     
     
@@ -133,7 +133,7 @@
               MYNOTE
             </span>
             <span class="md-header-nav__topic">
-              4. nginx的日志进程结构
+              4. nginx的日志进程结构及热升级
             </span>
           
         </div>
@@ -2044,6 +2044,42 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      6. mysql基础语法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="7">
+      <label class="md-nav__title" for="nav-5-6">
+        6. mysql基础语法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../mysql/mysql_yf/" title="6.1. mysql基本语法" class="md-nav__link">
+      6.1. mysql基本语法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2191,11 +2227,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        4. nginx的日志进程结构
+        4. nginx的日志进程结构及热升级
       </label>
     
-    <a href="./" title="4. nginx的日志进程结构" class="md-nav__link md-nav__link--active">
-      4. nginx的日志进程结构
+    <a href="./" title="4. nginx的日志进程结构及热升级" class="md-nav__link md-nav__link--active">
+      4. nginx的日志进程结构及热升级
     </a>
     
       
@@ -2224,6 +2260,19 @@
   <a href="#nginx_2" title="nginx的热升级流程" class="md-nav__link">
     nginx的热升级流程
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reload" title="reload重载配置文件流程" class="md-nav__link">
+    reload重载配置文件流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2258,6 +2307,66 @@
   <li class="md-nav__item">
     <a href="../nginx_install_stafile/" title="6. nginx中静态服务搭建" class="md-nav__link">
       6. nginx中静态服务搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_goaccess/" title="7. nginx的acces监控利器goaccess" class="md-nav__link">
+      7. nginx的acces监控利器goaccess
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_https/" title="8. nginx免费https证书配置" class="md-nav__link">
+      8. nginx免费https证书配置
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_liuc/" title="9. nginx的简单处理流程" class="md-nav__link">
+      9. nginx的简单处理流程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_sj/" title="10. nginx的事件以及epoll" class="md-nav__link">
+      10. nginx的事件以及epoll
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_module/" title="11. nginx的模块" class="md-nav__link">
+      11. nginx的模块
     </a>
   </li>
 
@@ -2496,6 +2605,19 @@
     nginx的热升级流程
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reload" title="reload重载配置文件流程" class="md-nav__link">
+    reload重载配置文件流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -2517,7 +2639,7 @@
                   <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/nginx/nginx_process.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>4. nginx的日志进程结构</h1>
+                  <h1>4. nginx的日志进程结构及热升级</h1>
                 
                 <h3 id="nginx">nginx的进程结构<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
 <p><img alt="hello" src="../../img/nginx_process.png" title="title" /></p>
@@ -2526,10 +2648,24 @@
 root       1562      1  0 21:43 ?        00:00:00 nginx: master process /usr/local/nginx/sbin/nginx
 nginx      1563   1562  0 21:43 ?        00:00:00 nginx: worker process
 </pre></div>
-- nginx是多进程结构，多进程结构设计是为了保证nginx的高可用高可靠，包含：
-- master进程：也是父进程，负责worker进程的管理。
-- worker进程：也是子进程，worker进程一般配置成与服务器的CPU核数相同，worker进程用来处理具体的请求的。
-- cache进程：也是子进程，包括cache manager和cache loader进程，主要是反向代理时做缓存使用。</p>
+- nginx是多进程结构，多进程结构设计是为了保证nginx的高可用高可靠，包含：</p>
+<ul>
+<li>
+<p>master进程：也是父进程，负责worker进程的管理。</p>
+</li>
+<li>
+<p>worker进程：也是子进程，worker进程一般配置成与服务器的CPU核数相同，worker进程用来处理具体的请求的。</p>
+</li>
+<li>
+<p>cache进程：也是子进程，包括cache manager和cache loader进程，主要是反向代理时做缓存使用。</p>
+</li>
+<li>
+<p>各进程之间是共享内存的，使用信号控制</p>
+</li>
+<li>
+<p>worker进程设置数量为与服务器的cpu核数一致,由于nginx是事件驱动模型,这样设置能够够好的利用cpu</p>
+</li>
+</ul>
 <h3 id="nginx_1">使用信号管理Nginx的父子进程<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h3>
 <p>发送信号命令：kill HUP pid</p>
 <p>常见的一些信号发送命令以及对应关系
@@ -2592,6 +2728,28 @@ root       6434   3748  0 20:52 pts/4    00:00:00 grep nginx
 8 回滚成功
 9将老的二进制文件nginx改回来
 </pre></div>
+
+<h4 id="reload">reload重载配置文件流程<a class="headerlink" href="#reload" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>master进程发送HUP信号(relaod)</p>
+</li>
+<li>
+<p>master进程校验配置语法是否正确</p>
+</li>
+<li>
+<p>master进程打开新的监听端口</p>
+</li>
+<li>
+<p>master进程用新的配置文件启动新的worker进程</p>
+</li>
+<li>
+<p>master进程向老的worker进程发送QUIT信号</p>
+</li>
+<li>
+<p>老的worker进程关闭监听句柄,处理完当前链接后结束进程</p>
+</li>
+</ul>
                 
                   
                 
