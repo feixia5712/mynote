@@ -2365,6 +2365,54 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_dmodule/" title="12. nginx动态模块编译使用" class="md-nav__link">
+      12. nginx动态模块编译使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_server/" title="13. nginx的server模块" class="md-nav__link">
+      13. nginx的server模块
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_http/" title="14. nginx的http请求的11个阶段" class="md-nav__link">
+      14. nginx的http请求的11个阶段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nginx_rewrite/" title="15. nginx的rewrite模块" class="md-nav__link">
+      15. nginx的rewrite模块
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -2672,6 +2720,22 @@ $     匹配字符串的结束
 </pre></div>
 
 <h3 id="rewrite">rewrite常用正则表达式<a class="headerlink" href="#rewrite" title="Permanent link">&para;</a></h3>
+<p>1 在写正则的时候可以借助pcretest工具进行校验</p>
+<div class="codehilite"><pre><span></span>原始: /admin/website/article/35/change/uploads/party/5.png
+转换后:/static/uploads/party/5.png
+正则匹配
+  re&gt; /^\/admin\/website\/article\/(\d+)\/change\/uploads\/(\w+)\/(\w+)\.(png|jpeg|gif|bmp)$/
+data&gt; /admin/website/article/35/change/uploads/party/5.png
+ 0: /admin/website/article/35/change/uploads/party/5.png
+ 1: 35
+ 2: party
+ 3: 5
+ 4: png
+data&gt;
+
+rewrite ^/admin/website/article/(\d+)/change/uploads/(.*).(png|jpeg|gif|bmp)$
+/static/uploads/$2/$3.$4 last
+</pre></div>
                 
                   
                 
