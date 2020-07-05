@@ -2762,6 +2762,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exact-value-or-full-text" title="exact value OR full text" class="md-nav__link">
+    exact value OR full text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="自定义分词器" class="md-nav__link">
+    自定义分词器
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2873,6 +2887,20 @@
           <li class="md-nav__item">
   <a href="#_3" title="数组类型" class="md-nav__link">
     数组类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exact-value-or-full-text" title="exact value OR full text" class="md-nav__link">
+    exact value OR full text
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="自定义分词器" class="md-nav__link">
+    自定义分词器
   </a>
   
 </li>
@@ -3193,6 +3221,54 @@ POST users/_search
     }
 }
 </pre></div></p>
+<h5 id="exact-value-or-full-text">exact value OR full text<a class="headerlink" href="#exact-value-or-full-text" title="Permanent link">&para;</a></h5>
+<p>1 exact value 包括数字/日期/具体的一个字符串，是elasticsearch中的keyword,exact value是不需要分词的</p>
+<p>2 full text非结构化的文本数据，是elastcsearch中的text</p>
+<h5 id="_4">自定义分词器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>自定义分词通过组合不同的组件实现</p>
+<ul>
+<li>character Filter</li>
+</ul>
+<p><img alt="hello" src="./../img/elk_c.png" title="title" /></p>
+<p><div class="codehilite"><pre><span></span>POST _analyze
+{
+  &quot;tokenizer&quot;:&quot;keyword&quot;,
+  &quot;char_filter&quot;:[&quot;html_strip&quot;],
+  &quot;text&quot;: &quot;&lt;b&gt;hello world&lt;/b&gt;&quot;
+}
+#使用char filter进行替换
+POST _analyze
+{
+  &quot;tokenizer&quot;: &quot;standard&quot;,
+  &quot;char_filter&quot;: [
+      {
+        &quot;type&quot; : &quot;mapping&quot;,
+        &quot;mappings&quot; : [ &quot;- =&gt; _&quot;]
+      }
+    ],
+  &quot;text&quot;: &quot;123-456, I-test! test-990 650-555-1234&quot;
+}
+</pre></div>
+- Tokenizer</p>
+<p><img alt="hello" src="./../img/elk_to.png" title="title" /></p>
+<ul>
+<li>Token filter</li>
+</ul>
+<p><img alt="hello" src="./../img/elk_f.png" title="title" /></p>
+<div class="codehilite"><pre><span></span>GET _analyze
+{
+  &quot;tokenizer&quot;: &quot;whitespace&quot;,
+  &quot;filter&quot;: [&quot;stop&quot;,&quot;snowball&quot;],
+  &quot;text&quot;: [&quot;The gilrs in China are playing this game!&quot;]
+}
+//remove 加入lowercase后，The被当成 stopword删除
+GET _analyze
+{
+  &quot;tokenizer&quot;: &quot;whitespace&quot;,
+  &quot;filter&quot;: [&quot;lowercase&quot;,&quot;stop&quot;,&quot;snowball&quot;],
+  &quot;text&quot;: [&quot;The gilrs in China are playing this game!&quot;]
+}
+</pre></div>
                 
                   
                 

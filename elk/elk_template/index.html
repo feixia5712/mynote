@@ -13,7 +13,7 @@
         <meta name="description" content="个人知识的海洋">
       
       
-        <link rel="canonical" href="https://feixia5712.github.io/mynote/elk/elk_analyzer/">
+        <link rel="canonical" href="https://feixia5712.github.io/mynote/elk/elk_template/">
       
       
         <meta name="author" content="张殿可">
@@ -42,7 +42,7 @@
     
     
       
-        <title>3. 分词器相关 - MYNOTE</title>
+        <title>Elk template - MYNOTE</title>
       
     
     
@@ -108,7 +108,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#analyzer" tabindex="1" class="md-skip">
+      <a href="#indextemplatedynamictemplate" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -133,7 +133,7 @@
               MYNOTE
             </span>
             <span class="md-header-nav__topic">
-              3. 分词器相关
+              Elk template
             </span>
           
         </div>
@@ -2569,12 +2569,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
     
     <label class="md-nav__link" for="nav-11">
       ELK知识汇总
@@ -2614,70 +2612,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        3. 分词器相关
-      </label>
-    
-    <a href="./" title="3. 分词器相关" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../elk_analyzer/" title="3. 分词器相关" class="md-nav__link">
       3. 分词器相关
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analyzer_1" title="Analyzer的组成" class="md-nav__link">
-    Analyzer的组成
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analyzer-api" title="analyzer API" class="md-nav__link">
-    analyzer API
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="常见分词器举例" class="md-nav__link">
-    常见分词器举例
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -2748,36 +2687,13 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="简介" class="md-nav__link">
-    简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analyzer_1" title="Analyzer的组成" class="md-nav__link">
-    Analyzer的组成
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#analyzer-api" title="analyzer API" class="md-nav__link">
-    analyzer API
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="常见分词器举例" class="md-nav__link">
-    常见分词器举例
+  <a href="#indextemplatedynamictemplate" title="IndexTemplate和DynamicTemplate" class="md-nav__link">
+    IndexTemplate和DynamicTemplate
   </a>
   
 </li>
@@ -2798,116 +2714,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/elk/elk_analyzer.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/feixia5712/mynote/tree/gh-pages/edit/master/docs/elk/elk_template.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h4 id="analyzer">Analyzer分词器<a class="headerlink" href="#analyzer" title="Permanent link">&para;</a></h4>
-<h5 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h5>
-<ul>
-<li>
-<p>Analysis 文本分析是把全文本转换一系列单词(term/token)的过程,也叫分词.</p>
-</li>
-<li>
-<p>Analysis是通过Analyzer来实现的,可使用elasticsearch内置分分析器,或者按需要定制</p>
-</li>
-<li>
-<p>除了在数据写入时转换词条,匹配Query语句也需要相同的分析器对查询语句进行分析</p>
-</li>
-</ul>
-<h5 id="analyzer_1">Analyzer的组成<a class="headerlink" href="#analyzer_1" title="Permanent link">&para;</a></h5>
-<ul>
-<li>分词器是专门处理分词的组件,Analyzer三部分组成</li>
-</ul>
-<p>CharacterFilter 针对原始文本处理,例如去除html</p>
-<p>Tokenizer 按照规则切分为单词</p>
-<p>Token Filter 将切分的单词进行加工,小写,删除，增加同义词</p>
-<h5 id="analyzer-api">analyzer API<a class="headerlink" href="#analyzer-api" title="Permanent link">&para;</a></h5>
-<ul>
-<li>直接指定annlyzer进行测试</li>
-</ul>
-<div class="codehilite"><pre><span></span>POST /_analyze
-{
-  &quot;analyze&quot;:&quot;standard&quot;,
-  &quot;text&quot;:&quot;Mastering is last&quot;
-}
-</pre></div>
-
-<ul>
-<li>指定索引的字段进行测试</li>
-</ul>
-<p><div class="codehilite"><pre><span></span>#查看所有的分词
-POST books/_analyze
-{
-  &quot;field&quot;:&quot;title&quot;,
-  &quot;text&quot;:&quot;Mastering is ElasticSearch&quot;
-}
-</pre></div>
-- 自定义分词进行测试</p>
-<div class="codehilite"><pre><span></span>POST _analyze
-{
-  &quot;tokenizer&quot;:&quot;standard&quot;, 
-  &quot;filter&quot;:[&quot;lowercase&quot;],
-  &quot;text&quot;:&quot;Mastering Elasticsearch&quot;
-}
-</pre></div>
-
-<h5 id="_2">常见分词器举例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h5>
-<ul>
-<li>standard 默认分词器,按照词进行切分,小写处理</li>
-</ul>
-<div class="codehilite"><pre><span></span>POST _analyze
-{
-  &quot;analyzer&quot;: &quot;standard&quot;,
-  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over lazy dogs in the summer evening.&quot;
-}
-</pre></div>
-
-<ul>
-<li>
-<h1 id="simple-analyzer">Simple Analyzer – 按照非字母切分（符号被过滤），小写处理，所有的非字母被去除<a class="headerlink" href="#simple-analyzer" title="Permanent link">&para;</a></h1>
-</li>
-</ul>
-<p><div class="codehilite"><pre><span></span>POST _analyze
-{
-  &quot;analyzer&quot;: &quot;simple&quot;,
-  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over lazy dogs in the summer evening.&quot;
-}
-</pre></div>
-- #Whitespace Analyzer – 按照空格切分，不转小写</p>
-<p><div class="codehilite"><pre><span></span>POST _analyze
-{
-  &quot;analyzer&quot;: &quot;whitespace&quot;,
-  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over lazy dogs in the summer evening.&quot;
-}
-</pre></div>
-- Stop Analyzer – 小写处理，停用词过滤（the，a，is）</p>
-<ul>
-<li>
-<p>Keyword Analyzer – 不分词，直接将输入当作输出</p>
-</li>
-<li>
-<p>Patter Analyzer – 正则表达式，默认 \W+ (非字符分隔)</p>
-</li>
-</ul>
-<p>-#Language – 提供了30多种常见语言的分词器
-<div class="codehilite"><pre><span></span>#english
-GET _analyze
-{
-  &quot;analyzer&quot;: &quot;english&quot;,
-  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over lazy dogs in the summer evening.&quot;
-}
-</pre></div></p>
-<ul>
-<li>中文分词icu需要安装插件anaylze-icu(版本必须跟es一样)</li>
-</ul>
-<p><div class="codehilite"><pre><span></span>POST _analyze
-{
-  &quot;analyzer&quot;: &quot;icu_analyzer&quot;,
-  &quot;text&quot;: &quot;他说的确实在理”&quot;
-}
-</pre></div>
-其他中文支持</p>
-<p>IK</p>
+                  <h1>Elk template</h1>
+                
+                <h4 id="indextemplatedynamictemplate">IndexTemplate和DynamicTemplate<a class="headerlink" href="#indextemplatedynamictemplate" title="Permanent link">&para;</a></h4>
                 
                   
                 
@@ -2924,41 +2736,6 @@ GET _analyze
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../elk_orderindex/" title="2. 倒排索引简介" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  后退
-                </span>
-                2. 倒排索引简介
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../elk_search/" title="4. search相关语法" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  前进
-                </span>
-                4. search相关语法
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
