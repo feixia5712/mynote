@@ -1,0 +1,229 @@
+####mapping
+
+- 类似数据库中的schema
+
+1 定义索引中的字段名称
+
+2 定义字段的数据类型
+
+3 字段,倒排索引的相关配置(analyzed)
+
+- mapping会把json文档映射成lucene所需的扁平化格式
+
+- 一个mapping属于一个索引的type
+
+1 每个文档都属于一个type
+
+2 一个type有一个mapping定义
+
+3 7.0开始不需要在mapping定义中指定type信息
+
+##### 字段类型
+
+1 text/keyword
+
+2 date
+
+3 integer/floating
+
+4 boolean
+
+5 IPV4/IPV6
+
+复杂类型对象和嵌套对象
+
+特殊类型
+
+#### Dynamic Mapping
+
+1 写入文档时候,如果索引不存在,会自动创建索引
+
+2 Dynamic mapping机制,使得我们无需手动定义mappings，elasticsearch会自动更具文档信息,推算出字段的类型
+
+3 当类型设置不对时，会导致一个功能无法使用,如range查询
+
+```
+查看mapping
+
+GET movie/_mapping
+```
+#####类型的自动识别
+![hello](./../img/elk_type.png "title")
+实战
+
+```
+#写入文档，查看 Mapping
+PUT mapping_test/_doc/1
+{
+  "firstName":"Chan",
+  "lastName": "Jackie",
+  "loginDate":"2018-07-24T10:29:48.103Z"
+}
+
+#查看 Mapping文件
+GET mapping_test/_mapping
+
+
+#Delete index
+DELETE mapping_test
+
+#dynamic mapping，推断字段的类型
+PUT mapping_test/_doc/1
+{
+    "uid" : "123",
+    "isVip" : false,
+    "isAdmin": "true",
+    "age":19,
+    "heigh":180
+}
+
+#查看 Dynamic
+GET mapping_test/_mapping
+```
+
+#####更改mapping的字段类型??
+
+- 新增字段
+
+1 Dynamic设置为true,一旦新增字段的文档写入,mapping会同时 更新
+
+2 Dynamic设置为false,mapping不会更新,但是文档可以被索引,新增的字段无法被索引,但是信息会出现在_source中
+
+3 Dynamic设置为strict，文档写入失败
+
+- 对于已有字段,一旦已经有数据写入,就不在支持修改字段定义
+
+1 如果希望修改字段类型,必须reindex API重新建立索引
+
+```
+PUT movies
+{
+  mappings:{
+
+    docs:{
+       "dynamic":"true"
+ }
+}
+```
+语句
+```
+#默认Mapping支持dynamic，写入的文档中加入新的字段
+PUT dynamic_mapping_test/_doc/1
+{
+  "newField":"someValue"
+}
+
+#该字段可以被搜索，数据也在_source中出现
+POST dynamic_mapping_test/_search
+{
+  "query":{
+    "match":{
+      "newField":"someValue"
+    }
+  }
+}
+
+
+#修改为dynamic false
+PUT dynamic_mapping_test/_mapping
+{
+  "dynamic": false
+}
+
+#新增 anotherField
+PUT dynamic_mapping_test/_doc/10
+{
+  "anotherField":"someValue"
+}
+
+
+#该字段不可以被搜索，因为dynamic已经被设置为false
+POST dynamic_mapping_test/_search
+{
+  "query":{
+    "match":{
+      "anotherField":"someValue"
+    }
+  }
+}
+
+get dynamic_mapping_test/_doc/10
+
+#修改为strict
+PUT dynamic_mapping_test/_mapping
+{
+  "dynamic": "strict"
+}
+
+
+
+#写入数据出错，HTTP Code 400
+PUT dynamic_mapping_test/_doc/12
+{
+  "lastField":"value"
+}
+
+DELETE dynamic_mapping_test
+
+```
+#### 显式Mapping设置与常见参数介绍
+
+##### 设置mapping的一些建议
+
+1 创建一个临时的index,写入一些样本数据
+
+2 通过访问mapping api获得改临时文件的动态
+
+3 修改后用,使用该配置创建你的索引
+
+4 删除临时索引
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- i-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
